@@ -1,0 +1,17 @@
+1.txt
+2.txt
+advertise.jpg
+baseball.jpg
+card.jpg
+clocks.jpg
+forms.jpg
+mkshop.jpg
+mondrian.jpg
+mylab.jpg
+penguins.jpg
+portfolio.jpg
+resume.jpg
+soup.jpg
+tables.jpg
+tictactoe.jpg
+_C__Users_marks_Dropbox_working_CS300_HW06Recipe_index.html(1200x800).png

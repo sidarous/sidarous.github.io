@@ -1,0 +1,125 @@
+body{
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	background-color: orange;
+	font-size: 16px;
+	font-weight: 500;
+}
+
+h1{
+	font-size: 40px;
+}
+
+h2{
+	text-align: center;
+}
+
+header{	
+	text-align: center;
+	height: auto;
+	width: 90%;
+	padding-top: 10px;
+	color: orange;
+	margin: auto;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	background-color: rgba(0, 0, 0, .85);
+}
+
+footer{
+	text-align: center;
+	float: left;
+	margin-left: 5%;
+	height: auto;
+	width: 90%;
+	padding: 10px;
+	color: orange;
+	border-radius: 10px;
+	background-color: rgba(0, 0, 0, .85);
+	
+}
+
+header img{
+	height: 200px;
+}
+
+footer img{
+	height: 700px;
+	border-radius: 10px;
+}
+
+
+
+article{
+	float: left;
+	width: 100%;
+	padding: 4%;
+	height: auto;
+	margin: 0 auto;	
+}
+
+.buy{
+	background-color: rgba(0, 0, 0, .85);
+	border-radius: 10px;
+	color: orange;
+	text-align: center;
+	height: 120px;
+}
+
+
+
+
+/* Form Elements */
+
+.row{
+	width: 100%;
+	float: left;
+}
+
+.col{
+	float: left;
+	margin: 10px 1%; /* All columns have a left and right margin of 1% */
+}
+
+/* Media */
+
+@media(min-width: 1000px){
+	.col-lg-4{
+		width: 28%;
+	}
+}
+
+@media(min-width: 750px) and (max-width: 999px){
+	.col-md-4{
+		width: 28%;
+	}
+
+	.buy{
+		height: 200px;
+	}
+}
+
+@media(max-width: 749px){
+	
+	.col-sm-12{
+		width: 90%;
+
+	}
+
+	body{
+		font-size: 10px;
+	}
+	h1, h2{
+		font-size: 20px;
+	}
+
+	header img{
+		height: 60px;
+	}
+
+	footer img{
+		height: 100%;
+	}
+}

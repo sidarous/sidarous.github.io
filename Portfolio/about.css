@@ -1,0 +1,33 @@
+.bigtext p{
+	line-height: 2;
+}
+
+.bigtext a img{
+	height: 20px;
+}
+
+.skills{
+	line-height: 1.1;
+}
+
+.skillbarbg{
+	width: 100%; 
+    background-color: #005b5e; 
+}
+
+.skillbarfg{
+	text-align: right; 
+    padding-right: 20px;
+    line-height: 20px; 
+	color: white; 
+	background-color: #008f96;
+}
+
+.gapps {width: 95%; } 
+.biology {width: 90%;} 
+.science {width: 85%;} 
+.pd {width: 80%;} 
+.cs {width: 75%;} 
+.leadership {width: 70%;} 
+.networking {width: 65%;} 
+.java {width: 55%;} 

@@ -1,0 +1,31 @@
+<html>
+<head>
+	<title>Mark Sidarous Birthday Card assignment</title>
+	<link rel="stylesheet" href="styles.css">
+	<meta name="description" content="Birthday Card">
+	<meta name="keywords" content="birthday, jquery, javascript">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="scripts.js"></script>
+</head>
+<body>
+    <header>
+        Here's your card! Hover your mouse over it to open it.
+    </header>
+    <div id="wholecard">
+        <article id="front" class="pane" onclick="openTheCard()">
+            <div class="content">
+                <img src="cake.gif" alt="animated cake"><br>
+                Happy Birthday to Abigail!
+            </div>
+        </article>
+
+        </article>
+        <article id="inner" class="pane">
+                <div class="content">
+                    <img src="abby.jpg" alt="Abigail">
+                    Dad and Mom love you!
+                </div>
+        </article>
+    </div>
+</body>

@@ -1,0 +1,283 @@
+/* Border: Top Right Bottom Left */
+
+#thing1{
+	float:left;
+	background-color:white;
+	border-style: solid;
+	border-width: 0px 10px 10px 0px;
+	height: 100px;
+	width: 200px;
+	padding: 0px;
+}
+
+#thing2{
+	float:left;
+	background-color:white;
+	border-style: solid;
+	border-width: 0px 10px 10px 0px;
+	height: 100px;
+	width: 150px;
+	padding: 0px;
+}
+
+
+#thing3{
+	float:left;
+	background-color:white;
+	border-style: solid;
+	border-width: 0px 10px 10px 0px;
+	height: 100px;
+	width: 220px;
+	padding: 0px;
+}
+
+
+#thing4{
+	float:left;
+	background-color:white;
+	border-style: solid;
+	border-width: 0px 10px 10px 0px;
+	height: 100px;
+	width: 250px;
+	padding: 0px;
+}
+
+#thing5{
+	float:left;
+	background-color:white;
+	border-style: solid;
+	border-width: 0px 0px 10px 0px;
+	height: 100px;
+	width: 150px;
+	padding: 0px;
+}
+
+
+#thing6{
+	float:left;
+	background-color:white;
+	border-style: solid;
+	border-width: 0px 10px 10px 0px;
+	height: 150px;
+	width: 200px;
+	padding: 0px;
+}
+
+#thing7{
+	float:left;
+	background-color:red;
+	border-style: solid;
+	border-width: 0px 10px 10px 0px;
+	height: 150px;
+	width: 150px;
+	padding: 0px;
+}
+
+#thing8{
+	float:left;
+	background-color:white;
+	border-style: solid;
+	border-width: 0px 10px 10px 0px;
+	height: 150px;
+	width: 220px;
+	padding: 0px;
+}
+
+#thing9{
+	float:left;
+	background-color:blue;
+	border-style: solid;
+	border-width: 0px 10px 10px 0px;
+	height: 150px;
+	width: 250px;
+	padding: 0px;
+}
+
+#thing10{
+	float:left;
+	background-color:white;
+	border-style: solid;
+	border-width: 0px 0px 10px 0px;
+	height: 150px;
+	width: 150px;
+	padding: 0px;
+}
+
+
+#thing11{
+	float:left;
+	background-color:white;
+	border-style: solid;
+	border-width: 0px 10px 0px 0px;
+	height: 100px;
+	width: 200px;
+	padding: 0px;
+}
+
+#thing12{
+	float:left;
+	background-color:white;
+	border-style: solid;
+	border-width: 0px 10px 10px 0px;
+	height: 100px;
+	width: 150px;
+	padding: 0px;
+}
+
+#thing13{
+	float:left;
+	background-color:white;
+	border-style: solid;
+	border-width: 0px 10px 0px 0px;
+	height: 100px;
+	width: 220px;
+	padding: 0px;
+}
+
+#thing14{
+	float:left;
+	background-color:white;
+	border-style: solid;
+	border-width: 0px 10px 	0px 0px;
+	height: 100px;
+	width: 250px;
+	padding: 0px;
+}
+
+#thing15{
+	float:left;
+	background-color:white;
+	border-style: solid;
+	border-color: white;
+	border-width: 0px 0px 10px 0px;
+	height: 100px;
+	width: 150px;
+	padding: 0px;
+}
+
+#thing16{
+	float:left;
+	background-color:white;
+	border-style: solid;
+	border-width: 0px 10px 10px 0px;
+	height: 100px;
+	width: 200px;
+	padding: 0px;
+}
+
+#thing17{
+	float:left;
+	background-color:yellow;
+	border-style: solid;
+	border-width: 0px 10px 10px 0px;
+	height: 100px;
+	width: 150px;
+	padding: 0px;
+}
+
+#thing18{
+	float:left;
+	background-color:white;
+	border-style: solid;
+	border-width: 0px 10px 10px 0px;
+	height: 100px;
+	width: 220px;
+	padding: 0px;
+}
+
+#thing19{
+	float:left;
+	background-color:white;
+	border-style: solid;
+	border-width: 0px 10px 10px 0px;
+	height: 100px;
+	width: 250px;
+	padding: 0px;
+}
+
+#thing20{
+	float:left;
+	background-color:white;
+	border-style: solid;
+	border-width: 0px 0px 10px 0px;
+	height: 100px;
+	width: 150px;
+	padding: 0px;
+}
+#thing21{
+	float:left;
+	background-color:white;
+	border-style: solid;
+	border-width: 0px 10px 00px 0px;
+	height: 50px;
+	width: 200px;
+	padding: 0px;
+}
+
+#thing22{
+	float:left;
+	background-color:white;
+	border-style: solid;
+	border-width: 0px 10px 00px 0px;
+	height: 50px;
+	width: 150px;
+	padding: 0px;
+}
+
+#thing23{
+	float:left;
+	background-color:white;
+	border-style: solid;
+	border-width: 0px 10px 0px 0px;
+	height: 50px;
+	width: 220px;
+	padding: 0px;
+}
+
+#thing24{
+	float:left;
+	background-color:white;
+	border-style: solid;
+	border-width: 0px 10px 00px 0px;
+	height: 50px;
+	width: 250px;
+	padding: 0px;
+}
+
+#thing25{
+	float:left;
+	background-color:white;
+	border-style: solid;
+	border-width: 0px 0px 0px 0px;
+	height: 50px;
+	width: 150px;
+	padding: 0px;
+}
+
+#missingcorner1{
+    position:absolute;
+	left: 208px;
+	top: 378px;
+	width: 10px;
+	height:10px;
+    background-color:orange;
+}
+
+
+#missingcorner2{
+    position:absolute;
+	left: 598px;
+	top: 378px;
+	width: 10px;
+	height:10px;
+    background-color:purple;
+}
+
+#missingcorner3{
+    position:absolute;
+	left: 858px;
+	top: 378px;
+	width: 10px;
+	height:10px;
+    background-color:green;
+}
