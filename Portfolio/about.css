@@ -23,10 +23,11 @@
 	background-color: #008f96;
 }
 
-.gapps {width: 95%; } 
-.biology {width: 90%;} 
-.science {width: 85%;} 
-.pd {width: 80%;} 
+.gapps {width: 100%; } 
+.biology {width: 100%;} 
+.tech {width: 100%;} 
+.science {width: 95%;} 
+.pd {width: 85%;} 
 .cs {width: 75%;} 
 .leadership {width: 70%;} 
 .networking {width: 65%;} 
