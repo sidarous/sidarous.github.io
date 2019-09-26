@@ -167,17 +167,17 @@ header li{
 #profilepic{
 	float: right;
 	border-radius: 50%;
-	max-width: 97.5%;
-	max-height: 97.5%;
+	max-width: 90%;
+	max-height: 90%;
 	background-size: cover;
 }
 
 .introblock{
 	position: relative;
 	top: 50%;
-    -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
+    -webkit-transform: translateY(-45%);
+    -ms-transform: translateY(-45%);
+    transform: translateY(-45%);
 }
 
 .button{
