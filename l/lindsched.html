@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html class="en-us" lang="en" >
+<head>
+<!--    Credit to http://rewordify.com/schoolclock.php
+      Credit to https://www.w3schools.com/howto/howto_js_progressbar.asp  
+      Other useful websites: 
+      https://www.tools4noobs.com/online_tools/hh_mm_ss_to_seconds/  
+      https://www.tools4noobs.com/online_tools/seconds_to_hh_mm_ss/
+      https://stackoverflow.com/questions/41429906/how-to-display-data-label-inside-html5-progress-bar-cross-browser
+      https://css-tricks.com/fitting-text-to-a-container/   use SVG method
+
+      
+      #TODOMJS
+        Responsive layout with media breakpoints
+        Change colors based on type of day?
+        Change bar text to be useful
+        Change bar for before/after school times
+-->
+  <title>Lindblom Daily Schedule</title>
+  <meta charset="utf-8">
+  <meta name="description" content="The Lindblom Daily Schedule shows you what period you're in, every second of the day.">
+  <style>
+  #container{
+    text-align:center;
+    font-family:"Lucida Console", Monaco, monospace;
+  }
+  #lindTitle{
+    font-size:2.5em;
+    margin-top:6px;  
+  }
+  #dayType{
+    font-size:2.2em;
+    margin-bottom:6px;  
+    /* TODOMJS Color this dynamically */
+    color:maroon;
+  }
+
+  #currentdt{
+    font-size:2.5em;
+    margin-top:16px;
+  }
+  #countdowntointro{
+    margin-top:24px;
+  }
+  #countdown{
+    font-size:2.2em;
+    margin-top:6px;  
+  }
+  #countdowntolabel{
+    font-size:2em;
+    margin-top:10px;  
+  }
+  #wearenowintro{
+    margin-top:24px;
+  }
+  #wearenow{
+    font-size:1em;
+    margin-top:8px;  
+  }
+  #wearenowtimerange{
+    font-size:1.8em;
+    margin-top:8px;  
+  }
+  #wearenowlabel{
+    font-size:3.5em;
+    margin-top:10px;  
+  }
+  #ad{
+    margin-top:28px;
+    font-size:.8em;
+  }
+  .howtouse{
+	width:75%;
+	max-width:800px;
+	margin-left:auto;
+	margin-right:auto;
+	display:block;
+  }
+
+#myProgress {
+  width: 100%;
+  background-color: darkgrey;
+  position: relative;
+}
+
+#myProgress:before {
+  content: attr(data-label);
+  vertical-align: bottom;
+  font-size: 1.2em;
+  position: absolute;
+  text-align: center;
+  top: 5px;
+  left: 0;
+  right: 0;
+  color:white;
+}
+
+#myBar {
+  width: 1%;
+  height: 40px;
+  background-color: maroon;
+  text-align: center; 
+  line-height: 30px; 
+  color: white;
+}
+
+</style>
+
+</head>
+<body>
+<div id="container">
+<div id="lindTitle">Lindblom Current Schedule</div>
+<div id="dayType"></div>
+<div id="myProgress" data-label="">
+  <div id="myBar" class="value"></div>
+</div>
+<div id="currenttimeintro">Current date/time:</div>
+<div id="currentdt"></div>
+<div id="wearenowintro"></div>
+<div id="wearenowlabel"></div>
+<div id="wearenowtimerange"></div>
+<div id="wearenow"></div>
+<div id="countdowntointro"></div>
+<div id="countdowntolabel"></div>
+<div id="countdown"></div>
+<div id="schedule"></div>
+
+<script>
+  // set up calendar arrays for different day types
+  const goldArray = [
+  "2021-09-02","2021-09-06","2021-09-09","2021-09-13","2021-09-16","2021-09-20","2021-09-23","2021-09-27","2021-09-29","2021-10-04","2021-10-07","2021-10-12","2021-10-14","2021-10-18","2021-10-21","2021-10-25","2021-10-28","2021-11-01","2021-11-03","2021-11-08","2021-11-10","2021-11-15","2021-11-17","2021-11-22","2021-11-29","2021-12-02","2021-12-06","2021-12-09","2021-12-13","2021-12-15","2022-01-03","2022-01-06","2022-01-10","2022-01-13","2022-01-18","2022-01-20","2022-01-24","2022-01-26","2022-01-31","2022-02-03","2022-02-07","2022-02-10","2022-02-14","2022-02-17","2022-02-22","2022-02-24","2022-02-28","2022-03-03","2022-03-07","2022-03-10","2022-03-14","2022-03-17","2022-03-21","2022-03-24","2022-03-28","2022-03-31","2022-04-04","2022-04-07","2022-04-18","2022-04-25","2022-04-27","2022-05-02","2022-05-05","2022-05-09","2022-05-12","2022-05-16","2022-05-19","2022-05-23","2022-05-26","2022-05-31","2022-06-06"  ];
+  const maroonArray = [
+  "2021-09-03","2021-09-07","2021-09-10","2021-09-14","2021-09-17","2021-09-21","2021-09-24","2021-09-28","2021-09-30","2021-10-05","2021-10-08","2021-10-13","2021-10-15","2021-10-19","2021-10-22","2021-10-26","2021-10-29","2021-11-02","2021-11-04","2021-11-09","2021-11-12","2021-11-16","2021-11-19","2021-11-23","2021-11-30","2021-12-03","2021-12-07","2021-12-10","2021-12-14","2021-12-16","2022-01-04","2022-01-07","2022-01-11","2022-01-14","2022-01-19","2022-01-21","2022-01-25","2022-01-27","2022-02-01","2022-02-04","2022-02-08","2022-02-11","2022-02-15","2022-02-18","2022-02-23","2022-02-25","2022-03-01","2022-03-04","2022-03-08","2022-03-11","2022-03-15","2022-03-18","2022-03-22","2022-03-25","2022-03-29","2022-04-01","2022-04-05","2022-04-20","2022-04-26","2022-04-28","2022-05-03","2022-05-06","2022-05-10","2022-05-13","2022-05-17","2022-05-20","2022-05-24","2022-05-27","2022-06-02","2022-06-07"
+  ];
+  const oneArray = [
+  "2021-09-08","2021-10-27","2022-03-09","2022-04-22","2022-06-03","2022-06-13"
+  ];
+  const collArray = [
+  "2021-09-15","2021-09-22","2021-10-01","2021-10-06","2021-10-20","2021-12-01","2021-12-08","2021-12-17","2022-01-05","2022-01-12","2022-02-02","2022-02-09","2022-02-16","2022-03-02","2022-03-16","2022-03-30","2022-04-06","2022-04-29","2022-05-04","2022-05-11","2022-05-18","2022-05-25","2022-06-01","2022-06-14"  ];
+  const confArray = [
+    
+  ];
+  const absArray = [
+  "2021-09-04","2021-09-05","2021-09-11","2021-09-12","2021-09-18","2021-09-19","2021-09-25","2021-09-26","2021-10-02","2021-10-03","2021-10-09","2021-10-10","2021-10-11","2021-10-16","2021-10-17","2021-10-23","2021-10-24","2021-10-30","2021-10-31","2021-11-05","2021-11-06","2021-11-07","2021-11-11","2021-11-13","2021-11-14","2021-11-18","2021-11-20","2021-11-21","2021-11-24","2021-11-25","2021-11-26","2021-11-27","2021-11-28","2021-12-04","2021-12-05","2021-12-11","2021-12-12","2021-12-18","2021-12-19","2021-12-20","2021-12-21","2021-12-22","2021-12-23","2021-12-24","2021-12-25","2021-12-26","2021-12-27","2021-12-28","2021-12-29","2021-12-30","2021-12-31","2022-01-01","2022-01-02","2022-01-08","2022-01-09","2022-01-15","2022-01-16","2022-01-17","2022-01-22","2022-01-23","2022-01-28","2022-01-29","2022-01-30","2022-02-05","2022-02-06","2022-02-12","2022-02-13","2022-02-19","2022-02-20","2022-02-21","2022-02-26","2022-02-27","2022-03-05","2022-03-06","2022-03-12","2022-03-13","2022-03-19","2022-03-20","2022-03-26","2022-03-27","2022-04-02","2022-04-03","2022-04-08","2022-04-09","2022-04-10","2022-04-11","2022-04-12","2022-04-13","2022-04-14","2022-04-15","2022-04-16","2022-04-17","2022-04-21","2022-04-23","2022-04-24","2022-04-30","2022-05-01","2022-05-07","2022-05-08","2022-05-14","2022-05-15","2022-05-21","2022-05-22","2022-05-28","2022-05-29","2022-05-30","2022-06-04","2022-06-05","2022-06-11","2022-06-12","2022-06-15","2022-06-16","2022-06-17","2022-06-18","2022-06-19","2022-06-20","2022-06-21","2022-06-22","2022-06-23","2022-06-24","2022-06-25","2022-06-26","2022-06-27","2022-06-28","2022-06-29","2022-06-30","2022-07-01","2022-07-02","2022-07-03","2022-07-04","2022-07-05","2022-07-06","2022-07-07"
+  ];
+  const examArray = [
+  "2022-03-23","2022-04-19","2022-06-08","2022-06-09","2022-06-10"
+  ];
+
+  var condition;
+  var noSchool=false;
+  var starts=[];
+  var names=[];
+  var times=[];
+  var rightNow = nowDate();
+  { //set up arrays for times for the day
+    if(goldArray.includes(rightNow)){
+        condition="Gold 1-4 Day";
+            starts[0]=28800;
+            names[0]='1st Period';
+            times[0]='08:00';
+            starts[1]=34800;
+            names[1]='Passing Period (2nd / A)';
+            times[1]='09:40';
+            starts[2]=35280;
+            names[2]='2nd Period / A Period';
+            times[2]='09:48';
+            starts[3]=38130;
+            names[3]='Passing Period (A)';
+            times[3]='10:35';
+            starts[4]=38430;
+            names[4]='B Period';
+            times[4]='10:40';
+            starts[5]=41280;
+            names[5]='Passing Period (3rd / C)';
+            times[5]='11:28';
+            starts[6]=41760;
+            names[6]='3rd Period / C Period';
+            times[6]='11:36';
+            starts[7]=44610;
+            names[7]='Passing Period (D)';
+            times[7]='12:23';
+            starts[8]=44910;
+            names[8]='3rd Period / D Period';
+            times[8]='12:28';
+            starts[9]=47760;
+            names[9]='Passing Period (4th)';
+            times[9]='13:16';
+            starts[10]=48240;
+            names[10]='4th Period';
+            times[10]='13:24';
+            starts[11]=54300;
+            names[11]='End of School';
+            times[11]='15:05';
+
+    } else if(maroonArray.includes(rightNow)){
+        condition="Maroon 5-8 Day";
+        starts[0]=28800;
+            names[0]='5th Period';
+            times[0]='08:00';
+            starts[1]=34800;
+            names[1]='Passing Period (6th / A)';
+            times[1]='09:40';
+            starts[2]=35280;
+            names[2]='6th Period / A Period';
+            times[2]='09:48';
+            starts[3]=38130;
+            names[3]='Passing Period (A)';
+            times[3]='10:35';
+            starts[4]=38430;
+            names[4]='B Period';
+            times[4]='10:40';
+            starts[5]=41280;
+            names[5]='Passing Period (7th / C)';
+            times[5]='11:28';
+            starts[6]=41760;
+            names[6]='7th Period / C Period';
+            times[6]='11:36';
+            starts[7]=44610;
+            names[7]='Passing Period (D)';
+            times[7]='12:23';
+            starts[8]=44910;
+            names[8]='8th Period / D Period';
+            times[8]='12:28';
+            starts[9]=47760;
+            names[9]='Passing Period (8th)';
+            times[9]='13:16';
+            starts[10]=48240;
+            names[10]='4th Period';
+            times[10]='13:24';
+            starts[11]=54300;
+            names[11]='End of School';
+            times[11]='15:05';
+
+    } else if(oneArray.includes(rightNow)){
+        //workingMJS
+        condition="1-8 Day";
+        starts[0]=28800;
+        names[0]='1st Period';
+        times[0]='08:00';
+        starts[1]=31680;
+        names[1]='Passing Period (5th)';
+        times[1]='08:48';
+        starts[2]=31980;
+        names[2]='5th Period';
+        times[2]='08:53';
+        starts[3]=34860;
+        names[3]='Passing Period (2nd / A)';
+        times[3]='09:41';
+        starts[4]=35160;
+        names[4]='2nd Period / A Period';
+        times[4]='09:46';
+        starts[5]=38040;
+        names[5]='Passing Period (6th / B)';
+        times[5]='10:34';
+        starts[6]=38340;
+        names[6]='6th Period / B Period';
+        times[6]='10:39';
+        starts[7]=41220;
+        names[7]='Passing Period (3rd / C)';
+        times[7]='11:27';
+        starts[8]=41520;
+        names[8]='3rd Period / C Period';
+        times[8]='11:32';
+        starts[9]=44400;
+        names[9]='Passing Period (7th / D)';
+        times[9]='12:20';
+        starts[10]=44700;
+        names[10]='7th Period / D Period';
+        times[10]='12:25';
+        starts[11]=47580;
+        names[11]='Passing Period (4th)';
+        times[11]='01:13';
+        starts[12]=47880;
+        names[12]='4th Period';
+        times[12]='01:18';
+        starts[13]=50760;
+        names[13]='Passing Period (8th)';
+        times[13]='02:06';
+        starts[14]=51060;
+        names[14]='8th Period';
+        times[14]='02:11';
+        starts[15]=53940;
+        names[15]='End of School';
+        times[15]='02:59';
+
+
+    } else if(collArray.includes(rightNow)){
+        condition="Colloquium Day";
+        starts[0]=28800;
+        names[0]='Seminar 1';
+        times[0]='08:00';
+        starts[1]=31320;
+        names[1]='Passing Period (S2)';
+        times[1]='08:42';
+        starts[2]=31800;
+        names[2]='Seminar 2';
+        times[2]='08:50';
+        starts[3]=34320;
+        names[3]='Passing Period (Adv)';
+        times[3]='09:32';
+        starts[4]=34800;
+        names[4]='Advisory';
+        times[4]='09:40';
+        starts[5]=37320;
+        names[5]='Passing Period (Coll)';
+        times[5]='10:22';
+        starts[6]=37800;
+        names[6]='Colloquium';
+        times[6]='10:30';
+        starts[7]=47880;
+        names[7]='Passing Period (S3)';
+        times[7]='13:18';
+
+        starts[8]=48360;
+        names[8]='Seminar 3';
+        times[8]='13:26';
+
+        starts[9]=50880;
+        names[9]='Passing Period (S4)';
+        times[9]='14:08';
+
+        starts[10]=51360;
+        names[10]='Seminar 4';
+        times[10]='14:16';
+
+        starts[11]=54060;
+        names[11]='End of School';
+        times[11]='15:01';
+    } else if(confArray.includes(rightNow)){
+        condition="Parent Conference";
+            starts[0]=28800;
+            names[0]='blah1';
+            times[0]='8:00';
+            starts[1]=36000;
+            names[1]='blah2';
+            times[1]='10:00';
+            starts[2]=41760;
+            names[2]='3rd STEM7 in 313';
+            times[2]='11:36';
+            starts[3]=47760;
+            names[3]='Passing Period';
+            times[3]='13:16';
+            starts[4]=48240;
+            names[4]='4th STEM7 in 313';
+            times[4]='13:24';
+            starts[5]=54300;
+            names[5]='blah';
+            times[5]='15:05';
+    } else if(absArray.includes(rightNow)){
+        condition="Student Non-Attendance";
+            starts[0]=28800;
+            names[0]='blah1';
+            times[0]='8:00';
+            starts[1]=36000;
+            names[1]='blah2';
+            times[1]='10:00';
+            starts[2]=41760;
+            names[2]='3rd STEM7 in 313';
+            times[2]='11:36';
+            starts[3]=47760;
+            names[3]='Passing Period';
+            times[3]='13:16';
+            starts[4]=48240;
+            names[4]='4th STEM7 in 313';
+            times[4]='13:24';
+            starts[5]=54300;
+            names[5]='blah';
+            times[5]='15:05';
+    } else {
+        condition="ERROR";
+    }
+  }
+    document.getElementById("dayType").innerHTML = condition;
+
+var days=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+var months=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+var randm=false;
+var adjustseconds=0;
+
+
+function nowDate(){
+    var MyDate = new Date();
+    MyDate.setDate(MyDate.getDate());
+
+    MyDateString = MyDate.getFullYear() + '-'
+             + ('0' + (MyDate.getMonth()+1)).slice(-2) + '-'
+             + ('0' + MyDate.getDate()).slice(-2);
+
+    var MyDateString;
+    return MyDateString;
+}
+
+function _(el){
+	return document.getElementById(el);
+}
+
+setInterval(showclock,1000);
+
+function showclock(){
+    var elem = document.getElementById("myBar");
+    var elem2 = document.getElementById("myProgress");
+    var curperiod=-1;
+    var barText = "Countdown";
+    var og=new Date();
+	var d=new Date(og.getTime()+(adjustseconds*1000));
+
+
+    var fdate=d.getDate();
+    if (fdate<10){fdate='0'+fdate;}
+    var fhours=d.getHours();
+    var ampm = fhours >= 12 ? 'PM' : 'AM';
+    fhours = fhours % 12;
+    if (fhours==0){fhours=12;}
+    if (fhours<10){fhours='0'+fhours;}
+    var fminutes=d.getMinutes();
+    if (fminutes<10){fminutes='0'+fminutes;}
+    var fseconds=d.getSeconds();
+    if (fseconds<10){fseconds='0'+fseconds;}
+    var dd=days[d.getDay()]+' '+months[d.getMonth()]+' '+fdate+' '+d.getFullYear()+' '+fhours+':'+fminutes+':'+fseconds+' '+ampm;
+    _("currentdt").innerHTML=dd;
+    cursecs=((d.getHours())*3600)+((d.getMinutes())*60)+(d.getSeconds());
+	if (typeof starts !== "undefined") {
+		perc=starts.length;
+		if (cursecs<starts[0]){
+		/*	_("wearenowintro").innerHTML="Countdown to";
+			_("wearenowlabel").innerHTML=names[0];
+			_("wearenow").innerHTML=(secondstohhmmss(Math.abs(cursecs-starts[0])));
+            barText="Countdown to "+names[0]+" is "+(secondstohhmmss(Math.abs(cursecs-starts[0]))); */
+		}else if (cursecs>starts[perc-1]){
+		/*	_("wearenowintro").innerHTML="Time past:";
+			_("wearenowlabel").innerHTML=names[perc-1];
+			_("wearenowtimerange").innerHTML='';
+			_("wearenow").innerHTML=(secondstohhmmss(cursecs-starts[perc-1]));    
+			_("countdowntointro").innerHTML='';
+			_("countdowntolabel").innerHTML='';
+			_("countdown").innerHTML=''; */
+            barText="Time past: "+names[perc-1]+" is "+(secondstohhmmss(cursecs-starts[perc-1]));
+		}else{
+			for (x=0;x<perc-1;x++){
+				if ((starts[x]<cursecs) && (starts[x+1]>cursecs)){
+					curperiod=x;
+				/*	_("wearenowintro").innerHTML="We are now "+(secondstohhmmss(cursecs-starts[x]))+" into:";
+					_("wearenowlabel").innerHTML=names[x];
+					_("wearenow").innerHTML='';
+					//_("wearenow").innerHTML=(secondstohhmmss(cursecs-starts[x]));
+					_("countdowntointro").innerHTML="Countdown to:";
+					_("countdowntolabel").innerHTML=names[x+1];
+					_("countdown").innerHTML=(secondstohhmmss(Math.abs(cursecs-starts[x+1]))); */
+                    barText=(secondstohhmmss(Math.abs(cursecs-starts[x+1])))+" left in "+ names[x];
+
+				}
+			}
+		}
+        var curBar = cursecs-starts[curperiod];
+        var endBar = starts[curperiod+1]-starts[curperiod];
+        var width = curBar/endBar*100;
+        
+
+		var ts="<div style='margin-top:30px;display:block;width:100%;text-align:center'><div style='display:inline-block;margin-left:auto;margin-right:auto;text-align:left;width:auto'>Today's Schedule:<br />";
+		//ts=ts+times[0]+'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+names[0]+'<br />';
+		for (x=0;x<perc-1;x++){
+			if (x==curperiod){ts=ts+'<strong>'}
+			disptime=times[x];
+			disptimex=times[x+1];
+			disptimez=times[perc-1];
+			//alert(disptime.substring(0,2));
+			// hc=disptime.substring(0,2);
+			// alert(hc*2);
+			//return;
+			if (disptime.substring(0,2)<12){
+				disptime=disptime+' AM';
+			}else{
+				hc=disptime.substring(0,2);
+				if (hc>12){hc=hc-12};
+				if (hc<10){hc='0'+hc;}
+				disptime=hc+disptime.substring(2,5)+' PM';
+			}
+			if (disptimex.substring(0,2)<12){
+				disptimex=disptimex+' AM';
+			}else{
+				hc=disptimex.substring(0,2);
+				if (hc>12){hc=hc-12};
+				if (hc<10){hc='0'+hc;}
+				disptimex=hc+disptimex.substring(2,5)+' PM';
+			}
+			if (disptimez.substring(0,2)<12){
+				disptimez=disptimex+' AM';
+			}else{
+				hc=disptimez.substring(0,2);
+				if (hc>12){hc=hc-12};
+				if (hc<10){hc='0'+hc;}
+				disptimez=hc+disptimez.substring(2,5)+' PM';
+			}
+			ts=ts+disptime+'-'+disptimex+' '+names[x]+"<br >";
+			if (x==curperiod){
+				ts=ts+'</strong>';
+				_('wearenowtimerange').innerHTML=disptime+'-'+disptimex;
+			}
+		}
+		
+		ts=ts+disptimez+'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+names[perc-1]+'</div></div>';
+		_("schedule").innerHTML=ts;
+    elem.style.width = width + "%";
+    elem2.setAttribute("data-label",barText);
+
+    if (cursecs<starts[0]){
+      var width = curBar/endBar*100;
+      //todoMJS figure out what to do with bar BEFORE school day
+    } else if (cursecs>starts[perc-1]){
+      //todoMJS figure out what to do with bar AFTER school day
+    }
+
+
+
+    }
+  
+    delete window.d;
+}
+function omb(hhmm){
+    var ch=hhmm.substr(0,2);
+    var cm=hhmm.substr(3,2);
+    //if (ch<10){ch='0'+ch}
+    if (ch==0){ch='00';}
+    //if (cm<10){cm='0'+cm}
+    if (cm==0){cm='00';}
+    return ch+':'+cm;
+}
+function secondstohhmmss(secs){
+    var h=parseInt(secs/3600);
+    if (h<10){h='0'+h}
+    if (h==0){h='00'}
+    
+    var secs=(secs-(h*3600));
+    var m=parseInt(secs/60);
+    if (m<10){m='0'+m}
+    if (m==0){m='00'}    
+    var secs=parseInt(secs-(m*60));
+    
+    var s=secs;
+    if (s<10){s='0'+s}
+    if (h!='00'){
+        return h+':'+m+':'+s;
+    }else if(m!='00'){
+        return m+':'+s;    
+    }else{
+        return s;    
+    }
+}
+
+
+</script>
+</body>
+</html>
