@@ -9,6 +9,12 @@
       https://stackoverflow.com/questions/41429906/how-to-display-data-label-inside-html5-progress-bar-cross-browser
       https://css-tricks.com/fitting-text-to-a-container/   use SVG method
 
+
+      #knownissues
+        Auto refreshes every 5 minutes. If you leave it open one day, and close your laptop, when you reopen it,
+         it will have the schedule from the wrong day. To solve, refresh when you open your laptop or wait until 
+         5 minute auto refresh
+        
       
       #TODOMJS
         Responsive layout with media breakpoints
@@ -19,6 +25,7 @@
   <title>Lindblom Daily Schedule</title>
   <meta charset="utf-8">
   <meta name="description" content="The Lindblom Daily Schedule shows you what period you're in, every second of the day.">
+  <meta http-equiv="refresh" content="300">
   <style>
   #container{
     text-align:center;
