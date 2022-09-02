@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html class="en-us" lang="en" >
 <head>
-<!--    Credit to http://rewordify.com/schoolclock.php
+<!--  Credit to http://rewordify.com/schoolclock.php
       Credit to https://www.w3schools.com/howto/howto_js_progressbar.asp  
       Other useful websites: 
       https://www.tools4noobs.com/online_tools/hh_mm_ss_to_seconds/  
       https://www.tools4noobs.com/online_tools/seconds_to_hh_mm_ss/
       https://stackoverflow.com/questions/41429906/how-to-display-data-label-inside-html5-progress-bar-cross-browser
       https://css-tricks.com/fitting-text-to-a-container/   use SVG method
+      https://alvarotrigo.com/blog/change-css-javascript/ - how to change CSS rules with javascript
+      https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector - queryselector needed to change CSS rules
 
 
       #knownissues
@@ -18,8 +20,6 @@
       
       #TODOMJS
         Responsive layout with media breakpoints
-        Change colors based on type of day?
-        Change bar text to be useful
         Change bar for before/after school times
 -->
   <title>Lindblom Daily Schedule</title>
@@ -134,6 +134,7 @@
 
 <script>
   // set up calendar arrays for different day types
+
   const goldArray = [
   "2022-08-29","2022-09-01","2022-09-06","2022-09-08","2022-09-12","2022-09-14","2022-09-16","2022-09-20","2022-09-26","2022-09-29","2022-10-03","2022-10-06","2022-10-11","2022-10-13","2022-10-17","2022-10-19","2022-10-24","2022-10-27","2022-10-31","2022-11-03","2022-11-07","2022-11-10","2022-11-14","2022-11-17","2022-11-28","2022-12-01","2022-12-05","2022-12-08","2022-12-12","2022-12-15","2023-01-09","2023-01-12","2023-01-17","2023-01-19","2023-01-23","2023-01-26","2023-01-30","2023-02-01","2023-02-06","2023-02-09","2023-02-13","2023-02-16","2023-02-21","2023-02-23","2023-02-27","2023-03-02","2023-03-06","2023-03-09","2023-03-13","2023-03-15","2023-03-20","2023-03-23","2023-03-27","2023-04-03","2023-04-06","2023-04-10","2023-04-13","2023-04-17","2023-04-20","2023-04-24","2023-04-27","2023-05-01","2023-05-04","2023-05-08","2023-05-11","2023-05-15","2023-05-18","2023-05-22","2023-05-25","2023-05-30"
   ];
@@ -380,7 +381,7 @@
         condition="ERROR";
     }
   }
-    document.getElementById("dayType").innerHTML = condition;
+document.getElementById("dayType").innerHTML = condition;
 
 var days=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
 var months=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
@@ -400,11 +401,35 @@ function nowDate(){
     return MyDateString;
 }
 
+function setDayColor(){
+  const dayType2=document.querySelector('#dayType');
+  const myBar2=document.querySelector('#myBar');
+  var dayColor="";
+  if (condition=="Gold 1-4 Day"){
+    dayColor = "DarkGoldenRod";
+  } else if (condition=="Maroon 5-8 Day"){
+    dayColor = "Maroon";
+  } else if (condition=="1-8 Day"){
+    dayColor = "DodgerBlue";
+  } else if (condition=="Colloquium Day"){
+    dayColor = "MediumSeaGreen";
+  } else if (condition=="Parent Conference"){
+    dayColor = "RebeccaPurple";
+  } else if (condition=="Student Non-Attendance"){
+    dayColor = "DimGray";
+  } 
+  dayType2.style.color = dayColor;
+  myBar2.style.backgroundColor = dayColor;
+
+}
+
 function _(el){
 	return document.getElementById(el);
 }
 
 setInterval(showclock,1000);
+setDayColor();
+
 
 function showclock(){
     var elem = document.getElementById("myBar");
