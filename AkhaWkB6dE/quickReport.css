@@ -1,0 +1,184 @@
+/*
+ * ====================================================================
+ *
+ * quickReport.css
+ *
+ * Style definitions for the Quick Report layout. Often used styles have abbreviated names to 
+ * minimize markup size in the file.
+ *
+ * ====================================================================
+ *
+ * X2 Development Corporation
+ *
+ * Copyright (c) 2002-2003 X2 Development Corporation.
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, is not permitted without a written agreement
+ * from X2 Development Corporation.
+ *
+ * ====================================================================
+ */
+
+/* IE8 specific needed to avoid tables being split at the wrong time when printing or previewing */
+@media print {
+  table.tr {
+    page-break-inside: avoid;
+  }
+}
+        
+body, td
+{
+  font-family: Arial, Helvetica, sans-serif; 
+}
+
+.title
+{
+  border-bottom: solid black 1px;
+  border-top: solid black 1px;
+  font-size: medium;
+  font-weight: bold;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  margin-bottom: 15px;
+  text-align: center;
+  width: 100%;
+}
+
+.date
+{
+  font-size: x-small;
+  font-style: italic;
+  text-align: center;
+  width: 100%;
+}
+
+/*
+ * Font styles
+ */
+.fb
+{
+  font-weight: bold;
+}
+
+.fi
+{
+  font-style: italic;	
+}
+
+.fu
+{
+  text-decoration: underline;	
+}
+
+/*
+ * Font sizes
+ */
+.xsf
+{
+  font-size: x-small;
+}
+
+.mf
+{
+  font-size: small;
+}
+
+.lf
+{
+  font-size: medium;
+}
+
+/*
+ * Font types
+ */
+.af
+{
+  font-family: arial;
+}
+
+.tf
+{
+  font-family: times;
+}
+
+.sf
+{
+  font-family: sans-serif;
+}
+
+.cf
+{
+  font-family: courier;
+}
+
+/* Character Wrap */
+.cw
+{
+  /* 
+   * CSS3+ - Not actively supported in any current browsers. 
+   *         It's a future standard. Once implemented and supported, 
+   *         the manual parsing method can be removed from 
+   *         QuickReportHelper.
+   */
+  white-space: pre-wrap;
+}
+
+/* Grid Lines Both */
+.glb
+{
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+/* Grid Lines Horizontal */
+.glh
+{
+  border-top: 1px solid black;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+/* Grid Lines Vertical */
+.glv
+{
+  border-left: 1px solid black;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+/* Grid Lines Bottom */
+.glbt
+{
+  border-bottom: 1px solid black;
+}
+
+.gll
+{
+  border-left: 1px solid black;
+}
+
+.glr
+{
+  border-right: 1px solid black;
+}
+
+.glt
+{
+  border-top: 1px solid black;
+}
+
+.paddingTop
+{
+  height: 3px;
+}
+
+/* Shade On */
+.so
+{
+  background-color: #CCCCCC;
+}
