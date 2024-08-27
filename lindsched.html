@@ -564,13 +564,17 @@ function showclock(){
 			for (x=0;x<perc-1;x++){
 				if ((starts[x]<cursecs) && (starts[x+1]>cursecs)){
 					curperiod=x;
-				/*	_("wearenowintro").innerHTML="We are now "+(secondstohhmmss(cursecs-starts[x]))+" into:";
+/* */
+          _("wearenowintro").innerHTML="We are now "+(secondstohhmmss(cursecs-starts[x]))+" into:";
 					_("wearenowlabel").innerHTML=names[x];
 					_("wearenow").innerHTML='';
 					//_("wearenow").innerHTML=(secondstohhmmss(cursecs-starts[x]));
 					_("countdowntointro").innerHTML="Countdown to:";
 					_("countdowntolabel").innerHTML=names[x+1];
-					_("countdown").innerHTML=(secondstohhmmss(Math.abs(cursecs-starts[x+1]))); */
+					_("countdown").innerHTML=(secondstohhmmss(Math.abs(cursecs-starts[x+1]))); 
+/* */
+
+          
                     barText=(secondstohhmmss(Math.abs(cursecs-starts[x+1])))+" left in "+ names[x];
 
 				}
@@ -588,30 +592,36 @@ function showclock(){
 			disptime=times[x];
 			disptimex=times[x+1];
 			disptimez=times[perc-1];
-			//alert(disptime.substring(0,2));
+
+
+
+			//
+      //alert(disptime.substring(0,2));
 			// hc=disptime.substring(0,2);
 			// alert(hc*2);
 			//return;
-			if (disptime.substring(0,2)<12){
+			//
+      //alert(disptime.substring(0,disptime.length-3));
+      if (disptime.substring(0,disptime.length-3)<12){  //changed MJS
 				disptime=disptime+' AM';
 			}else{
-				hc=disptime.substring(0,2);
+				hc=disptime.substring(0,disptime.length-3); 
 				if (hc>12){hc=hc-12};
 				if (hc<10){hc='0'+hc;}
 				disptime=hc+disptime.substring(2,5)+' PM';
 			}
-			if (disptimex.substring(0,2)<12){
+			if (disptimex.substring(0,disptimex.length-3)<12){ //changed MJS
 				disptimex=disptimex+' AM';
 			}else{
-				hc=disptimex.substring(0,2);
+				hc=disptimex.substring(0,disptimex.length-3); //changed MJS
 				if (hc>12){hc=hc-12};
 				if (hc<10){hc='0'+hc;}
 				disptimex=hc+disptimex.substring(2,5)+' PM';
 			}
-			if (disptimez.substring(0,2)<12){
+			if (disptimez.substring(0,disptimex.length-3)<12){ //changed MJS
 				disptimez=disptimex+' AM';
 			}else{
-				hc=disptimez.substring(0,2);
+				hc=disptimez.substring(0,disptimex.length-3); //changed MJS
 				if (hc>12){hc=hc-12};
 				if (hc<10){hc='0'+hc;}
 				disptimez=hc+disptimez.substring(2,5)+' PM';
