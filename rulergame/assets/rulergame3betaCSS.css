@@ -1,0 +1,287 @@
+@charset "utf-8";
+/* CSS Document */
+
+#resultsBar {
+    height: 30px;
+    margin: 5px auto;
+    max-width: 800px;
+ 
+}
+#scoreColumn {
+    width: 90px;
+    float: left;
+}
+#txtScore{
+    font-family: Consolas, "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", Monaco, "Courier New", "monospace";
+    font-size: 30px;
+    font-weight: bold;
+    height: 30px;
+}
+ #timerColumn {
+    float: left;
+    width: 40px;
+}
+#timerCanvas {
+    height: 30px;
+    width: 30px;
+}
+#levelColumn {
+    float: left;
+    width: 80px;
+}
+#levelCanvas {
+    height: 30px;
+    width: 70px;
+}
+#strikesColumn {
+    float: left;
+    width: 100px;
+}            
+#txtStrikes {
+    height: 30px;
+}
+#txtStrikes img {
+    height: 30px;
+    width: 30px;
+}                        
+.resultsBarLabel {
+    font-size: 9px;
+    margin-top: 0px;
+}
+#timerColumn .resultsBarLabel,
+#levelColumn .resultsBarLabel {
+    margin-top: -6px;
+}
+
+.settingsLabel {
+    width: 150px;
+}
+
+
+#preferencesBox {
+    width: 315px;
+    /*border: 2px solid #000;
+    background-color: #ffff99;
+    padding: 3px;*/
+    margin: 60px auto auto auto;
+    overflow: auto;
+    display: none;
+    z-index: 5;
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);                  
+}
+
+#submitScoreBox {
+    width: 315px;
+    /*border: 2px solid #000;
+    background-color: #ffff99;
+    padding: 3px;*/
+    margin: 60px auto auto auto;
+    overflow: auto;
+    display: none;
+    z-index: 5;
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);                  
+}
+
+#timerBox,
+#soundsBox,
+#questionPrecisionBox,
+#rulerPrecisionBox,
+#rulerLengthBox,
+#questionsBox,
+#quesMode {
+    height: 45px;
+
+}
+ 
+#rulerLengthMessage {
+    font-weight:normal;
+    font-style: italic;
+}
+
+
+#instructionsBox {
+max-width:1100px;
+/*align:center;*/
+margin:auto;
+}
+
+#buttonBar {
+    position: absolute;
+    height: 60px;
+    width: 300px;
+    margin: 0px auto 0px auto;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);                
+}
+#btnStart,
+#btnSettings {
+    background-color: #339966;
+    color: white;
+    border: 0;
+    border-radius: 5px;
+    height: 40px;
+    width: 140px;
+    font-size: 24px;
+    margin: 10px auto;
+    cursor: pointer;
+}
+#btnSettings {
+    float: right;
+}
+
+#questionBar {
+    position: absolute;
+    height: 60px;
+    line-height: 1;
+    width: 100%;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    display: none;
+}
+
+#txtQuestion {
+    width: 100%;
+    text-align: center;
+    height: 60px;
+}
+#txtQuestion .questionInstruction{
+    font-size: 20px;
+    font-weight: bold;
+    color: #000000;                
+}
+#txtQuestion .questionMeasurement{
+    font-size: 50px;
+    font-weight: bold;
+    color: #000000;               
+}
+#txtQuestion .questionWrongInstruction{
+    font-size: 20px;
+    font-weight: bold;
+    color: #f44336;                
+}
+#txtQuestion .questionWrongMeasurement{
+    font-size: 50px;
+    font-weight: bold;
+    color: #f44336;               
+}
+#txtQuestion .gameOver{
+    font-size: 35px;
+    font-weight: bold;
+    color: #f44336; 
+}            
+
+
+
+#canvasArea {
+    margin-top: 74px;
+    height: 110px;
+    width: 100%;
+    user-select: none;
+}
+#playerCanvas {
+    position: absolute;
+    /*background-color: #ffffff !important;*/
+    z-index: 1;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+#rulerCanvas {
+    position: absolute;
+    z-index: 2;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+#typeCanvas {
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+#strikeBoard {
+    position: absolute;
+    height: 80px;
+    width: 240px;
+    display: none;
+    z-index: 3;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+#strikeBoard img {
+    float: left;
+    height: 80px;
+    width: 80px;
+}
+#cheerBoard {
+    position: absolute;
+    height: 60px;
+    width: 310px;
+    margin-top: 40px;
+    display: none;
+    z-index: 4;
+    text-align: center;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);                
+}
+.cheer{
+    position: absolute;
+    width: 100%;
+    height: 60px;
+    max-height: 60px;
+    padding-top: 15px;
+    font-size: 30px;
+    color: purple;
+    bottom: 0px;
+}
+.level {
+    position: absolute;
+    width: 100%;
+    height: 60px;
+    max-height: 60px;                
+    font-size: 50px;
+    font-weight: 900;
+    color: darkblue;
+    bottom: 0px;
+}
+
+
+#betaMessage {
+    clear:both;
+    text-align: center;
+}
+
+.rulergame-align-vert{
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#btnStart:hover,
+#btnSettings:hover,
+#btnSubmit:hover {
+    background-color: #127041;
+
+}
+#btnSubmit {
+    background-color: #339966;
+    color: white;
+    border: 0;
+    border-radius: 5px;
+    height: 40px;
+    width: 200px;
+    font-size: 24px;
+    cursor: pointer;
+    left: 50%;
+}

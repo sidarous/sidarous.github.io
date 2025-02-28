@@ -1,0 +1,1017 @@
+﻿<!doctype html>
+<html>
+<head>
+    
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="UTF-8">
+    <title>The Blood Pressure Game - Practice Taking Blood Pressure</title>
+	
+<meta name="description" content="Learn to measure blood pressure accurately with this interactive game! Practice your skills in a fun, educational way.">
+<meta property="og:title" content="The Blood Pressure Game - Practice Taking Blood Pressure">
+<meta property="og:description" content="Learn to measure blood pressure accurately with this interactive game! Practice your skills in a fun, educational way.">
+<meta property="og:image" content="https://www.rulergame.net/images/og-blood-pressure-game.png">
+<meta property="og:url" content="https://www.rulergame.net/blood-pressure-game.php">
+<meta property="og:type" content="website">
+<link rel="canonical" href="blood-pressure-game.php.html">
+
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/site.css">
+    <link rel="stylesheet" href="assets/css/animate.min.css">
+    <link rel="stylesheet" href="blood-pressure/css/blood_pressure.css">
+    <!-- <link rel="stylesheet" href="css/w3.css"> -->
+    
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="gtag/js?id=G-XE0GQQH6FP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-XE0GQQH6FP');
+</script>
+<!-- AdThrive Head Tag Manual -->
+<script data-no-optimize="1" data-cfasync="false">
+(function(w, d) {
+	w.adthrive = w.adthrive || {};
+	w.adthrive.cmd = w.
+	adthrive.cmd || [];
+	w.adthrive.plugin = 'adthrive-ads-manual';
+	w.adthrive.host = 'ads.adthrive.com';var s = d.createElement('script');
+	s.async = true;
+	s.referrerpolicy='no-referrer-when-downgrade';
+	s.src = 'https://' + w.adthrive.host + '/sites/6441cbd48ef14750ba9ecca1/ads.min.js?referrer=' + w.encodeURIComponent(w.location.href) + '&cb=' + (Math.floor(Math.random() * 100) + 1);
+	var n = d.getElementsByTagName('script')[0];
+	n.parentNode.insertBefore(s, n);
+})(window, document);
+</script>
+<!-- End of AdThrive Head Tag -->
+    
+</head>
+<body>
+<!-- Navbar -->
+<div class="z100">
+    <div class="w3-bar w3-pale-green w3-card w3-left-align w3-large">
+        <a class="w3-bar-item w3-button w3-padding-large rulergame-dark-green" href="javascript:void(0);" onclick="toggleNavMenu()" title="Toggle Navigation Menu">Menu</a>
+        <div id="topBanner"><a href="index.htm"><img src="images/rulergame.gif" id="topBannerImage" alt="The Ruler Game - Learn to read a ruler"></a></div>
+    </div>
+    <div id="NavMenu" class="w3-dropdown-content w3-bar-block w3-border w3-large rulergame-dark-green z100">
+	<a href="index.htm" class="w3-bar-item w3-button w3-padding-large">Home</a>
+        <a href="javascript:void(0);" class="w3-bar-item w3-button w3-padding-large" onclick="toggleCategory('measuringGames')">Measuring Games</a>
+        <div id="measuringGames" class="w3-hide w3-bar-block rulergame-submenu">
+            <a href="new-english-ruler-game.php.html" class="w3-bar-item w3-button w3-padding-large">Inch Ruler Game</a>
+            <a href="new-metric-ruler-game.php.html" class="w3-bar-item w3-button w3-padding-large">Metric Ruler Game</a>
+            <a href="micrometer-game.php.html" class="w3-bar-item w3-button w3-padding-large">Micrometer Game</a>
+            <a href="metric-micrometer-game.php.html" class="w3-bar-item w3-button w3-padding-large">Metric Micrometer Game</a>
+			<a href="dial-caliper-game.php.html" class="w3-bar-item w3-button w3-padding-large">Dial Caliper Game</a>
+			<a href="vernier-caliper-game.php.html" class="w3-bar-item w3-button w3-padding-large">Vernier Caliper Game</a>
+			<a href="graduated-cylinder-game.php.html" class="w3-bar-item w3-button w3-padding-large">Graduated Cylinder Game</a>
+			<a href="architectural-scale-game.php.html" class="w3-bar-item w3-button w3-padding-large">Architectural Scale Game</a>
+			<a href="machinist-ruler-game.php.html" class="w3-bar-item w3-button w3-padding-large">Machinist Ruler Game</a>
+			<a href="triple-beam-balance-game.php.html" class="w3-bar-item w3-button w3-padding-large">Triple Beam Balance Game</a>
+        </div>
+        <a href="javascript:void(0);" class="w3-bar-item w3-button w3-padding-large" onclick="toggleCategory('timeGames')">Time and Temperature Games</a>
+        <div id="timeGames" class="w3-hide w3-bar-block rulergame-submenu">
+            <a href="clock-game.php.html" class="w3-bar-item w3-button w3-padding-large">Clock Game</a>
+            <a href="military-time-game.php.html" class="w3-bar-item w3-button w3-padding-large">Military Time Game</a>
+			<a href="thermometer-game.php.html" class="w3-bar-item w3-button w3-padding-large">Thermometer Reading Game</a>
+            <a href="temperature-conversion-game.php.html" class="w3-bar-item w3-button w3-padding-large">Temperature Conversion Game</a>
+        </div>
+        <a href="javascript:void(0);" class="w3-bar-item w3-button w3-padding-large" onclick="toggleCategory('moneyGames')">Money & Life Games</a>
+        <div id="moneyGames" class="w3-hide w3-bar-block rulergame-submenu">
+            <a href="money-game.php.html" class="w3-bar-item w3-button w3-padding-large">Money Counting Game</a>
+            <a href="shopping-money-counting-game.php.html" class="w3-bar-item w3-button w3-padding-large">Shopping Money Counting Game</a>
+            <a href="counting-back-change-game.php.html" class="w3-bar-item w3-button w3-padding-large">Counting Back Change Game</a>
+			<a href="blood-pressure-game.php.html" class="w3-bar-item w3-button w3-padding-large">Blood Pressure Game</a>
+			<a href="stadiometer-game.php.html" class="w3-bar-item w3-button w3-padding-large">Stadiometer Game</a>
+			<a href="physician-scale-game.php.html" class="w3-bar-item w3-button w3-padding-large">Physician Scale Game</a>
+			<a href="cooking-conversions-game.php.html" class="w3-bar-item w3-button w3-padding-large">Cooking Conversions Game</a>
+        </div>
+    </div>
+</div>
+
+
+<div id="mainBodyContent" class="w3-container w3-margin-top">
+
+    <div class="container-fluid setting-section">
+      
+      
+        <div class="vertical-center">
+            <!-- <button class="btn btn-game-start" id= "btnStart">
+            Play Game
+            </button> -->
+            <div id="buttonBar">
+            <input type="button" id="btnStart" value="Play Game">
+            <input type="button" id="btnSettings" value="Settings">
+            </div>
+        </div>
+      
+        
+        <div id="questionBar">
+            <div id="txtQuestion"><span>&nbsp;</span></div>
+        </div>
+  
+        <div id="preferencesBox" class="w3-card w3-pale-yellow w3-border w3-border-yellow">
+            <span onclick="$('#preferencesBox').slideToggle();" class="w3-button w3-display-topright">X</span>
+            <header class="w3-container w3-yellow">
+            <h5>Settings</h5>
+            </header>
+            <div class="w3-padding-small">
+            <div id="timerBox" class="w3-row">
+                <div class="w3-col s6 w3-right-align rulergame-align-vert"><strong>Timer:&nbsp;</strong></div>
+                <div class="w3-col s6">
+                    <select id="stgTimer" class="w3-select w3-border">
+                        <option value="On" selected="">On</option>
+                        <option value="Off">Off</option>
+                    </select>  
+                </div>
+            </div>          
+            
+            </div>
+            <!-- <div id="rulerLengthMessage" class="w3-row"></div> -->
+        </div>
+        
+  
+    </div>
+    
+</div>
+    
+  
+<div class="canvas-area">
+
+    <div id="canvasArea">
+        <canvas id="playerCanvas"></canvas>
+        <!-- <canvas id="rulerCanvas" width="900" height="500" style="border:2px solid #000000; background-color:#fff"></canvas> -->
+        <canvas id="myCanvas" width="1000" height="536" style="border:2px solid #000000; background-color:#fff"></canvas>
+        <!-- <canvas id="myCanvas" style="border: 1px solid #c3c3c3;">
+            Your browser does not support the HTML5 canvas tag.
+        </canvas> -->
+      
+        <div id="strikeBoard"><span></span></div>
+        <div id="cheerBoard"><span></span></div>
+
+        <div id="detailedControl" class="w3-container w3-padding">
+            <div class="w3-row">
+                <div id="verniersmall" class="">
+                    <div class="w3-row number-input"> 
+                        <!-- <div id="labelverniersmall" class="w3-half"><b>Vernier Scale</b></div>
+                        <div class="w3-half">
+                        <button class="spinner decrement" id="btnvernierdecrement">-</button>
+                            <input id="verniersmallControl" name="sleevemain" value="00000" onchange="DrawSleeveMainChange()">
+                        <button class="spinner increment" id="btnvernierincrement">+</button> 
+                        </div> -->
+                    </div>          
+                </div>
+            </div>
+        </div> 
+    </div>    
+</div>
+
+<div id="resultsBar" class="w3-container">
+    <div class="w3-row">
+        <div id="submitColumn" class="w3-third w3-center"> 
+            <input type="button" id="btnSubmit" value="Submit Answer">
+			<br>
+        </div>
+        <div id="displayBoard" class="w3-twothird w3-center">
+            <div id="scoreColumn"><div id="txtScore"></div><div class="resultsBarLabel">SCORE</div></div>
+            <div id="timerColumn"><canvas id="timerCanvas"></canvas><div class="resultsBarLabel">TIME</div></div>
+            <div id="levelColumn"><canvas id="levelCanvas"></canvas><div class="resultsBarLabel">LEVEL</div></div>
+            <div id="strikesColumn"><div id="txtStrikes"></div><div class="resultsBarLabel">STRIKES</div></div>                
+        </div>
+    </div>
+    
+</div>
+
+<div id="instructionsBox" class="w3-container">
+    <h1 align="center">The Blood Pressure Game - Practice Taking Blood Pressure</h1>
+	
+	<p>The goal of the game is to accurately measure the systolic (high) and diastolic (low) blood pressure values using a manual sphygmomanometer. Earn points for correct answers and level up as you improve.</p>
+	
+                    <h2>Instructions:</h2>
+                    <ul class="w3-ul">
+                        <li>This game can be played using a mouse or a touchscreen.</li>
+                        <li>Press the <strong>Play Game</strong> button to begin playing the game.</li>
+                        <li>The needle will begin rotating counterclockwise.</li>
+						<li>To adjust the speed of the needle, slide the <b>Air Release Valve</b> to the left to slow it down or to the right to speed it up.</li>
+                        <li>Follow the needle and listen carefully. When the needle starts jumping and you hear a beeping sound, that indicates the systolic pressure. When the jumping and beeping stop, that indicates the diastolic pressure.</li>
+						<li>Use the number buttons below the gauge to enter the correct readings for the systolic and diastolic pressure.</li>
+						<li>Finally click the <b>Submit Answer</b> button.</li>
+						<li>The margin of the correct answer is +/- 5 mmHg.</li>
+                        <li>From the start of each round, you have 50 seconds to submit your answer. For each correct answer, you will be awarded points. Your score is displayed on the left side of the Results Bar.</li>
+                        <li>Points are awarded based on the following table. You'll always move to the next level after 5 correct answers.
+                              <table class="w3-table w3-bordered">
+                                <tr><th>Level</th><th>Points per correct answer</th></tr>
+                                <tr><td>1</td><td>10</td></tr>
+                                <tr><td>2</td><td>20</td></tr>
+                                <tr><td>3</td><td>30</td></tr>
+                                <tr><td>4</td><td>40</td></tr>
+                                <tr><td>5</td><td>50</td></tr>
+                                <tr><td>6</td><td>60</td></tr>
+                                <tr><td>7</td><td>70</td></tr>
+                                <tr><td>8</td><td>80</td></tr>
+                                <tr><td>9</td><td>90</td></tr>
+                                <tr><td>10</td><td>100</td></tr>
+                              </table></li>
+                        <li>The timer is represented to the right of the score in the Results Bar. As time passes, the bar will get shorter.</li>
+                        <li>If you have not submitted a measurement when the time runs out, you will receive a strike.</li>
+                        <li>For each incorrect answer, you will receive a strike. After three strikes, the game is over. The number of strikes you have received is displayed on the right side of the Results Bar.</li>
+                        <li>Click the <em><strong>Settings</strong></em> button to adjust your preferences for the game.
+                            <ul>
+                                <li><strong>Timer:</strong> The default setting is On. Select Off to have unlimited time to submit your answer.</li>
+                                <li>All the settings will revert to default and your score will reset if you refresh your browser.</li>
+                            </ul></li>
+                    </ul>
+	
+</div>
+  
+<br>
+  
+<footer class="w3-container w3-padding rulergame-dark-green">  
+            <div class="w3-row-padding">
+
+              <div class="w3-third">
+                <h3>MEASURING GAMES</h3>
+                <ul class="w3-ul">
+                  <li class="w3-padding-16">
+                    <a href="new-english-ruler-game.php.html" class="w3-text-white w3-hover-opacity w3-large rulergame-no-underline">New Inch Ruler Game</a><br>
+                  </li>
+				  <li class="w3-padding-16">
+                    <a href="new-metric-ruler-game.php.html" class="w3-text-white w3-hover-opacity w3-large rulergame-no-underline">New Metric Ruler Game</a><br>
+                  </li>
+                  <li class="w3-padding-16">
+                    <a href="v2-standard-english-ruler-game.php.html" class="w3-text-white w3-hover-opacity w3-large rulergame-no-underline">Original Inch Ruler Game</a><br>
+                  </li>
+				  <li class="w3-padding-16">
+                    <a href="micrometer-game.php.html" class="w3-text-white w3-hover-opacity w3-large rulergame-no-underline">Inch Mictometer Game</a><br>
+                  </li>
+				  <li class="w3-padding-16">
+                    <a href="metric-micrometer-game.php.html" class="w3-text-white w3-hover-opacity w3-large rulergame-no-underline">Metric Micrometer Game</a><br>
+                  </li>
+                  <li class="w3-padding-16">
+                    <a href="v2-metric-ruler-game.php.html" class="w3-text-white w3-hover-opacity w3-large rulergame-no-underline">Original Metric Ruler Game</a><br>
+                  </li>
+				  <li class="w3-padding-16">
+                    <a href="dial-caliper-game.php.html" class="w3-text-white w3-hover-opacity w3-large rulergame-no-underline">Dial Caliper Game</a><br>
+                  </li>
+				  <li class="w3-padding-16">
+                    <a href="vernier-caliper-game.php.html" class="w3-text-white w3-hover-opacity w3-large rulergame-no-underline">Vernier Caliper Game</a><br>
+                  </li>
+                  <li class="w3-padding-16">
+                    <a href="graduated-cylinder-game.php.html" class="w3-text-white w3-hover-opacity w3-large rulergame-no-underline">Graduated Cylinder Game</a><br>
+                  </li>
+				  <li class="w3-padding-16">
+                    <a href="architectural-scale-game.php.html" class="w3-text-white w3-hover-opacity w3-large rulergame-no-underline">Architectural Scale Game</a><br>
+                  </li>
+				  <li class="w3-padding-16">
+                    <a href="machinist-ruler-game.php.html" class="w3-text-white w3-hover-opacity w3-large rulergame-no-underline">Machinist Ruler Game</a><br>
+                  </li>
+				  <li class="w3-padding-16">
+                    <a href="triple-beam-balance-game.php.html" class="w3-text-white w3-hover-opacity w3-large rulergame-no-underline">Triple Beam Balance Game</a><br>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="w3-third">
+                <h3>TIME AND TEMPERATURE GAMES</h3>
+                <ul class="w3-ul">
+                  <li class="w3-padding-16">
+                    <a href="clock-game.php.html" class="w3-text-white w3-hover-opacity w3-large rulergame-no-underline">Clock Game</a><br>
+                  </li>
+				  <li class="w3-padding-16">
+                    <a href="military-time-game.php.html" class="w3-text-white w3-hover-opacity w3-large rulergame-no-underline">Military Time Game</a><br>
+                  </li>
+				  <li class="w3-padding-16">
+                    <a href="thermometer-game.php.html" class="w3-text-white w3-hover-opacity w3-large rulergame-no-underline">Thermometer Reading Game</a><br>
+                  </li>
+				  <li class="w3-padding-16">
+                    <a href="temperature-conversion-game.php.html" class="w3-text-white w3-hover-opacity w3-large rulergame-no-underline">Temperature Conversion Game</a><br>
+                  </li>
+				</ul>
+				<h3>MONEY AND LIFE GAMES</h3>
+				<ul class="w3-ul">
+				  <li class="w3-padding-16">
+                    <a href="money-game.php.html" class="w3-text-white w3-hover-opacity w3-large rulergame-no-underline">Money Counting Game</a><br>
+                  </li>
+				  <li class="w3-padding-16">
+                    <a href="shopping-money-counting-game.php.html" class="w3-text-white w3-hover-opacity w3-large rulergame-no-underline">Shopping Money Counting Game</a><br>
+                  </li>
+				  <li class="w3-padding-16">
+                    <a href="counting-back-change-game.php.html" class="w3-text-white w3-hover-opacity w3-large rulergame-no-underline">Counting Back Change Game</a><br>
+                  </li>
+				  <li class="w3-padding-16">
+                    <a href="blood-pressure-game.php.html" class="w3-text-white w3-hover-opacity w3-large rulergame-no-underline">Blood Pressure Game</a><br>
+                  </li>
+				  <li class="w3-padding-16">
+                    <a href="stadiometer-game.php.html" class="w3-text-white w3-hover-opacity w3-large rulergame-no-underline">Stadiometer Game</a><br>
+                  </li>
+				  <li class="w3-padding-16">
+                    <a href="physician-scale-game.php.html" class="w3-text-white w3-hover-opacity w3-large rulergame-no-underline">Physician Scale Game</a><br>
+                  </li>
+				  <li class="w3-padding-16">
+                    <a href="cooking-conversions-game.php.html" class="w3-text-white w3-hover-opacity w3-large rulergame-no-underline">Cooking Conversions Game</a><br>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="w3-third">
+                <h3>CONTACT ME</h3>
+                  <p class="w3-xxlarge w3-margin-top w3-margin-bottom">
+                    <a href="privacy-policy.php.html#contact" class="w3-text-white w3-hover-opacity"><img src="contact-button.png" alt="Contact button"></a>
+                    <a href="https://www.facebook.com/RulerGame/" class="w3-text-white w3-hover-opacity" target="_blank"><img src="facebook-button.png" alt="Facebook button"></a>
+                  </p>                   
+                  <p>Spears Technologies, Inc.<br>
+                    Attn: The Ruler Game<br>
+                    576 N. Birdneck Rd. #178<br>
+                    Virginia Beach, VA 23451</p>
+              </div>
+
+            </div>
+<div class="rulergame-dark-green w3-center w3-padding w3-border-top">Copyright &copy; 2025  by RulerGame.net and Ricky D. Spears. All Rights Reserved. <a href="privacy-policy.php.html" class="w3-text-white w3-hover-opacity">Privacy Policy</a><br><br><br></div>
+</footer>
+
+
+<script src="assets/js/jquery.min.js">  </script>
+<script src="assets/js/jquery-3.6.0.min.js">  </script>
+<script src="assets/js/bootstrap.min.js">  </script>
+<script src="blood-pressure/js/blood_pressure.js">  </script>
+<script type='text/javascript'>
+    /*drawing offset*/
+    var scale;
+    var xOffset;
+    var yOffset;
+    var dragMode = 0; //0 == none, 1 = world, 2 = vernier, 3 = object
+
+    var prev_mx, prev_my; //prev mouse positions
+    // var bgColor = "rgb(0,64,84)";
+    var bgColor = "rgb(255,255,255)";
+    var fgColor = "orange";//rgb(255,255,255)";
+    const scaleColor = "black";
+
+    var loadedItems = 0;
+    const itemsToLoad = 2;
+    
+	//gauge variables
+    var imgNeedle = new Image();
+    imgNeedle.src = "https://www.rulergame.net/blood-pressure/images/needle___.png"
+    imgNeedle.onload = itemloaded;
+    
+    var imgBase = new Image();
+    imgBase.src = "https://www.rulergame.net/blood-pressure/images/vernier.png"
+    imgBase.onload = itemloaded;
+
+    var cr; 
+
+    const scaleOriginX = 67; //jaw Left position
+    const scaleOriginY0 = 105; //105; //scale top position
+    const scaleOriginY = 205; //162; //scale bottom position
+    const offsetOriginX = 12; //distance of scale origin level from scaleOriginX
+    const vernierOriginX = 55; //distance of vernier origin in pixel in vernier.png
+    const vernierOriginY = 204; //161;
+
+    const rulerWidthPixel = 915;
+    const majorTickLengthPixels = 22;
+    const minorTickLengthPixels = 13;
+    const vernierMajorTickLengthPixels = 10;
+    const vernierMinorTickLengthPixels = 6;
+    const mainScaleLengthPixels = 600; 
+
+    const vernierScaleHeightPixels = 397; //354;
+    const bladeWidthPixel = 716;
+    const bladeHeightPixel = 20;
+    const rulerMidPointY = 188;
+
+    const release_left_x = 250;
+    const release_left_y = 190;
+    const release_scale_length = 200;
+    const release_scale_height = 20;
+    const release_scale_width = 7.5;
+
+    var mainScaleDivisions = 50;
+	
+    var msdValue = 0.1;
+    var vernierScaleDivisions = 100;
+    var msd_pixels = mainScaleLengthPixels / mainScaleDivisions;
+    var vsd_pixels = mainScaleLengthPixels / mainScaleDivisions;
+    var scale_cnt = 180;
+    var start_scale = 10, end_scale = 150;
+	
+    var precision = 3;
+    var msr = 0;
+    var vsr = 0;
+    var zeroError = 0;
+    var measureTimer;
+    var measure_state = 2;
+    var needle_vel = 0.6;
+    var needle_vel_percentage = 0.5;
+    var violate_scale = 2.5;
+    var violate_cnt = 0;
+    var answer_allow_error = 5;
+    var allow_pressure_gap = 80;
+	
+    var input_answer_up = "0";
+    var input_answer_down = "0";
+    
+	var set_input_answer_up = function(val) {
+		if (val == "Back") {
+            input_answer_up = "" + parseInt(parseInt(input_answer_up) / 10);
+		} else {
+			input_answer_up = "" + (parseInt(input_answer_up % 100) * 10 + parseInt(val));
+		}
+		
+        console.log(input_answer_up);
+	}
+
+	var set_input_answer_down = function(val) {
+		if (val == "Back") {
+            input_answer_down = "" + parseInt(parseInt(input_answer_down) / 10);
+		} else {
+			input_answer_down = "" + (parseInt(input_answer_down % 100) * 10 + parseInt(val));
+		}
+		
+        console.log(input_answer_down);
+	}
+
+    var get_total_value = function() {
+        return {
+            high: parseInt(input_answer_up),
+            low: parseInt(input_answer_down)
+        };
+    }
+
+	var zeroErrorInch = 0;
+	
+    var displayInfo = false;
+    var objectWidthPixel = 25;
+    var drawSubDivision = false;
+    var randomZeroError = true;
+    var randomMainScaleDivisions = true;
+    var randomVernierScaleDivision = true;
+    var randomObjectWidthPixel = true;
+
+    var canvas = document.getElementById("myCanvas");
+
+    let detailsOpenMode = navigator.userAgent;
+    let regexp = /android|iphone|kindle|ipad/i;
+
+    let isMobileDevice = regexp.test(detailsOpenMode);
+
+    if(isMobileDevice)
+    {
+        scale = Math.floor((window.innerWidth/1000)*100)/100;
+		scale = window.innerWidth/imgBase.width;
+        console.log("Scale = " + scale);
+    }
+    else
+    {
+        scale = 1.0;
+    }
+     
+    var ctx = canvas.getContext("2d");
+    ctx.font = "30px Arial";
+    xOffset = (canvas.width/*getBaseImage().width*/) / 2; //jaw Left position
+    yOffset = (canvas.height) / 2 - 50;
+    
+	//Add event listeners
+    window.addEventListener('resize', function(ev) { return resize(ev); });
+    paint();
+    
+	function itemloaded()
+	{
+        loadedItems++;
+        if(loadedItems == itemsToLoad)
+		{			
+			//console.log("Item loaded....");
+			var defaultPrevent = function(e){ e.preventDefault() };
+			
+			canvas.addEventListener("mousedown", defaultPrevent);
+			canvas.addEventListener("mousemove", defaultPrevent);
+			
+			document.addEventListener('touchstart', mousePressed, false);
+			document.addEventListener('touchmove', mouseDragged, false); 
+			document.addEventListener('touchend', mouseReleased, false);			
+			document.addEventListener("mousemove", mouseDragged, false);
+			document.addEventListener("mousedown", mousePressed, false);
+			document.addEventListener("mouseup", mouseReleased, false);
+
+            canvas.addEventListener("mousewheel", mouseWheelMoved);
+            window.addEventListener('keydown', onKeyEvent, false);
+			window.addEventListener("orientationchange", resize());	
+        }
+		
+		
+
+        paint();
+    }
+
+    function resize()
+	{
+        if(window.innerWidth < 10 || window.innerHeight < 10)
+			return;
+		        
+        if(isMobileDevice)
+        {
+  			scale = Math.floor((window.innerWidth/1000)*100)/100;
+			scale = Math.min(scale, 1);
+			//scale = (window.innerWidth / imgBkGnd.width);
+			//scale = Math.min(window.innerHeight / imgBkGnd.height, window.innerWidth / imgBkGnd.width);
+        }
+        else
+        {
+            scale = Math.floor(($(window).width()/1000)*100)/100;
+			scale = Math.min(scale, 1);
+			console.log("Scale: ", scale);
+			//scale = 1.0;
+        }
+        
+        update();
+    }
+
+    init();
+
+    function init()
+	{
+        resize();
+    }
+
+
+    function translateVernier(div)
+	{
+        update();
+    }
+
+    function update(ev)
+	{
+        if(ev) 
+			console.log(ev.value.toFixed(2));
+        
+        msd_pixels = mainScaleLengthPixels / mainScaleDivisions;
+        vsd_pixels = msd_pixels * (1 - 1 / vernierScaleDivisions);
+
+        paint();
+    }
+
+
+    function paint()
+	{
+        ctx.lineWidth = 1.5;
+        ctx.fillStyle = bgColor;
+        ctx.strokeStyle = fgColor;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+		
+        ctx.font = '10pt sans-serif';
+
+        ctx.translate(xOffset , yOffset);
+        ctx.save();
+
+
+		ctx.fillStyle = "rgb(0, 0, 0)";
+        ctx.font = "bold 10px Arial";
+        ctx.fillText("Timer: " + stgTimer,0-xOffset+4,0-yOffset+12);
+		
+		// show keyboards and input answer
+		var input_val = parseFloat(input_answer_up).toFixed(2);
+		var input_val_100 = parseInt(input_val / 100);
+		var input_val_10 = parseInt((input_val - input_val_100 * 100) / 10);
+		var input_val_1 = parseInt((input_val - input_val_100 * 100 - input_val_10 * 10));
+		
+		var input_val = parseFloat(input_answer_down).toFixed(2);
+		var input_val_100_1 = parseInt(input_val / 100);
+		var input_val_10_1 = parseInt((input_val - input_val_100_1 * 100) / 10);
+		var input_val_1_1 = parseInt((input_val - input_val_100_1 * 100 - input_val_10_1 * 10));
+        
+		ctx.font = '20pt sans-serif';
+		var show_num_start_x = -canvas.width / 2 + 50; show_num_start_y = 220;
+		
+	
+		ctx.fillStyle = "rgb(0, 0, 0)";
+		outString(show_num_start_x  , show_num_start_y + 20, "Systolic", 0, 0);
+		
+		ctx.fillStyle = "rgb(200, 200, 200)";
+		ctx.fillRect(show_num_start_x + 40 * 3, show_num_start_y, 30, 40);
+		ctx.fillRect(show_num_start_x + 40 * 4, show_num_start_y, 30, 40);
+		ctx.fillRect(show_num_start_x + 40 * 5, show_num_start_y, 30, 40);
+		
+		ctx.fillStyle = "rgb(0, 0, 0)";
+		outString(show_num_start_x , show_num_start_y + 65, "Diastolic", 0, 0);
+		
+		ctx.fillStyle = "rgb(200, 200, 200)";
+		ctx.fillRect(show_num_start_x + 40 * 3, show_num_start_y + 45, 30, 40);
+        ctx.fillRect(show_num_start_x + 40 * 4, show_num_start_y + 45, 30, 40);
+        ctx.fillRect(show_num_start_x + 40 * 5, show_num_start_y + 45, 30, 40);
+		
+		ctx.fillStyle = "rgb(0, 0, 0)";
+		(input_val_100 != 0) &&                          outString(show_num_start_x + 40 * 3 + 5, show_num_start_y + 20, input_val_100.toFixed(0), 0, 0);
+		(input_val_100 != 0 || input_val_10 != 0) &&     outString(show_num_start_x + 40 * 4 + 5, show_num_start_y + 20, input_val_10.toFixed(0), 0, 0);
+		                                                 outString(show_num_start_x + 40 * 5 + 5, show_num_start_y + 20, input_val_1.toFixed(0), 0, 0);
+		                                                 outString(show_num_start_x + 40 * 5 + 5 + 10 + 27, show_num_start_y + 20, "mmHg", 0, 0);
+		                                                 
+		(input_val_100_1 != 0) &&                        outString(show_num_start_x + 40 * 3 + 5, show_num_start_y + 65, input_val_100_1.toFixed(0), 0, 0);
+        (input_val_100_1 != 0 || input_val_10_1 != 0) && outString(show_num_start_x + 40 * 4 + 5, show_num_start_y + 65, input_val_10_1.toFixed(0), 0, 0);
+                                                         outString(show_num_start_x + 40 * 5 + 5, show_num_start_y + 65, input_val_1_1.toFixed(0), 0, 0);
+                                                         outString(show_num_start_x + 40 * 5 + 5 + 10 + 27, show_num_start_y + 65, "mmHg", 0, 0);
+                                                         
+		
+        show_num_start_x = -80; show_num_start_y = 220;
+		for (let i = 0; i <= 9; i ++)
+		{
+			ctx.fillStyle = "rgb(255, 255, 255)";
+			ctx.strokeStyle = "rgb(0, 0, 0)";
+			ctx.strokeRect(show_num_start_x + 50 * i - 10, show_num_start_y, 40, 40);
+			ctx.strokeRect(show_num_start_x + 50 * i - 10, show_num_start_y + 45, 40, 40);
+			
+			ctx.fillStyle = "rgb(0, 0, 0)";
+			outString(show_num_start_x + 50 * i, show_num_start_y + 20, i, 0, 0);
+			outString(show_num_start_x + 50 * i, show_num_start_y + 65, i, 0, 0);
+		}
+		ctx.fillStyle = "rgb(255, 255, 255)";
+		ctx.strokeStyle = "rgb(0, 0, 0)";
+		ctx.strokeRect(show_num_start_x + 50 * 10 - 10, show_num_start_y, 40, 40);
+		ctx.strokeRect(show_num_start_x + 50 * 10 - 10, show_num_start_y + 45, 40, 40);
+		
+		ctx.fillStyle = "rgb(0, 0, 0)";
+		outString(show_num_start_x + 50 * 10 - 7, show_num_start_y + 20 - 3, "←", 0, 0);
+		outString(show_num_start_x + 50 * 10 - 7, show_num_start_y + 20 - 3 + 45, "←", 0, 0);
+
+        //draw Base of gauge
+        ctx.drawImage(imgBase, -imgBase.width / 2, -imgBase.height / 2);
+        
+        ctx.restore();
+        ctx.strokeStyle = scaleColor;
+        ctx.fillStyle = scaleColor;
+        
+        //////////    draw release
+        ctx.font = '16pt sans-serif';
+        outString(release_left_x + release_scale_length * 0.5, release_left_y - 50, "Air Release Valve", 1, 1);
+        ctx.beginPath();
+        ctx.moveTo(release_left_x, release_left_y);
+        ctx.lineTo(release_left_x + release_scale_length + 7.5, release_left_y);
+        ctx.lineTo(release_left_x + release_scale_length + 7.5, release_left_y - release_scale_height);
+        ctx.fill();
+
+        ctx.fillRect(release_left_x + release_scale_length * needle_vel_percentage, 
+        			release_left_y - release_scale_height - 2,
+                    release_scale_width, 
+                    release_scale_height + 6);
+
+        //////////    draw needle
+        var rotateUnit = 2 * 3.141592 / scale_cnt;
+		var rotateAngle = (msr / 2 - scale_cnt / 2) * rotateUnit;
+		// var rotateAngle = (msr - (end_scale - start_scale) / 2) * rotateUnit;
+        ctx.rotate(rotateAngle);
+        ctx.drawImage(imgNeedle, -imgNeedle.width / 2, -imgNeedle.height + 68);
+		ctx.rotate(-rotateAngle);
+        
+        ctx.font = '12pt sans-serif';
+        //////////    draw scale
+        ctx.rotate(rotateUnit * 10);
+
+        var total_radius = 190;
+        var scaleLenShort = imgNeedle.height / 15;
+        var scaleLenLong = imgNeedle.height / 8;
+        for (let i = start_scale; i <= end_scale; i ++) {
+            var rotateScale = i * rotateUnit;
+            ctx.rotate(rotateScale);
+            var scaleLen;
+            if (i % 5 == 0) {
+                scaleLen = scaleLenLong;
+            } else {
+                scaleLen = scaleLenShort;
+            }
+            drawLine(0, total_radius, 0, total_radius - scaleLen);
+            ctx.rotate(-rotateScale);
+            ctx.rotate(rotateUnit * -10);
+            if (i % 10 == 0) {
+                outString(-total_radius / 5 * 3.7 * Math.sin(rotateScale + rotateUnit * 10),
+                total_radius / 5 * 3.7 * Math.cos(rotateScale + rotateUnit * 10),
+                i * 2,
+                1,
+                1);
+            }
+            ctx.rotate(rotateUnit * 10);
+        }
+
+        ctx.fillStyle = fgColor;
+        ctx.font = '12pt sans-serif';
+
+        let mr = getMeasuredReading();
+        cr = getCorrectedReading();
+        let ze = getZeroError();
+
+		//console.log("cr = " + cr);
+		   
+        if (stgMode == "Trainer")
+        {
+			// $("#verniersmallControl").val(formatValue(cr));
+        }
+		
+		ctx.resetTransform();
+    }
+
+    function getZeroError()
+	{
+		return (zeroError / vernierScaleDivisions) * msdValue;
+    }
+
+    function formatValue(s)
+	{
+		s = Math.round(s * 1000) / 1000;
+	
+        return s.toFixed(precision); // + unit;
+    }
+	
+    function getMeasuredReading()
+	{
+        return getCorrectedReading() + getZeroError();
+    }
+	
+    function getCorrectedReading()
+	{
+		return (msr + vsr / vernierScaleDivisions) * msdValue;
+    }
+	
+    /**
+     * returns +ve remainder whn a is divided by n
+     * */
+    function mod(a,n)
+	{
+        return ((a % n ) + n ) % n;
+    }
+	
+    function drawLine(x1, y1, x2, y2)
+	{
+        ctx.beginPath();
+        ctx.moveTo(x1, y1);
+        ctx.lineTo(x2, y2);
+        ctx.stroke();
+    }
+
+    // x0,y0: the line's starting point
+    // x1,y1: the line's ending point
+    // width: the distance the arrowhead perpendicularly extends away from the line
+    // height: the distance the arrowhead extends backward from the endpoint
+    // arrowStart: true/false directing to draw arrowhead at the line's starting point
+    // arrowEnd: true/false directing to draw arrowhead at the line's ending point
+    function drawLineWithArrows(x0, y0, x1, y1, aWidth, aLength, arrowStart, arrowEnd)
+	{
+        var dx = x1 - x0;
+        var dy = y1 - y0;
+        var angle = Math.atan2(dy, dx);
+        var length = Math.sqrt(dx * dx + dy * dy);
+
+		ctx.save();
+        ctx.translate(x0, y0);
+        ctx.rotate(angle);
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.lineTo(length, 0);
+        if(arrowStart)
+		{
+            ctx.moveTo(aLength, -aWidth);
+            ctx.lineTo(0, 0);
+            ctx.lineTo(aLength, aWidth);
+        }
+        if(arrowEnd)
+		{
+            ctx.moveTo(length - aLength, -aWidth);
+            ctx.lineTo(length, 0);
+            ctx.lineTo(length - aLength, aWidth);
+        }
+        
+        ctx.stroke();
+        ctx.restore();
+    }
+	
+    function outString( x, y, s, x_align, y_align) 
+	{
+        var fm = ctx.measureText(s);
+        var h = 10;//fm.height not supported in browsers
+        
+		switch (y_align) 
+		{
+            case 0:
+                y += h;
+                break;
+            case 1:
+                y += h / 2;
+                break;
+            case 2:
+                break;
+        }
+		
+        switch (x_align) 
+		{
+            case 0:
+                ctx.fillText(s, x + 3, y);
+                break;
+            case 1:
+                ctx.fillText(s, x - fm.width / 2, y);
+                break;
+            case 2:
+                ctx.fillText(s, x - fm.width / 2, y);
+                break;
+        }
+    }
+
+    function getMousePos(event)
+	{
+		return [ event.clientX ,event.clientY ];
+    }
+	
+	function getTouchPos(event)
+	{
+		return [event.touches[0].pageX, event.touches[0].pageY];
+	}
+
+    function mousePressed( me) 
+	{
+        var m;
+
+		if (me.type == 'touchstart')
+			m = getTouchPos(me);
+		else
+			m = getMousePos(me);
+		
+		var doc = document.documentElement;
+		var left = (window.pageXOffset || doc.scrollLeft) - (doc.clientLeft || 0);
+		var top = (window.pageYOffset || doc.scrollTop)  - (doc.clientTop || 0);
+
+		var x, y;
+		if (me.type != 'touchstart')
+		{
+			x = (m[0] - canvas.offsetLeft + left) / scale  - xOffset; // - canvas.offsetLeft ;
+			y = (m[1] - canvas.offsetTop + top) / scale - yOffset; // - canvas.offsetTop + top ;
+		}
+		else
+		{
+			x = (m[0] - canvas.offsetLeft) / scale  - xOffset; // - canvas.offsetLeft ;
+			y = (m[1] - canvas.offsetTop) / scale - yOffset; // - canvas.offsetTop + top ;
+		}
+		
+		//  console.log("-----------------------------")
+		//  console.log("m[0] = " + m[0]);
+		//  console.log("m[1] = " + m[1]);
+		//  console.log("canvas.offsetLeft = " + canvas.offsetLeft);
+		//  console.log("canvas.offsetTop = " + canvas.offsetTop);
+		//  console.log("left = " + left);
+		//  console.log("top = " + top);
+		//  console.log("scale = " + scale);
+		// console.log("x = " + x + ", y = " + y);
+		//  console.log("scaleOriginY0 = " + scaleOriginY0);
+		//  console.log("scaleOriginY = " + scaleOriginY);
+		
+        if (y > (172) && y < (201) &&
+            x > (250) && x < (460)) {
+            dragMode = 1;
+            needle_vel_percentage = (x - 259) / (458 - 259);
+        }
+        /*if (y > (172) && y < (201)) 
+        {
+        	if (x < 250) x = 250;
+        	if (x > 460) x = 460;
+        	dragMode = 1;
+            needle_vel_percentage = (x - 259) / (458 - 259);
+        }*/
+        else if (y > (223) && y < (261))
+        {
+            if (x > (-88 + 50 * 10) && x < (-49 + 50 * 10)) {
+                set_input_answer_up("Back");
+            } else {
+                for (let i = 0; i <= 9; i ++)
+                {
+                    if (x > (-88 + 50 * i) && x < (-49 + 50 * i))
+                    {
+                        set_input_answer_up("" + i);
+                        break;
+                    }
+                }
+            }
+        }
+        
+        if (y > (223 + 45) && y < (261 + 45))
+        {
+            if (x > (-88 + 50 * 10) && x < (-49 + 50 * 10)) {
+                set_input_answer_down("Back");
+            } else {
+                for (let i = 0; i <= 9; i ++)
+                {
+                    if (x > (-88 + 50 * i) && x < (-49 + 50 * i))
+                    {
+                        set_input_answer_down("" + i);
+                        break;
+                    }
+                }
+            }
+        }        
+        paint();
+        prev_mx = m[0];
+        prev_my = m[1];
+        //me.preventDefault();
+    }
+
+    function mouseReleased(me) 
+	{
+        dragMode=0;
+    }
+
+    function mouseWheelMoved(me) 
+	{
+        var scroll = me.wheelDelta > 0 ? 1 : -1;
+        translateVernier(scroll);
+        me.preventDefault();
+    }
+
+    function mouseDragged( me) 
+	{
+        if (dragMode == 0) 
+			return false;
+        
+        var m;
+
+        if (me.type == 'touchstart')
+            m = getTouchPos(me);
+        else
+            m = getMousePos(me);
+
+        var doc = document.documentElement;
+        var left = (window.pageXOffset || doc.scrollLeft) - (doc.clientLeft || 0);
+        var top = (window.pageYOffset || doc.scrollTop)  - (doc.clientTop || 0);
+
+        var x, y;
+        if (me.type != 'touchstart')
+        {
+            x = (m[0] - canvas.offsetLeft + left) / scale  - xOffset; // - canvas.offsetLeft ;
+            y = (m[1] - canvas.offsetTop + top) / scale - yOffset; // - canvas.offsetTop + top ;
+        }
+        else
+        {
+            x = (m[0] - canvas.offsetLeft) / scale  - xOffset; // - canvas.offsetLeft ;
+            y = (m[1] - canvas.offsetTop) / scale - yOffset; // - canvas.offsetTop + top ;
+        }
+
+        if (// y > (172) && y < (201) &&
+            x > (259) && x < (460)) {
+            needle_vel_percentage = (x - 259) / (460 - 259);
+           
+        }
+        else if ( x > (460))
+        	needle_vel_percentage = 1;
+        else if( x < (256))
+        	needle_vel_percentage = 0;
+        	
+         paint();
+        //me.preventDefault();
+    }
+
+
+    function onKeyEvent(e)
+	{
+		// console.log(e.keycode);
+		if (e.keyCode >= 96/*'0'*/ && e.keyCode <= 105/*'9'*/)  // when using numpad...
+		{
+			{
+				set_input_answer("" + (e.keyCode - 96));
+				update();
+			}
+		}else if (e.keyCode >= 48/*'0'*/ && e.keyCode <= 57/*'9'*/) {
+			{
+				set_input_answer("" + (e.keyCode - 48));
+				update();
+			}
+		} else if (e.keyCode == 8/*BackSpace*/) {
+			set_input_answer("Back");
+			update();
+		} else {
+			// console.log(e.keyCode);
+			return false;
+		}
+        e.preventDefault();
+    }
+</script>
+
+<script>
+    function toggleNavMenu() {
+        var x = document.getElementById("NavMenu");
+        if (x.className.indexOf("w3-show") == -1) {  
+            x.className += " w3-show";
+        } else { 
+            x.className = x.className.replace(" w3-show", "");
+        }
+    }
+
+    function toggleCategory(categoryId) {
+        var category = document.getElementById(categoryId);
+        if (category.className.indexOf("w3-show") == -1) {  
+            category.className += " w3-show";
+        } else { 
+            category.className = category.className.replace(" w3-show", " w3-hide");
+        }
+    }
+</script>
+
+<script type="text/javascript" async="" src="https://btloader.com/tag?o=5698917485248512&upapi=true&domain=rulergame.net"></script>
+
+<script>!function(){"use strict";var e;e=document,function(){var t,n;function r(){var t=e.createElement("script");t.src="https://cafemedia-com.videoplayerhub.com/galleryplayer.js",e.head.appendChild(t)}function a(){var t=e.cookie.match("(^|[^;]+)\s*__adblocker\s*=\s*([^;]+)");return t&&t.pop()}function c(){clearInterval(n)}return{init:function(){var e;"true"===(t=a())?r():(e=0,n=setInterval((function(){100!==e&&"false" !== t || c(), "true" === t && (r(), c()), t = a(), e++}), 50))}}}().init()}();
+</script>
+</body>
+</html>

@@ -1,0 +1,556 @@
+﻿<!DOCTYPE html>
+<html><!-- InstanceBegin template="/Templates/2018-template-master.dwt" codeOutsideHTMLIsLocked="false" -->
+    <head>     
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="UTF-8">
+        <!-- InstanceBeginEditable name="doctitle" -->
+        <title>The Ruler Game - Learn to Read a Ruler</title>
+        <meta name="description" content="Online games to help you learn to read a ruler, micrometer, clock + much more. Fun and educational for both children and adults.">
+		<meta property="og:title" content="The Ruler Game - Learn to Read a Ruler">
+<meta property="og:description" content="Online games to help you learn to read a ruler, micrometer, clock + much more. Fun and educational for both children and adults.">
+<meta property="og:image" content="https://www.rulergame.net/images/og-frontpage.png">
+<meta property="og:url" content="https://www.rulergame.net">
+<meta property="og:type" content="website">
+<link rel="canonical" href="index.htm">
+        <!-- InstanceEndEditable -->
+        <script src="assets/js/jquery-3.6.0.min.js"></script>
+        <link rel="stylesheet" href="assets/css/site.css">
+        <link href="css?family=Roboto" rel="stylesheet">
+        
+        <!-- InstanceBeginEditable name="head" -->
+        <!-- InstanceEndEditable -->
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="gtag/js?id=G-XE0GQQH6FP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-XE0GQQH6FP');
+</script>
+
+</head>
+
+    <body class="w3-pale-green">
+        <!-- Navbar -->
+<div class="z100">
+    <div class="w3-bar w3-pale-green w3-card w3-left-align w3-large">
+        <a class="w3-bar-item w3-button w3-padding-large rulergame-dark-green" href="javascript:void(0);" onclick="toggleNavMenu()" title="Toggle Navigation Menu">Menu</a>
+        <div id="topBanner"><a href="index.htm"><img src="images/rulergame.gif" id="topBannerImage" alt="The Ruler Game - Learn to read a ruler"></a></div>
+    </div>
+    <div id="NavMenu" class="w3-dropdown-content w3-bar-block w3-border w3-large rulergame-dark-green z100">
+	<a href="index.htm" class="w3-bar-item w3-button w3-padding-large">Home</a>
+        <a href="javascript:void(0);" class="w3-bar-item w3-button w3-padding-large" onclick="toggleCategory('measuringGames')">Measuring Games</a>
+        <div id="measuringGames" class="w3-hide w3-bar-block rulergame-submenu">
+            <a href="new-english-ruler-game.php.html" class="w3-bar-item w3-button w3-padding-large">Inch Ruler Game</a>
+            <a href="new-metric-ruler-game.php.html" class="w3-bar-item w3-button w3-padding-large">Metric Ruler Game</a>
+            <a href="micrometer-game.php.html" class="w3-bar-item w3-button w3-padding-large">Micrometer Game</a>
+            <a href="metric-micrometer-game.php.html" class="w3-bar-item w3-button w3-padding-large">Metric Micrometer Game</a>
+			<a href="dial-caliper-game.php.html" class="w3-bar-item w3-button w3-padding-large">Dial Caliper Game</a>
+			<a href="vernier-caliper-game.php.html" class="w3-bar-item w3-button w3-padding-large">Vernier Caliper Game</a>
+			<a href="graduated-cylinder-game.php.html" class="w3-bar-item w3-button w3-padding-large">Graduated Cylinder Game</a>
+			<a href="architectural-scale-game.php.html" class="w3-bar-item w3-button w3-padding-large">Architectural Scale Game</a>
+			<a href="machinist-ruler-game.php.html" class="w3-bar-item w3-button w3-padding-large">Machinist Ruler Game</a>
+			<a href="triple-beam-balance-game.php.html" class="w3-bar-item w3-button w3-padding-large">Triple Beam Balance Game</a>
+        </div>
+        <a href="javascript:void(0);" class="w3-bar-item w3-button w3-padding-large" onclick="toggleCategory('timeGames')">Time and Temperature Games</a>
+        <div id="timeGames" class="w3-hide w3-bar-block rulergame-submenu">
+            <a href="clock-game.php.html" class="w3-bar-item w3-button w3-padding-large">Clock Game</a>
+            <a href="military-time-game.php.html" class="w3-bar-item w3-button w3-padding-large">Military Time Game</a>
+			<a href="thermometer-game.php.html" class="w3-bar-item w3-button w3-padding-large">Thermometer Reading Game</a>
+            <a href="temperature-conversion-game.php.html" class="w3-bar-item w3-button w3-padding-large">Temperature Conversion Game</a>
+        </div>
+        <a href="javascript:void(0);" class="w3-bar-item w3-button w3-padding-large" onclick="toggleCategory('moneyGames')">Money & Life Games</a>
+        <div id="moneyGames" class="w3-hide w3-bar-block rulergame-submenu">
+            <a href="money-game.php.html" class="w3-bar-item w3-button w3-padding-large">Money Counting Game</a>
+            <a href="shopping-money-counting-game.php.html" class="w3-bar-item w3-button w3-padding-large">Shopping Money Counting Game</a>
+            <a href="counting-back-change-game.php.html" class="w3-bar-item w3-button w3-padding-large">Counting Back Change Game</a>
+			<a href="blood-pressure-game.php.html" class="w3-bar-item w3-button w3-padding-large">Blood Pressure Game</a>
+			<a href="stadiometer-game.php.html" class="w3-bar-item w3-button w3-padding-large">Stadiometer Game</a>
+			<a href="physician-scale-game.php.html" class="w3-bar-item w3-button w3-padding-large">Physician Scale Game</a>
+			<a href="cooking-conversions-game.php.html" class="w3-bar-item w3-button w3-padding-large">Cooking Conversions Game</a>
+        </div>
+    </div>
+</div>
+      
+        <div id="mainBodyContent" class="w3-container w3-margin-top">
+            <!-- InstanceBeginEditable name="mainBodyContent" -->
+            <div class="w3-container" align="center">
+                <h1>The Fun and Easy Way to Learn to Read a Ruler!</h1>
+                <h2>Which of our popular games do you want to play today?</h2>
+
+            </div>
+            <div class="w3-row-padding">
+                <div class="w3-third w3-container w3-margin-top">
+                    <div class="w3-card">
+                        <div class="w3-display-container">
+                            <a href="new-english-ruler-game.php.html"><img src="assets/images/rulergame-v3-devices-mockup_700x350.png" alt="The New Inch Ruler Game" width="700" height="350" class="frontimage"></a>
+                            <div class="w3-display-middle w3-xlarge">
+                              <a href="new-english-ruler-game.php.html" class="w3-button rulergame-dark-green">Let's Play!</a>
+                            </div>
+                        </div>
+                        <div class="w3-container">
+                            <p><a href="new-english-ruler-game.php.html" class=" w3-text-black">The <strong>NEW Inch Ruler</strong> Game</a><br>Learn to read a standard English ruler using a touchscreen device or using a mouse on your desktop computer.</p>
+                        </div>
+                    </div>
+                </div>
+				
+				
+				<div class="w3-third w3-container w3-margin-top">
+                    <div class="w3-card">
+                        <div class="w3-display-container">
+                            <a href="new-metric-ruler-game.php.html"><img src="assets/images/rulergame-v3-metric-devices-mockup-new.png" alt="The New Metric Ruler Game" width="700" height="350" class="frontimage"></a>
+                            <div class="w3-display-middle w3-xlarge">
+                              <a href="new-metric-ruler-game.php.html" class="w3-button rulergame-dark-green">Let's Play!</a>
+                            </div>
+                        </div>
+                        <div class="w3-container">
+                            <p><a href="new-metric-ruler-game.php.html" class=" w3-text-black">The <strong>NEW Metric Ruler</strong> Game</a><br>Learn to read a metric ruler using a touchscreen device or using a mouse on your desktop or laptop computer.</p>
+                        </div>
+                    </div>
+                </div>
+				
+				
+                <div class="w3-third w3-container w3-margin-top">
+                <div class="w3-card">
+                    <div class="w3-display-container">
+                        <a href="v2-standard-english-ruler-game.php.html"><img src="assets/images/rulergame-v2-devices-mockup_700x350.png" alt="Original Inch ruler game" width="700" height="350" class="frontimage"></a>
+                        <div class="w3-display-middle w3-xlarge">
+                          <a href="v2-standard-english-ruler-game.php.html" class="w3-button rulergame-dark-green">Let's Play!</a>
+                        </div>                        
+                    </div>
+                    <div class="w3-container">
+                            <p><a href="v2-standard-english-ruler-game.php.html" class=" w3-text-black">The <strong>Original Inch Ruler</strong> Game</a><br>Learn to read a standard English or an inch ruler using a mouse on your desktop or laptop computer.</p>
+                    </div>
+                </div>
+                </div>
+                <div class="w3-third w3-container w3-margin-top">
+                <div class="w3-card">
+                    <div class="w3-display-container">
+                        <a href="v2-metric-ruler-game.php.html"><img src="assets/images/rulergame-v2-metric-devices-mockup_700x350.png" alt="Original Metric Ruler Game" width="700" height="350" class="frontimage"></a>
+                        <div class="w3-display-middle w3-xlarge">
+                          <a href="v2-metric-ruler-game.php.html" class="w3-button rulergame-dark-green">Let's Play!</a>
+                        </div>                        
+                    </div>
+                    <div class="w3-container">
+                            <p><a href="v2-metric-ruler-game.php.html" class=" w3-text-black">The <strong>Original Metric Ruler</strong> Game</a><br>Learn to read a metric ruler using a mouse on your desktop or laptop computer.</p>
+                    </div>
+                </div> 
+                </div>
+				
+				
+								<div class="w3-third w3-container w3-margin-top">
+                    <div class="w3-card" style="background-color:#e5f0ff;">
+                        <div class="w3-display-container">
+                            <a href="thermometer-game.php.html"><img src="assets/images/thermometer-game-mockup.png" alt="Thermometer Reading Game" width="700" height="350" class="frontimage"></a>
+                            <div class="w3-display-middle w3-xlarge">
+                              <a href="thermometer-game.php.html" class="w3-button rulergame-red-temp">Let's Play!</a>
+                            </div>
+                        </div>
+                        <div class="w3-container">
+                            <p><a href="thermometer-game.php.html" class="w3-text-black"><strong>Thermometer</strong> Reading Game</a><br>With our intuitive thermometer game you can quickly learn to read Fahrenheit and Celsius thermometers.</p>
+                        </div>
+                    </div>
+                </div>
+				
+								<div class="w3-third w3-container w3-margin-top">
+                    <div class="w3-card" style="background-color:#e5f0ff;">
+                        <div class="w3-display-container">
+                            <a href="temperature-conversion-game.php.html"><img src="assets/images/temperature-conversion-game-mockup.png" alt="Temperature Conversion Game" width="700" height="350" class="frontimage"></a>
+                            <div class="w3-display-middle w3-xlarge">
+                              <a href="temperature-conversion-game.php.html" class="w3-button rulergame-red-temp">Let's Play!</a>
+                            </div>
+                        </div>
+                        <div class="w3-container">
+                            <p><a href="temperature-conversion-game.php.html" class="w3-text-black"><strong>Temperature</strong> Conversion Game</a><br>With our intuitive temperature conversion game you can quickly learn to convert between Fahrenheit and Celsius Units.</p>
+                        </div>
+                    </div>
+                </div>
+				
+				
+				
+				<div class="w3-third w3-container w3-margin-top">
+                    <div class="w3-card" style="background-color:#e4faf0;">
+                        <div class="w3-display-container">
+                            <a href="clock-game.php.html"><img src="assets/images/clock-game-mockup.png" alt="The Clock Game" width="700" height="350" class="frontimage"></a>
+                            <div class="w3-display-middle w3-xlarge">
+                              <a href="clock-game.php.html" class="w3-button rulergame-dark-green">Let's Play!</a>
+                            </div>
+                        </div>
+                        <div class="w3-container">
+                            <p><a href="clock-game.php.html" class="w3-text-black"><strong>Clock</strong> Game</a><br>With our intuitive analog clock game you can quickly learn to read a clock. 12HR and 24HR modes.</p>
+                        </div>
+                    </div>
+                </div>
+				
+				<div class="w3-third w3-container w3-margin-top">
+                    <div class="w3-card" style="background-color:#e6f1c6;">
+                        <div class="w3-display-container">
+                            <a href="military-time-game.php.html"><img src="assets/images/military-time-game-mockup.png" alt="The Military Time Game" width="700" height="350" class="frontimage"></a>
+                            <div class="w3-display-middle w3-xlarge">
+                              <a href="military-time-game.php.html" class="w3-button rulergame-dark-green">Let's Play!</a>
+                            </div>
+                        </div>
+                        <div class="w3-container">
+                            <p><a href="military-time-game.php.html" class="w3-text-black"><strong>Military Time</strong> Game</a><br>With our intuitive military time clock game you can quickly learn to read military time. Timezones included!</p>
+                        </div>
+                    </div>
+                </div>
+				
+				
+                <div class="w3-third w3-container w3-margin-top">
+                    <div class="w3-card" style="background-color:#e5f4fc;">
+                        <div class="w3-display-container">
+                            <a href="micrometer-game.php.html"><img src="assets/images/micrometer-game-mockup.png" alt="The Micrometer Game" width="700" height="350" class="frontimage"></a>
+                            <div class="w3-display-middle w3-xlarge">
+                              <a href="micrometer-game.php.html" class="w3-button rulergame-dark-blue">Let's Play!</a>
+                            </div>
+                        </div>
+                        <div class="w3-container">
+                            <p><a href="micrometer-game.php.html" class="w3-text-black"><strong>Inch Micrometer</strong> Game</a><br>With our intuitive micrometer game you can quickly become a micrometer master. Fun, easy and free!</p>
+                        </div>
+                    </div>
+                </div>
+				
+				
+				<div class="w3-third w3-container w3-margin-top">
+                    <div class="w3-card" style="background-color:#e5f4fc;">
+                        <div class="w3-display-container">
+                            <a href="metric-micrometer-game.php.html"><img src="assets/images/metric-micrometer-game-mockup.png" alt="The Metric Micrometer Game" width="700" height="350" class="frontimage"></a>
+                            <div class="w3-display-middle w3-xlarge">
+                              <a href="metric-micrometer-game.php.html" class="w3-button rulergame-dark-blue">Let's Play!</a>
+                            </div>
+                        </div>
+                        <div class="w3-container">
+                            <p><a href="metric-micrometer-game.php.html" class="w3-text-black"><strong>Metric Micrometer</strong> Game</a><br>With our intuitive micrometer game you can quickly become a metric micrometer master.</p>
+                        </div>
+                    </div>
+                </div>
+				
+				
+				<div class="w3-third w3-container w3-margin-top">
+                    <div class="w3-card" style="background-color:#fceae8;">
+                        <div class="w3-display-container">
+                            <a href="graduated-cylinder-game.php.html"><img src="assets/images/graduated-cylinder-game-mockup.png" alt="The Graduated Cylinder Game" width="700" height="350" class="frontimage"></a>
+                            <div class="w3-display-middle w3-xlarge">
+                              <a href="graduated-cylinder-game.php.html" class="w3-button rulergame-graduated">Let's Play!</a>
+                            </div>
+                        </div>
+                        <div class="w3-container">
+                            <p><a href="graduated-cylinder-game.php.html" class="w3-text-black"><strong>Graduated Cylinder</strong> Game</a><br>Learn to read 10ml, 25ml, 50ml and 100ml graduated cylinders with our fun and easy graduated cylinder game.</p>
+                        </div>
+                    </div>
+                </div>
+				
+				
+				
+				
+				<div class="w3-third w3-container w3-margin-top">
+                    <div class="w3-card" style="background-color:#fff7dd;">
+                        <div class="w3-display-container">
+                            <a href="vernier-caliper-game.php.html"><img src="assets/images/vernier-caliper-game-mockup.png" alt="The Vernier Caliper Game" width="700" height="350" class="frontimage"></a>
+                            <div class="w3-display-middle w3-xlarge">
+                              <a href="vernier-caliper-game.php.html" class="w3-button rulergame-vernier">Let's Play!</a>
+                            </div>
+                        </div>
+                        <div class="w3-container">
+                            <p><a href="vernier-caliper-game.php.html" class="w3-text-black"><strong>Vernier Caliper</strong> Game</a><br>With our intuitive vernier caliper game you can quickly become a vernier caliper master. Inch and cm versions.</p>
+                        </div>
+                    </div>
+                </div>
+				
+				
+				
+				
+				<div class="w3-third w3-container w3-margin-top">
+                    <div class="w3-card" style="background-color:#f7ffdd;">
+                        <div class="w3-display-container">
+                            <a href="dial-caliper-game.php.html"><img src="assets/images/dial-caliper-game-mockup.png" alt="The Dial Caliper Game" width="700" height="350" class="frontimage"></a>
+                            <div class="w3-display-middle w3-xlarge">
+                              <a href="dial-caliper-game.php.html" class="w3-button rulergame-dial">Let's Play!</a>
+                            </div>
+                        </div>
+                        <div class="w3-container">
+                            <p><a href="dial-caliper-game.php.html" class="w3-text-black"><strong>Dial Caliper</strong> Game</a><br>With our intuitive dial caliper game you can quickly become a dial caliper master. Inch and cm versions.</p>
+                        </div>
+                    </div>
+                </div>
+				
+				<div class="w3-third w3-container w3-margin-top">
+                    <div class="w3-card" style="background-color:#f8ead8;">
+                        <div class="w3-display-container">
+                            <a href="architectural-scale-game.php.html"><img src="assets/images/architectural-scale-game-mockup.png" alt="The Architectural scale Game" width="700" height="350" class="frontimage"></a>
+                            <div class="w3-display-middle w3-xlarge">
+                              <a href="architectural-scale-game.php.html" class="w3-button rulergame-architectural">Let's Play!</a>
+                            </div>
+                        </div>
+                        <div class="w3-container">
+                            <p><a href="architectural-scale-game.php.html" class="w3-text-black"><strong>Architectural Scale</strong> Game</a><br>With our intuitive architectural scale ruler game you will quickly learn how to read an architect scale.</p>
+                        </div>
+                    </div>
+                </div>
+				
+				<div class="w3-third w3-container w3-margin-top">
+                    <div class="w3-card" style="background-color:#f2f2f2;">
+                        <div class="w3-display-container">
+                            <a href="triple-beam-balance-game.php.html"><img src="assets/images/triple-beam-balance-game-mockup.png" alt="Triple Beam Balance Game" width="700" height="350" class="frontimage"></a>
+                            <div class="w3-display-middle w3-xlarge">
+                              <a href="triple-beam-balance-game.php.html" class="w3-button rulergame-triple-beam">Let's Play!</a>
+                            </div>
+                        </div>
+                        <div class="w3-container">
+                            <p><a href="triple-beam-balance-game.php.html" class="w3-text-black"><strong>Triple Beam Balance</strong> Game</a><br>With our intuitive triple beam balance game you will quickly learn how to read a triple beam balance.</p>
+                        </div>
+                    </div>
+                </div>
+				
+				<div class="w3-third w3-container w3-margin-top">
+                    <div class="w3-card" style="background-color:#f5f7f9;">
+                        <div class="w3-display-container">
+                            <a href="machinist-ruler-game.php.html"><img src="assets/images/machinist-ruler-mockup.png" alt="The Machinist Ruler Game" width="700" height="350" class="frontimage"></a>
+                            <div class="w3-display-middle w3-xlarge">
+                              <a href="machinist-ruler-game.php.html" class="w3-button rulergame-machinist">Let's Play!</a>
+                            </div>
+                        </div>
+                        <div class="w3-container">
+                            <p><a href="machinist-ruler-game.php.html" class="w3-text-black"><strong>Machinist Ruler</strong> Game</a><br>Master precision measuring with the Machinist Ruler Game!</p>
+                        </div>
+                    </div>
+                </div>
+				
+				<div class="w3-third w3-container w3-margin-top">
+                    <div class="w3-card" style="background-color:#fff1f1;">
+                        <div class="w3-display-container">
+                            <a href="blood-pressure-game.php.html"><img src="assets/images/blood-pressure-mockup.png" alt="The Blood Pressure Game" width="700" height="350" class="frontimage"></a>
+                            <div class="w3-display-middle w3-xlarge">
+                              <a href="blood-pressure-game.php.html" class="w3-button rulergame-blood">Let's Play!</a>
+                            </div>
+                        </div>
+                        <div class="w3-container">
+                            <p><a href="blood-pressure-game.php.html" class="w3-text-black"><strong>Blood Pressure</strong> Game</a><br>Learn to measure blood pressure accurately with this interactive game!</p>
+                        </div>
+                    </div>
+                </div>
+				
+				<div class="w3-third w3-container w3-margin-top">
+                    <div class="w3-card" style="background-color:#f1faff;">
+                        <div class="w3-display-container">
+                            <a href="stadiometer-game.php.html"><img src="assets/images/stadiometer-game-mockup.png" alt="The Stadiometer Game" width="700" height="350" class="frontimage"></a>
+                            <div class="w3-display-middle w3-xlarge">
+                              <a href="stadiometer-game.php.html" class="w3-button rulergame-stadiometer">Let's Play!</a>
+                            </div>
+                        </div>
+                        <div class="w3-container">
+                            <p><a href="stadiometer-game.php.html" class="w3-text-black"><strong>Stadiometer</strong> Game</a><br>Learn to measure height accurately with the Stadiometer Game!</p>
+                        </div>
+                    </div>
+                </div>
+				
+				<div class="w3-third w3-container w3-margin-top">
+                    <div class="w3-card" style="background-color:#f1faff;">
+                        <div class="w3-display-container">
+                            <a href="physician-scale-game.php.html"><img src="assets/images/physician-scale-mockup.png" alt="The Physician Scale Game" width="700" height="350" class="frontimage"></a>
+                            <div class="w3-display-middle w3-xlarge">
+                              <a href="physician-scale-game.php.html" class="w3-button rulergame-stadiometer">Let's Play!</a>
+                            </div>
+                        </div>
+                        <div class="w3-container">
+                            <p><a href="physician-scale-game.php.html" class="w3-text-black"><strong>Physician Scale</strong> Game</a><br>Practice reading and using a physician weight scale with this interactive game!</p>
+                        </div>
+                    </div>
+                </div>
+				
+				<div class="w3-third w3-container w3-margin-top">
+                    <div class="w3-card" style="background-color:#eaeed5;">
+                        <div class="w3-display-container">
+                            <a href="money-game.php.html"><img src="assets/images/money-game-mockup.png" alt="The Money Counting Game Game" width="700" height="350" class="frontimage"></a>
+                            <div class="w3-display-middle w3-xlarge">
+                              <a href="money-game.php.html" class="w3-button rulergame-dark-money">Let's Play!</a>
+                            </div>
+                        </div>
+                        <div class="w3-container">
+                            <p><a href="money-game.php.html" class="w3-text-black"><strong>Money Counting</strong> Game</a><br>With this intuitive money counting game you can learn to quickly count your bills and coins.</p>
+                        </div>
+                    </div>
+                </div>
+				
+				<div class="w3-third w3-container w3-margin-top">
+                    <div class="w3-card" style="background-color:#eaeed5;">
+                        <div class="w3-display-container">
+                            <a href="shopping-money-counting-game.php.html"><img src="assets/images/shopping-money-counting-game-mockup.png" alt="The Shopping Money Counting Game" width="700" height="350" class="frontimage"></a>
+                            <div class="w3-display-middle w3-xlarge">
+                              <a href="shopping-money-counting-game.php.html" class="w3-button rulergame-dark-money">Let's Play!</a>
+                            </div>
+                        </div>
+                        <div class="w3-container">
+                            <p><a href="shopping-money-counting-game.php.html" class="w3-text-black"><strong>Shopping Money Counting</strong> Game</a><br>Learn how to sum up your purchases and then count bills and coins for the correct amount.</p>
+                        </div>
+                    </div>
+                </div>
+				
+				<div class="w3-third w3-container w3-margin-top">
+                    <div class="w3-card" style="background-color:#eaeed5;">
+                        <div class="w3-display-container">
+                            <a href="counting-back-change-game.php.html"><img src="assets/images/counting-back-change-game-mockup.png" alt="The Counting Back Change Game" width="700" height="350" class="frontimage"></a>
+                            <div class="w3-display-middle w3-xlarge">
+                              <a href="counting-back-change-game.php.html" class="w3-button rulergame-dark-money">Let's Play!</a>
+                            </div>
+                        </div>
+                        <div class="w3-container">
+                            <p><a href="counting-back-change-game.php.html" class="w3-text-black"><strong>Counting Back Change</strong> Game</a><br>This simple game teaches you to count back change to a customer.</p>
+                        </div>
+                    </div>
+                </div>
+				
+				<div class="w3-third w3-container w3-margin-top">
+                    <div class="w3-card" style="background-color:#fdf3f8;">
+                        <div class="w3-display-container">
+                            <a href="cooking-conversions-game.php.html"><img src="assets/images/cooking-conversions-mockup.png" alt="The Cooking Conversions Game" width="700" height="350" class="frontimage"></a>
+                            <div class="w3-display-middle w3-xlarge">
+                              <a href="cooking-conversions-game.php.html" class="w3-button rulergame-cooking">Let's Play!</a>
+                            </div>
+                        </div>
+                        <div class="w3-container">
+                            <p><a href="cooking-conversions-game.php.html" class="w3-text-black"><strong>Cooking Conversions</strong> Game</a><br>Learn and practice converting cups, teaspoons, and more in a fun, interactive way.</p>
+                        </div>
+                    </div>
+                </div>
+				
+				
+            </div>
+            <div class="w3-container"><br>
+			<p align="center"><b>Is there a game you would like to see here?</b> Please, let me know. You can contact me via <a href="https://www.facebook.com/RulerGame/" target="_blank"><strong>Facebook</strong></a> or email: webmaster@rulergame.net</p>
+			<br>
+
+                <p>Reading a ruler is a valuable skill that you will likely use on your job, in your hobbies, and in your personal life almost every day. Without measuring devices like rulers (and people who can read them) we would still be living in caves!</p>
+                <p>You are probably familiar with rulers, meter sticks, tape rules, folding rules, and tape measures. You will also find rulers on many machines such as saws, sewing machines, photocopiers, and paper cutters. Even computer programs like Microsoft Word and Adobe PhotoShop have electronic rulers to help you place items exactly where you want them. Reading a ruler is a valuable skill that you will use almost every day, both on and off the job.</p>
+            </div>
+            <!-- InstanceEndEditable -->
+        </div>
+
+<footer class="w3-container w3-padding rulergame-dark-green">  
+            <div class="w3-row-padding">
+
+              <div class="w3-third">
+                <h3>MEASURING GAMES</h3>
+                <ul class="w3-ul">
+                  <li class="w3-padding-16">
+                    <a href="new-english-ruler-game.php.html" class="w3-text-white w3-hover-opacity w3-large rulergame-no-underline">New Inch Ruler Game</a><br>
+                  </li>
+				  <li class="w3-padding-16">
+                    <a href="new-metric-ruler-game.php.html" class="w3-text-white w3-hover-opacity w3-large rulergame-no-underline">New Metric Ruler Game</a><br>
+                  </li>
+                  <li class="w3-padding-16">
+                    <a href="v2-standard-english-ruler-game.php.html" class="w3-text-white w3-hover-opacity w3-large rulergame-no-underline">Original Inch Ruler Game</a><br>
+                  </li>
+				  <li class="w3-padding-16">
+                    <a href="micrometer-game.php.html" class="w3-text-white w3-hover-opacity w3-large rulergame-no-underline">Inch Mictometer Game</a><br>
+                  </li>
+				  <li class="w3-padding-16">
+                    <a href="metric-micrometer-game.php.html" class="w3-text-white w3-hover-opacity w3-large rulergame-no-underline">Metric Micrometer Game</a><br>
+                  </li>
+                  <li class="w3-padding-16">
+                    <a href="v2-metric-ruler-game.php.html" class="w3-text-white w3-hover-opacity w3-large rulergame-no-underline">Original Metric Ruler Game</a><br>
+                  </li>
+				  <li class="w3-padding-16">
+                    <a href="dial-caliper-game.php.html" class="w3-text-white w3-hover-opacity w3-large rulergame-no-underline">Dial Caliper Game</a><br>
+                  </li>
+				  <li class="w3-padding-16">
+                    <a href="vernier-caliper-game.php.html" class="w3-text-white w3-hover-opacity w3-large rulergame-no-underline">Vernier Caliper Game</a><br>
+                  </li>
+                  <li class="w3-padding-16">
+                    <a href="graduated-cylinder-game.php.html" class="w3-text-white w3-hover-opacity w3-large rulergame-no-underline">Graduated Cylinder Game</a><br>
+                  </li>
+				  <li class="w3-padding-16">
+                    <a href="architectural-scale-game.php.html" class="w3-text-white w3-hover-opacity w3-large rulergame-no-underline">Architectural Scale Game</a><br>
+                  </li>
+				  <li class="w3-padding-16">
+                    <a href="machinist-ruler-game.php.html" class="w3-text-white w3-hover-opacity w3-large rulergame-no-underline">Machinist Ruler Game</a><br>
+                  </li>
+				  <li class="w3-padding-16">
+                    <a href="triple-beam-balance-game.php.html" class="w3-text-white w3-hover-opacity w3-large rulergame-no-underline">Triple Beam Balance Game</a><br>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="w3-third">
+                <h3>TIME AND TEMPERATURE GAMES</h3>
+                <ul class="w3-ul">
+                  <li class="w3-padding-16">
+                    <a href="clock-game.php.html" class="w3-text-white w3-hover-opacity w3-large rulergame-no-underline">Clock Game</a><br>
+                  </li>
+				  <li class="w3-padding-16">
+                    <a href="military-time-game.php.html" class="w3-text-white w3-hover-opacity w3-large rulergame-no-underline">Military Time Game</a><br>
+                  </li>
+				  <li class="w3-padding-16">
+                    <a href="thermometer-game.php.html" class="w3-text-white w3-hover-opacity w3-large rulergame-no-underline">Thermometer Reading Game</a><br>
+                  </li>
+				  <li class="w3-padding-16">
+                    <a href="temperature-conversion-game.php.html" class="w3-text-white w3-hover-opacity w3-large rulergame-no-underline">Temperature Conversion Game</a><br>
+                  </li>
+				</ul>
+				<h3>MONEY AND LIFE GAMES</h3>
+				<ul class="w3-ul">
+				  <li class="w3-padding-16">
+                    <a href="money-game.php.html" class="w3-text-white w3-hover-opacity w3-large rulergame-no-underline">Money Counting Game</a><br>
+                  </li>
+				  <li class="w3-padding-16">
+                    <a href="shopping-money-counting-game.php.html" class="w3-text-white w3-hover-opacity w3-large rulergame-no-underline">Shopping Money Counting Game</a><br>
+                  </li>
+				  <li class="w3-padding-16">
+                    <a href="counting-back-change-game.php.html" class="w3-text-white w3-hover-opacity w3-large rulergame-no-underline">Counting Back Change Game</a><br>
+                  </li>
+				  <li class="w3-padding-16">
+                    <a href="blood-pressure-game.php.html" class="w3-text-white w3-hover-opacity w3-large rulergame-no-underline">Blood Pressure Game</a><br>
+                  </li>
+				  <li class="w3-padding-16">
+                    <a href="stadiometer-game.php.html" class="w3-text-white w3-hover-opacity w3-large rulergame-no-underline">Stadiometer Game</a><br>
+                  </li>
+				  <li class="w3-padding-16">
+                    <a href="physician-scale-game.php.html" class="w3-text-white w3-hover-opacity w3-large rulergame-no-underline">Physician Scale Game</a><br>
+                  </li>
+				  <li class="w3-padding-16">
+                    <a href="cooking-conversions-game.php.html" class="w3-text-white w3-hover-opacity w3-large rulergame-no-underline">Cooking Conversions Game</a><br>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="w3-third">
+                <h3>CONTACT ME</h3>
+                  <p class="w3-xxlarge w3-margin-top w3-margin-bottom">
+                    <a href="privacy-policy.php.html#contact" class="w3-text-white w3-hover-opacity"><img src="contact-button.png" alt="Contact button"></a>
+                    <a href="https://www.facebook.com/RulerGame/" class="w3-text-white w3-hover-opacity" target="_blank"><img src="facebook-button.png" alt="Facebook button"></a>
+                  </p>                   
+                  <p>Spears Technologies, Inc.<br>
+                    Attn: The Ruler Game<br>
+                    576 N. Birdneck Rd. #178<br>
+                    Virginia Beach, VA 23451</p>
+              </div>
+
+            </div>
+<div class="rulergame-dark-green w3-center w3-padding w3-border-top">Copyright &copy; 2025  by RulerGame.net and Ricky D. Spears. All Rights Reserved. <a href="privacy-policy.php.html" class="w3-text-white w3-hover-opacity">Privacy Policy</a><br><br><br></div>
+</footer>
+
+<script>
+    function toggleNavMenu() {
+        var x = document.getElementById("NavMenu");
+        if (x.className.indexOf("w3-show") == -1) {  
+            x.className += " w3-show";
+        } else { 
+            x.className = x.className.replace(" w3-show", "");
+        }
+    }
+
+    function toggleCategory(categoryId) {
+        var category = document.getElementById(categoryId);
+        if (category.className.indexOf("w3-show") == -1) {  
+            category.className += " w3-show";
+        } else { 
+            category.className = category.className.replace(" w3-show", " w3-hide");
+        }
+    }
+</script>
+		  
+    </body>
+<!-- InstanceEnd --></html>

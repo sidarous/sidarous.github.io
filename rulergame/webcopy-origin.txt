@@ -1,0 +1,544 @@
+Uri: https://fonts.googleapis.com/css?family=Roboto
+File Name: C:\Downloaded Web Sites\www.rulergame.net\css
+Content Type: text/css
+
+Uri: https://fonts.gstatic.com/s/roboto/v47/KFOMCnqEu92Fr1ME7kSn66aGLdTylUAMQXC89YmC2DPNWubEbVmUiA8.ttf
+File Name: C:\Downloaded Web Sites\www.rulergame.net\s\roboto\v47\KFOMCnqEu92Fr1ME7kSn66aGLdTylUAMQXC89YmC2DPNWubEbVmUiA8.ttf
+Content Type: font/ttf
+
+Uri: https://www.googletagmanager.com/gtag/js?id=G-XE0GQQH6FP
+File Name: C:\Downloaded Web Sites\www.rulergame.net\gtag\js
+Content Type: application/javascript
+
+Uri: https://www.rulergame.net/
+File Name: C:\Downloaded Web Sites\www.rulergame.net\index.htm
+Content Type: text/html
+
+Uri: https://www.rulergame.net/architectural-scale-game.php
+File Name: C:\Downloaded Web Sites\www.rulergame.net\architectural-scale-game.php.html
+Content Type: text/html
+
+Uri: https://www.rulergame.net/architectural-scale/css/architectural-scale-ruler.css
+File Name: C:\Downloaded Web Sites\www.rulergame.net\architectural-scale\css\architectural-scale-ruler.css
+Content Type: text/css
+
+Uri: https://www.rulergame.net/architectural-scale/js/architectural_scale_ruler.js
+File Name: C:\Downloaded Web Sites\www.rulergame.net\architectural-scale\js\architectural_scale_ruler.js
+Content Type: application/javascript
+
+Uri: https://www.rulergame.net/assets/css/animate.min.css
+File Name: C:\Downloaded Web Sites\www.rulergame.net\assets\css\animate.min.css
+Content Type: text/css
+
+Uri: https://www.rulergame.net/assets/css/bootstrap.min.css
+File Name: C:\Downloaded Web Sites\www.rulergame.net\assets\css\bootstrap.min.css
+Content Type: text/css
+
+Uri: https://www.rulergame.net/assets/css/site.css
+File Name: C:\Downloaded Web Sites\www.rulergame.net\assets\css\site.css
+Content Type: text/css
+
+Uri: https://www.rulergame.net/assets/images/architectural-scale-game-mockup.png
+File Name: C:\Downloaded Web Sites\www.rulergame.net\assets\images\architectural-scale-game-mockup.png
+Content Type: image/png
+
+Uri: https://www.rulergame.net/assets/images/blood-pressure-mockup.png
+File Name: C:\Downloaded Web Sites\www.rulergame.net\assets\images\blood-pressure-mockup.png
+Content Type: image/png
+
+Uri: https://www.rulergame.net/assets/images/clock-game-mockup.png
+File Name: C:\Downloaded Web Sites\www.rulergame.net\assets\images\clock-game-mockup.png
+Content Type: image/png
+
+Uri: https://www.rulergame.net/assets/images/cooking-conversions-mockup.png
+File Name: C:\Downloaded Web Sites\www.rulergame.net\assets\images\cooking-conversions-mockup.png
+Content Type: image/png
+
+Uri: https://www.rulergame.net/assets/images/counting-back-change-game-mockup.png
+File Name: C:\Downloaded Web Sites\www.rulergame.net\assets\images\counting-back-change-game-mockup.png
+Content Type: image/png
+
+Uri: https://www.rulergame.net/assets/images/dial-caliper-game-mockup.png
+File Name: C:\Downloaded Web Sites\www.rulergame.net\assets\images\dial-caliper-game-mockup.png
+Content Type: image/png
+
+Uri: https://www.rulergame.net/assets/images/graduated-cylinder-game-mockup.png
+File Name: C:\Downloaded Web Sites\www.rulergame.net\assets\images\graduated-cylinder-game-mockup.png
+Content Type: image/png
+
+Uri: https://www.rulergame.net/assets/images/machinist-ruler-mockup.png
+File Name: C:\Downloaded Web Sites\www.rulergame.net\assets\images\machinist-ruler-mockup.png
+Content Type: image/png
+
+Uri: https://www.rulergame.net/assets/images/metric-micrometer-game-mockup.png
+File Name: C:\Downloaded Web Sites\www.rulergame.net\assets\images\metric-micrometer-game-mockup.png
+Content Type: image/png
+
+Uri: https://www.rulergame.net/assets/images/micrometer-game-mockup.png
+File Name: C:\Downloaded Web Sites\www.rulergame.net\assets\images\micrometer-game-mockup.png
+Content Type: image/png
+
+Uri: https://www.rulergame.net/assets/images/military-time-game-mockup.png
+File Name: C:\Downloaded Web Sites\www.rulergame.net\assets\images\military-time-game-mockup.png
+Content Type: image/png
+
+Uri: https://www.rulergame.net/assets/images/money-game-mockup.png
+File Name: C:\Downloaded Web Sites\www.rulergame.net\assets\images\money-game-mockup.png
+Content Type: image/png
+
+Uri: https://www.rulergame.net/assets/images/physician-scale-mockup.png
+File Name: C:\Downloaded Web Sites\www.rulergame.net\assets\images\physician-scale-mockup.png
+Content Type: image/png
+
+Uri: https://www.rulergame.net/assets/images/rulergame-v2-devices-mockup_700x350.png
+File Name: C:\Downloaded Web Sites\www.rulergame.net\assets\images\rulergame-v2-devices-mockup_700x350.png
+Content Type: image/png
+
+Uri: https://www.rulergame.net/assets/images/rulergame-v2-metric-devices-mockup_700x350.png
+File Name: C:\Downloaded Web Sites\www.rulergame.net\assets\images\rulergame-v2-metric-devices-mockup_700x350.png
+Content Type: image/png
+
+Uri: https://www.rulergame.net/assets/images/rulergame-v3-devices-mockup_700x350.png
+File Name: C:\Downloaded Web Sites\www.rulergame.net\assets\images\rulergame-v3-devices-mockup_700x350.png
+Content Type: image/png
+
+Uri: https://www.rulergame.net/assets/images/rulergame-v3-metric-devices-mockup-new.png
+File Name: C:\Downloaded Web Sites\www.rulergame.net\assets\images\rulergame-v3-metric-devices-mockup-new.png
+Content Type: image/png
+
+Uri: https://www.rulergame.net/assets/images/shopping-money-counting-game-mockup.png
+File Name: C:\Downloaded Web Sites\www.rulergame.net\assets\images\shopping-money-counting-game-mockup.png
+Content Type: image/png
+
+Uri: https://www.rulergame.net/assets/images/stadiometer-game-mockup.png
+File Name: C:\Downloaded Web Sites\www.rulergame.net\assets\images\stadiometer-game-mockup.png
+Content Type: image/png
+
+Uri: https://www.rulergame.net/assets/images/temperature-conversion-game-mockup.png
+File Name: C:\Downloaded Web Sites\www.rulergame.net\assets\images\temperature-conversion-game-mockup.png
+Content Type: image/png
+
+Uri: https://www.rulergame.net/assets/images/thermometer-game-mockup.png
+File Name: C:\Downloaded Web Sites\www.rulergame.net\assets\images\thermometer-game-mockup.png
+Content Type: image/png
+
+Uri: https://www.rulergame.net/assets/images/triple-beam-balance-game-mockup.png
+File Name: C:\Downloaded Web Sites\www.rulergame.net\assets\images\triple-beam-balance-game-mockup.png
+Content Type: image/png
+
+Uri: https://www.rulergame.net/assets/images/vernier-caliper-game-mockup.png
+File Name: C:\Downloaded Web Sites\www.rulergame.net\assets\images\vernier-caliper-game-mockup.png
+Content Type: image/png
+
+Uri: https://www.rulergame.net/assets/jquery-3.6.0.min.js
+File Name: C:\Downloaded Web Sites\www.rulergame.net\assets\jquery-3.6.0.min.js
+Content Type: application/javascript
+
+Uri: https://www.rulergame.net/assets/js.cookie.js
+File Name: C:\Downloaded Web Sites\www.rulergame.net\assets\js.cookie.js
+Content Type: application/javascript
+
+Uri: https://www.rulergame.net/assets/js/bootstrap.min.js
+File Name: C:\Downloaded Web Sites\www.rulergame.net\assets\js\bootstrap.min.js
+Content Type: application/javascript
+
+Uri: https://www.rulergame.net/assets/js/jquery-3.6.0.min.js
+File Name: C:\Downloaded Web Sites\www.rulergame.net\assets\js\jquery-3.6.0.min.js
+Content Type: application/javascript
+
+Uri: https://www.rulergame.net/assets/js/jquery.min.js
+File Name: C:\Downloaded Web Sites\www.rulergame.net\assets\js\jquery.min.js
+Content Type: application/javascript
+
+Uri: https://www.rulergame.net/assets/new-english-ruler-game.js
+File Name: C:\Downloaded Web Sites\www.rulergame.net\assets\new-english-ruler-game.js
+Content Type: application/javascript
+
+Uri: https://www.rulergame.net/assets/rulergame-v2-englishOBF.js
+File Name: C:\Downloaded Web Sites\www.rulergame.net\assets\rulergame-v2-englishOBF.js
+Content Type: application/javascript
+
+Uri: https://www.rulergame.net/assets/rulergame-v2-metricOBF.js
+File Name: C:\Downloaded Web Sites\www.rulergame.net\assets\rulergame-v2-metricOBF.js
+Content Type: application/javascript
+
+Uri: https://www.rulergame.net/assets/rulergame3betaCSS.css
+File Name: C:\Downloaded Web Sites\www.rulergame.net\assets\rulergame3betaCSS.css
+Content Type: text/css
+
+Uri: https://www.rulergame.net/blood-pressure-game.php
+File Name: C:\Downloaded Web Sites\www.rulergame.net\blood-pressure-game.php.html
+Content Type: text/html
+
+Uri: https://www.rulergame.net/blood-pressure/css/blood_pressure.css
+File Name: C:\Downloaded Web Sites\www.rulergame.net\blood-pressure\css\blood_pressure.css
+Content Type: text/css
+
+Uri: https://www.rulergame.net/blood-pressure/js/blood_pressure.js
+File Name: C:\Downloaded Web Sites\www.rulergame.net\blood-pressure\js\blood_pressure.js
+Content Type: application/javascript
+
+Uri: https://www.rulergame.net/camo.png
+File Name: C:\Downloaded Web Sites\www.rulergame.net\camo.png
+Content Type: image/png
+
+Uri: https://www.rulergame.net/clock-game.php
+File Name: C:\Downloaded Web Sites\www.rulergame.net\clock-game.php.html
+Content Type: text/html
+
+Uri: https://www.rulergame.net/clock/css/clockgame.css
+File Name: C:\Downloaded Web Sites\www.rulergame.net\clock\css\clockgame.css
+Content Type: text/css
+
+Uri: https://www.rulergame.net/clock/js/clock.js
+File Name: C:\Downloaded Web Sites\www.rulergame.net\clock\js\clock.js
+Content Type: application/javascript
+
+Uri: https://www.rulergame.net/clock/js/easeljs.min.js
+File Name: C:\Downloaded Web Sites\www.rulergame.net\clock\js\easeljs.min.js
+Content Type: application/javascript
+
+Uri: https://www.rulergame.net/contact-button.png
+File Name: C:\Downloaded Web Sites\www.rulergame.net\contact-button.png
+Content Type: image/png
+
+Uri: https://www.rulergame.net/cooking-conversions-game.php
+File Name: C:\Downloaded Web Sites\www.rulergame.net\cooking-conversions-game.php.html
+Content Type: text/html
+
+Uri: https://www.rulergame.net/cooking-conversions/css/cooking_measurement.css
+File Name: C:\Downloaded Web Sites\www.rulergame.net\cooking-conversions\css\cooking_measurement.css
+Content Type: text/css
+
+Uri: https://www.rulergame.net/cooking-conversions/js/cooking_measurement.js
+File Name: C:\Downloaded Web Sites\www.rulergame.net\cooking-conversions\js\cooking_measurement.js
+Content Type: application/javascript
+
+Uri: https://www.rulergame.net/count-back-change/css/count-back-change.css
+File Name: C:\Downloaded Web Sites\www.rulergame.net\count-back-change\css\count-back-change.css
+Content Type: text/css
+
+Uri: https://www.rulergame.net/count-back-change/js/money_counting.js
+File Name: C:\Downloaded Web Sites\www.rulergame.net\count-back-change\js\money_counting.js
+Content Type: application/javascript
+
+Uri: https://www.rulergame.net/counting-back-change-game.php
+File Name: C:\Downloaded Web Sites\www.rulergame.net\counting-back-change-game.php.html
+Content Type: text/html
+
+Uri: https://www.rulergame.net/dial-caliper-game.php
+File Name: C:\Downloaded Web Sites\www.rulergame.net\dial-caliper-game.php.html
+Content Type: text/html
+
+Uri: https://www.rulergame.net/dial-caliper/css/dial_caliper.css
+File Name: C:\Downloaded Web Sites\www.rulergame.net\dial-caliper\css\dial_caliper.css
+Content Type: text/css
+
+Uri: https://www.rulergame.net/dial-caliper/js/dial_caliper.js
+File Name: C:\Downloaded Web Sites\www.rulergame.net\dial-caliper\js\dial_caliper.js
+Content Type: application/javascript
+
+Uri: https://www.rulergame.net/dial-caliper/js/hammer.js
+File Name: C:\Downloaded Web Sites\www.rulergame.net\dial-caliper\js\hammer.js
+Content Type: application/javascript
+
+Uri: https://www.rulergame.net/dollar.jpg
+File Name: C:\Downloaded Web Sites\www.rulergame.net\dollar.jpg
+Content Type: image/jpeg
+
+Uri: https://www.rulergame.net/facebook-button.png
+File Name: C:\Downloaded Web Sites\www.rulergame.net\facebook-button.png
+Content Type: image/png
+
+Uri: https://www.rulergame.net/graduated-cylinder-game.php
+File Name: C:\Downloaded Web Sites\www.rulergame.net\graduated-cylinder-game.php.html
+Content Type: text/html
+
+Uri: https://www.rulergame.net/graduated-cylinder/css/graduated_cylinder.css
+File Name: C:\Downloaded Web Sites\www.rulergame.net\graduated-cylinder\css\graduated_cylinder.css
+Content Type: text/css
+
+Uri: https://www.rulergame.net/graduated-cylinder/js/graduated_cylinder.js
+File Name: C:\Downloaded Web Sites\www.rulergame.net\graduated-cylinder\js\graduated_cylinder.js
+Content Type: application/javascript
+
+Uri: https://www.rulergame.net/images/eighth.gif
+File Name: C:\Downloaded Web Sites\www.rulergame.net\images\eighth.gif
+Content Type: image/gif
+
+Uri: https://www.rulergame.net/images/gameoverblank.gif
+File Name: C:\Downloaded Web Sites\www.rulergame.net\images\gameoverblank.gif
+Content Type: image/gif
+
+Uri: https://www.rulergame.net/images/half.gif
+File Name: C:\Downloaded Web Sites\www.rulergame.net\images\half.gif
+Content Type: image/gif
+
+Uri: https://www.rulergame.net/images/increment01.gif
+File Name: C:\Downloaded Web Sites\www.rulergame.net\images\increment01.gif
+Content Type: image/gif
+
+Uri: https://www.rulergame.net/images/increment02.gif
+File Name: C:\Downloaded Web Sites\www.rulergame.net\images\increment02.gif
+Content Type: image/gif
+
+Uri: https://www.rulergame.net/images/increment04.gif
+File Name: C:\Downloaded Web Sites\www.rulergame.net\images\increment04.gif
+Content Type: image/gif
+
+Uri: https://www.rulergame.net/images/increment08.gif
+File Name: C:\Downloaded Web Sites\www.rulergame.net\images\increment08.gif
+Content Type: image/gif
+
+Uri: https://www.rulergame.net/images/increment16.gif
+File Name: C:\Downloaded Web Sites\www.rulergame.net\images\increment16.gif
+Content Type: image/gif
+
+Uri: https://www.rulergame.net/images/leftside.gif
+File Name: C:\Downloaded Web Sites\www.rulergame.net\images\leftside.gif
+Content Type: image/gif
+
+Uri: https://www.rulergame.net/images/quarter.gif
+File Name: C:\Downloaded Web Sites\www.rulergame.net\images\quarter.gif
+Content Type: image/gif
+
+Uri: https://www.rulergame.net/images/rightside.gif
+File Name: C:\Downloaded Web Sites\www.rulergame.net\images\rightside.gif
+Content Type: image/gif
+
+Uri: https://www.rulergame.net/images/rulerbottom.gif
+File Name: C:\Downloaded Web Sites\www.rulergame.net\images\rulerbottom.gif
+Content Type: image/gif
+
+Uri: https://www.rulergame.net/images/rulergame.gif
+File Name: C:\Downloaded Web Sites\www.rulergame.net\images\rulergame.gif
+Content Type: image/gif
+
+Uri: https://www.rulergame.net/images/scoresixteenths.gif
+File Name: C:\Downloaded Web Sites\www.rulergame.net\images\scoresixteenths.gif
+Content Type: image/gif
+
+Uri: https://www.rulergame.net/images/scoretimeron.gif
+File Name: C:\Downloaded Web Sites\www.rulergame.net\images\scoretimeron.gif
+Content Type: image/gif
+
+Uri: https://www.rulergame.net/images/sixteenth.gif
+File Name: C:\Downloaded Web Sites\www.rulergame.net\images\sixteenth.gif
+Content Type: image/gif
+
+Uri: https://www.rulergame.net/images/strike.gif
+File Name: C:\Downloaded Web Sites\www.rulergame.net\images\strike.gif
+Content Type: image/gif
+
+Uri: https://www.rulergame.net/images/whole.gif
+File Name: C:\Downloaded Web Sites\www.rulergame.net\images\whole.gif
+Content Type: image/gif
+
+Uri: https://www.rulergame.net/images_metric/cm.gif
+File Name: C:\Downloaded Web Sites\www.rulergame.net\images_metric\cm.gif
+Content Type: image/gif
+
+Uri: https://www.rulergame.net/images_metric/leftside.gif
+File Name: C:\Downloaded Web Sites\www.rulergame.net\images_metric\leftside.gif
+Content Type: image/gif
+
+Uri: https://www.rulergame.net/images_metric/metricrulerbottom.gif
+File Name: C:\Downloaded Web Sites\www.rulergame.net\images_metric\metricrulerbottom.gif
+Content Type: image/gif
+
+Uri: https://www.rulergame.net/images_metric/mm.gif
+File Name: C:\Downloaded Web Sites\www.rulergame.net\images_metric\mm.gif
+Content Type: image/gif
+
+Uri: https://www.rulergame.net/images_metric/mm5.gif
+File Name: C:\Downloaded Web Sites\www.rulergame.net\images_metric\mm5.gif
+Content Type: image/gif
+
+Uri: https://www.rulergame.net/images_metric/rightside.gif
+File Name: C:\Downloaded Web Sites\www.rulergame.net\images_metric\rightside.gif
+Content Type: image/gif
+
+Uri: https://www.rulergame.net/images_metric/scoremetric.gif
+File Name: C:\Downloaded Web Sites\www.rulergame.net\images_metric\scoremetric.gif
+Content Type: image/gif
+
+Uri: https://www.rulergame.net/images_metric/scoretimeron.gif
+File Name: C:\Downloaded Web Sites\www.rulergame.net\images_metric\scoretimeron.gif
+Content Type: image/gif
+
+Uri: https://www.rulergame.net/machinist-ruler-game.php
+File Name: C:\Downloaded Web Sites\www.rulergame.net\machinist-ruler-game.php.html
+Content Type: text/html
+
+Uri: https://www.rulergame.net/machinist-ruler/assets/machinist-ruler.css
+File Name: C:\Downloaded Web Sites\www.rulergame.net\machinist-ruler\assets\machinist-ruler.css
+Content Type: text/css
+
+Uri: https://www.rulergame.net/machinist-ruler/assets/standard-measuring.js
+File Name: C:\Downloaded Web Sites\www.rulergame.net\machinist-ruler\assets\standard-measuring.js
+Content Type: application/javascript
+
+Uri: https://www.rulergame.net/metric-micrometer-game.php
+File Name: C:\Downloaded Web Sites\www.rulergame.net\metric-micrometer-game.php.html
+Content Type: text/html
+
+Uri: https://www.rulergame.net/metric-micrometer/css/metric_micrometer.css
+File Name: C:\Downloaded Web Sites\www.rulergame.net\metric-micrometer\css\metric_micrometer.css
+Content Type: text/css
+
+Uri: https://www.rulergame.net/metric-micrometer/js/metric_micrometer.js
+File Name: C:\Downloaded Web Sites\www.rulergame.net\metric-micrometer\js\metric_micrometer.js
+Content Type: application/javascript
+
+Uri: https://www.rulergame.net/micrometer-game.php
+File Name: C:\Downloaded Web Sites\www.rulergame.net\micrometer-game.php.html
+Content Type: text/html
+
+Uri: https://www.rulergame.net/micrometer/css/imperial_micrometer.css
+File Name: C:\Downloaded Web Sites\www.rulergame.net\micrometer\css\imperial_micrometer.css
+Content Type: text/css
+
+Uri: https://www.rulergame.net/micrometer/js/imperial_micrometer.js
+File Name: C:\Downloaded Web Sites\www.rulergame.net\micrometer\js\imperial_micrometer.js
+Content Type: application/javascript
+
+Uri: https://www.rulergame.net/military-time-game.php
+File Name: C:\Downloaded Web Sites\www.rulergame.net\military-time-game.php.html
+Content Type: text/html
+
+Uri: https://www.rulergame.net/military-time/css/military-time.css
+File Name: C:\Downloaded Web Sites\www.rulergame.net\military-time\css\military-time.css
+Content Type: text/css
+
+Uri: https://www.rulergame.net/military-time/js/easeljs.min.js
+File Name: C:\Downloaded Web Sites\www.rulergame.net\military-time\js\easeljs.min.js
+Content Type: application/javascript
+
+Uri: https://www.rulergame.net/military-time/js/military_time.js
+File Name: C:\Downloaded Web Sites\www.rulergame.net\military-time\js\military_time.js
+Content Type: application/javascript
+
+Uri: https://www.rulergame.net/money-game.php
+File Name: C:\Downloaded Web Sites\www.rulergame.net\money-game.php.html
+Content Type: text/html
+
+Uri: https://www.rulergame.net/money/css/money_game.css
+File Name: C:\Downloaded Web Sites\www.rulergame.net\money\css\money_game.css
+Content Type: text/css
+
+Uri: https://www.rulergame.net/money/js/money_game.js
+File Name: C:\Downloaded Web Sites\www.rulergame.net\money\js\money_game.js
+Content Type: application/javascript
+
+Uri: https://www.rulergame.net/new-english-ruler-game.php
+File Name: C:\Downloaded Web Sites\www.rulergame.net\new-english-ruler-game.php.html
+Content Type: text/html
+
+Uri: https://www.rulergame.net/new-metric-ruler-game.php
+File Name: C:\Downloaded Web Sites\www.rulergame.net\new-metric-ruler-game.php.html
+Content Type: text/html
+
+Uri: https://www.rulergame.net/physician-scale-game.php
+File Name: C:\Downloaded Web Sites\www.rulergame.net\physician-scale-game.php.html
+Content Type: text/html
+
+Uri: https://www.rulergame.net/physician-scale/css/weight_scale.css
+File Name: C:\Downloaded Web Sites\www.rulergame.net\physician-scale\css\weight_scale.css
+Content Type: text/css
+
+Uri: https://www.rulergame.net/physician-scale/js/weight_scale.js
+File Name: C:\Downloaded Web Sites\www.rulergame.net\physician-scale\js\weight_scale.js
+Content Type: application/javascript
+
+Uri: https://www.rulergame.net/privacy-policy.php
+File Name: C:\Downloaded Web Sites\www.rulergame.net\privacy-policy.php.html
+Content Type: text/html
+
+Uri: https://www.rulergame.net/rulergame-new-metric.js
+File Name: C:\Downloaded Web Sites\www.rulergame.net\rulergame-new-metric.js
+Content Type: application/javascript
+
+Uri: https://www.rulergame.net/shopping-money-counting-game.php
+File Name: C:\Downloaded Web Sites\www.rulergame.net\shopping-money-counting-game.php.html
+Content Type: text/html
+
+Uri: https://www.rulergame.net/shopping-money-counting/css/shopping-money-counting-game.css
+File Name: C:\Downloaded Web Sites\www.rulergame.net\shopping-money-counting\css\shopping-money-counting-game.css
+Content Type: text/css
+
+Uri: https://www.rulergame.net/shopping-money-counting/js/shopping-money-counting-game.js
+File Name: C:\Downloaded Web Sites\www.rulergame.net\shopping-money-counting\js\shopping-money-counting-game.js
+Content Type: application/javascript
+
+Uri: https://www.rulergame.net/stadiometer-game.php
+File Name: C:\Downloaded Web Sites\www.rulergame.net\stadiometer-game.php.html
+Content Type: text/html
+
+Uri: https://www.rulergame.net/stadiometer/css/stadiometer.css
+File Name: C:\Downloaded Web Sites\www.rulergame.net\stadiometer\css\stadiometer.css
+Content Type: text/css
+
+Uri: https://www.rulergame.net/stadiometer/js/stadiometer.js
+File Name: C:\Downloaded Web Sites\www.rulergame.net\stadiometer\js\stadiometer.js
+Content Type: application/javascript
+
+Uri: https://www.rulergame.net/temperature-conversion-game.php
+File Name: C:\Downloaded Web Sites\www.rulergame.net\temperature-conversion-game.php.html
+Content Type: text/html
+
+Uri: https://www.rulergame.net/temperature-conversion/css/temperature-conversion.css
+File Name: C:\Downloaded Web Sites\www.rulergame.net\temperature-conversion\css\temperature-conversion.css
+Content Type: text/css
+
+Uri: https://www.rulergame.net/temperature-conversion/js/temperature-conversion.js
+File Name: C:\Downloaded Web Sites\www.rulergame.net\temperature-conversion\js\temperature-conversion.js
+Content Type: application/javascript
+
+Uri: https://www.rulergame.net/thermometer-game.php
+File Name: C:\Downloaded Web Sites\www.rulergame.net\thermometer-game.php.html
+Content Type: text/html
+
+Uri: https://www.rulergame.net/thermometer-reading/css/thermometer.css
+File Name: C:\Downloaded Web Sites\www.rulergame.net\thermometer-reading\css\thermometer.css
+Content Type: text/css
+
+Uri: https://www.rulergame.net/thermometer-reading/js/thermometer.js
+File Name: C:\Downloaded Web Sites\www.rulergame.net\thermometer-reading\js\thermometer.js
+Content Type: application/javascript
+
+Uri: https://www.rulergame.net/triple-beam-balance-game.php
+File Name: C:\Downloaded Web Sites\www.rulergame.net\triple-beam-balance-game.php.html
+Content Type: text/html
+
+Uri: https://www.rulergame.net/triple-beam-balance/css/triple-beam-balance.css
+File Name: C:\Downloaded Web Sites\www.rulergame.net\triple-beam-balance\css\triple-beam-balance.css
+Content Type: text/css
+
+Uri: https://www.rulergame.net/triple-beam-balance/js/triple_beam.js
+File Name: C:\Downloaded Web Sites\www.rulergame.net\triple-beam-balance\js\triple_beam.js
+Content Type: application/javascript
+
+Uri: https://www.rulergame.net/v2-metric-ruler-game.php
+File Name: C:\Downloaded Web Sites\www.rulergame.net\v2-metric-ruler-game.php.html
+Content Type: text/html
+
+Uri: https://www.rulergame.net/v2-standard-english-ruler-game.php
+File Name: C:\Downloaded Web Sites\www.rulergame.net\v2-standard-english-ruler-game.php.html
+Content Type: text/html
+
+Uri: https://www.rulergame.net/vernier-caliper-game.php
+File Name: C:\Downloaded Web Sites\www.rulergame.net\vernier-caliper-game.php.html
+Content Type: text/html
+
+Uri: https://www.rulergame.net/vernier-caliper/css/vernier_caliper.css
+File Name: C:\Downloaded Web Sites\www.rulergame.net\vernier-caliper\css\vernier_caliper.css
+Content Type: text/css
+
+Uri: https://www.rulergame.net/vernier-caliper/js/hammer.js
+File Name: C:\Downloaded Web Sites\www.rulergame.net\vernier-caliper\js\hammer.js
+Content Type: application/javascript
+
+Uri: https://www.rulergame.net/vernier-caliper/js/vernier_caliper.js
+File Name: C:\Downloaded Web Sites\www.rulergame.net\vernier-caliper\js\vernier_caliper.js
+Content Type: application/javascript
+

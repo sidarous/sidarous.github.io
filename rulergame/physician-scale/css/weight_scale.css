@@ -1,0 +1,646 @@
+body, html { overflow-x: hidden; }
+body {
+    font-size: 1em;
+    line-height: 1.4;
+    /* margin-left: 15%;
+    margin-right: 15%; */
+    background: #f1faff;
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal; 
+    -webkit-font-smoothing: antialiased; /* Fix for webkit rendering */
+    -webkit-text-size-adjust: 100%;
+}
+
+
+.top_titlebar
+{
+    align-items: center;
+    height: 50px;
+    width: 100%;
+    background: #f1faff;
+    border-bottom:#155726 2px solid;
+    box-shadow: #155726 ;
+    /*border-left:#155726 2px solid;
+    border-right:#155726 2px solid;
+    */
+}
+
+.top_btn
+{
+    margin-top: 5px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    background-color: #155726 ; 
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 2em;
+    color: white;
+    
+}
+.game-name
+{
+    /* margin-top: 200px; */
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.setting-section
+{
+    height: 110px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    background: #f1faff;
+    position: relative;
+}
+/* 
+.btn-game-start
+{
+    
+    position: relative;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    background-color: #155726 ; 
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1em;
+    color: white;
+} */
+
+.vertical-center
+{
+    margin-top: 40px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+}
+
+.canvas-area
+{
+    /* margin-top: 10px; */
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    /* min-width:100%; */
+
+}
+
+.resultsBarLabel {
+    font-size: 9px;
+    margin-top: 0px;
+}
+#resultsBar {
+    height: 50px;
+    margin: 20px auto 20px auto;
+    max-width: 800px;
+    /*border: 2px solid black;*/
+}
+
+#scoreColumn {
+    width: 90px;
+    float: left;
+}
+#txtScore{
+    font-family: Consolas, "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", Monaco, "Courier New", "monospace";
+    font-size: 30px;
+    font-weight: bold;
+    height: 30px;
+}
+ #timerColumn {
+    float: left;
+    width: 40px;
+}
+#timerCanvas {
+    height: 30px;
+    width: 30px;
+}
+#levelColumn {
+    float: left;
+    width: 80px;
+}
+#levelCanvas {
+    height: 30px;
+    width: 70px;
+}
+#strikesColumn {
+    float: left;
+    width: 100px;
+}            
+#txtStrikes {
+    height: 30px;
+}
+#txtStrikes img {
+    height: 30px;
+    width: 30px;
+}                        
+.resultsBarLabel {
+    font-size: 9px;
+    margin-top: 0px;
+}
+#timerColumn .resultsBarLabel,
+#levelColumn .resultsBarLabel {
+    margin-top: -4px;
+}
+
+
+#questionBar {
+    position: absolute;
+    height: 60px;
+    line-height: 1;
+    width: 100%;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    display: none;
+}
+
+#txtQuestion {
+    width: 100%;
+    text-align: center;
+    height: 60px;
+}
+#txtQuestion .questionInstruction{
+    font-size: 20px;
+    font-weight: bold;
+    color: #000000;                
+}
+#txtQuestion .questionMeasurement{
+    font-size: 30px;
+    font-weight: bold;
+    color: #000000;               
+}
+#txtQuestion .questionWrongInstruction{
+    font-size: 25px;
+    font-weight: bold;
+    color: #f44336;                
+}
+#txtQuestion .questionWrongMeasurement{
+    font-size: 25px;
+    font-weight: bold;
+    color: #f44336;               
+}
+#txtQuestion .gameOver{
+    font-size: 35px;
+    font-weight: bold;
+    color: #f44336;
+}            
+
+
+
+#playerCanvas {
+    position: absolute;
+    /*background-color: #ffffff !important;*/
+    z-index: 1;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+/* 
+#rulerCanvas {
+    position: absolute;
+    z-index: 2;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+} */
+
+#rulerCanvas
+{
+   /* min-width:fit-content; */
+   width: 100%; 
+   
+}
+
+#myCanvas
+{
+    width: 100%;
+}
+
+#strikeBoard {
+    margin-top: -190px;
+    position: absolute;
+    height: 80px;
+    width: 240px;
+    display: none;
+    z-index: 3;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+#strikeBoard img {
+    float: left;
+    height: 80px;
+    width: 80px;
+}
+#cheerBoard {
+    position: absolute;
+    height: 60px;
+    width: 310px;
+    margin-top: -190px;
+    display: none;
+    z-index: 4;
+    text-align: center;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);                
+}
+
+.cheer{
+    position: absolute;
+    width: 100%;
+    height: 60px;
+    max-height: 60px;
+    padding-top: 15px;
+    font-size: 30px;
+    color: purple;
+    bottom: 0px;
+}
+.level {
+    margin-top: 150px;
+    position: absolute;
+    width: 100%;
+    height: 60px;
+    max-height: 60px;                
+    font-size: 50px;
+    font-weight: 900;
+    color: darkblue;
+    bottom: 0px;
+}
+
+.settingsLabel {
+    width: 150px;
+}
+
+#preferencesBox {
+    width: 315px;
+    /*border: 2px solid #000;
+    background-color: #ffff99;
+    padding: 3px;*/
+    margin: auto;
+    margin-top: 60px;
+    overflow: auto;
+    display: none;
+    z-index: 5;
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);                  
+}
+#timerBox, #soundsBox, #unitSelection, #modeSelection
+{
+    height: 45px;
+    display: flex;
+    align-items: center;
+}
+
+
+#buttonBar {
+    position: absolute;
+    height: 60px;
+    width: 300px;
+    margin: 0px auto 0px auto;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);                
+}
+
+#btnStart,
+#btnSettings {
+    background-color: #339966;
+    color: white;
+    border: 0;
+    border-radius: 5px;
+    height: 40px;
+    width: 140px;
+    font-size: 24px;
+    margin: 10px auto 10px auto;
+    cursor: pointer;
+}
+#btnSettings {
+    float: right;
+}
+
+#btnSubmit
+{
+    /* float: left; */
+    background-color: #339966;
+    color: white;
+    border: 0;
+    border-radius: 5px;
+    height: 40px;
+    width: 200px;
+    font-size: 24px;
+    /* margin: 10px auto 10px auto; */
+    cursor: pointer;
+    left: 50%;
+    /* -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);                 */
+}
+
+#submitColumn
+{
+    /* float: right; */
+    /* float: center; */
+    
+    /* width: 300px; */
+    /* height: 40px; */
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+#displayBoard
+{
+    /* margin: auto; */
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+}
+
+
+#detailedControl
+{
+    height: fit-content;
+    background-color: #f1faff;
+
+}
+
+#sleevemain
+{
+    /* position: absolute; */
+    /* left: 200px;
+    top: 800px;  */
+}
+#labelsleevemain
+{
+    /* width: 100px; */
+    /* float: right; */
+    /* text-align: right; */
+    /* margin-right: 5px; */
+    /* padding-right: 5px; */
+    /* align-items: right !important; */
+    /* margin-right: 20px; */
+}
+
+#labelverniersmall
+{
+    /* width: 100px; */
+    /* float: right; */
+    text-align: right;
+    /* margin-right: 5px; */
+    padding-right: 5px;
+    /* align-items: right !important; */
+    /* margin-right: 20px; */
+}
+
+#labelthimblescale
+{
+    /* align-items: center; */
+    /* margin-right: 20px; */
+    text-align: right;
+    /* margin-right: 5px; */
+    padding-right: 5px;
+
+}
+
+#labelvernierscale
+{
+	/* align-items: center; */
+    /* margin-right: 20px; */
+    text-align: right;
+    /* margin-right: 5px; */
+    padding-right: 5px;
+}
+
+#sleevemainControl
+{
+    /* position: relative; */
+    
+
+    /* top: 600px; */
+    /* width: 70px; */
+    /* height: 20px; */
+    /* left: 170px;  */
+    /* top: 10px; */
+    /* left: 100%; */
+    /* border: solid 1px lightgrey; */
+}
+
+
+#verniersmallControl
+{
+    position: relative;
+    
+
+    /* top: 600px; */
+    width: 70px;
+    /* height: 20px; */
+    /* left: 170px;  */
+    /* top: 10px; */
+    /* left: 100%; */
+    border: solid 1px lightgrey;
+}
+#thimble
+{
+    /* position: absolute; */
+    /* left: 200px;
+    top: 800px;  */
+}
+#thimbleControl
+{
+    /* position: absolute;
+    
+    left: 170px; 
+    top: -78px; */
+    width: 70px;
+    /* height: 20px; */
+}
+
+#sleevesmall
+{
+    /* position: absolute; */
+    
+}
+#sleevesmallControl
+{
+	/*
+    position: absolute;
+    
+    
+    left: 170px; 
+    top: -45px;
+	*/
+	width: 70px;
+	/* height: 20px; */
+}
+
+
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  
+  margin: 0;
+}
+
+.number-input {
+  display: flex;
+  font-weight: bold;
+}
+
+input {
+  width: 30px;
+  border: solid 1px lightgrey;
+  border-radius: 0;
+  text-align: center;
+  
+}
+
+.spinner {
+  border: solid 1px lightgrey;
+  
+}
+
+#btnsleevedecrement
+{
+    /* left: 150px; 
+    top: 10px;
+    width: 25px; */
+    /* height: 20px; */
+    /* position: absolute; */
+    /* text-align: center;
+    padding-left: 0px;
+    padding-right: 0px; */
+}
+#btnsleeveincrement
+{
+    /* left: 252px; 
+    top: 10px;
+    width: 25px; */
+    /* height: 20px; */
+    /* position: absolute; */
+    /* text-align: center;
+    padding-left: 0px;
+    padding-right: 0px; */
+}
+
+
+#btnsmalldecrement
+{
+    width: 45px;
+    /* height: 20px; */
+    /* position: absolute; */
+    text-align: center;
+    padding-left: 0px;
+    padding-right: 0px;
+	margin:0 5px 10px 0;
+}
+#btnsmallincrement
+{
+    width: 45px;
+    /* height: 20px; */
+    /* position: absolute; */
+    text-align: center;
+    padding-left: 0px;
+    padding-right: 0px;
+	margin:0 0 10px 5px;
+}
+
+#btnlargedecrement
+{
+    width: 45px;
+    /* height: 20px; */
+    /* position: absolute; */
+    text-align: center;
+    padding-left: 0px;
+    padding-right: 0px;
+	margin:0 5px 10px 0;
+}
+#btnlargeincrement
+{
+    width: 45px;
+    /* height: 20px; */
+    /* position: absolute; */
+    text-align: center;
+    padding-left: 0px;
+    padding-right: 0px;
+	margin:0 0 10px 5px;
+}
+
+.spinner:hover {
+  background: lightgrey;
+}
+
+.spinner:first-child {
+  border-radius: 3px 0 0 3px;
+}
+
+.spinner:last-child {
+  border-radius: 0 3px 3px 0;
+}
+
+#thimbledecrement
+{
+    /* left: 150px; 
+    top: -78px;
+    position: absolute; */
+    width: 25px;
+    /* height: 20px; */
+    text-align: center;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+#thimbleincrement
+{
+    /* left: 252px; 
+    top: -78px;
+    position: absolute; */
+    width: 25px;
+    /* height: 20px; */
+    text-align: center;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+#vernierdecrement
+{
+	/*
+    left: 150px; 
+    top: -45px;
+    position: absolute;
+	*/
+    width: 25px;
+	/* height: 20px; */
+    text-align: center;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+#vernierincrement
+{
+	/*
+    left: 252px; 
+    top: -45px;
+    position: absolute;
+	*/
+    width: 25px;
+	/* height: 20px; */
+    text-align: center;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+#instructionsBox {
+max-width:1100px;
+align:center;
+margin:auto;
+}
+
+#btnStart:hover,
+#btnSettings:hover,
+#btnSubmit:hover {
+    background-color: #127041;}

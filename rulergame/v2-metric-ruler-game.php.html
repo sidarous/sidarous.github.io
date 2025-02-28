@@ -1,0 +1,608 @@
+﻿<!DOCTYPE html>
+<!-- InstanceBeginEditable name="licensetext" -->
+<!--
+/*
+ *------------------------------------------
+ * The Ruler Game - Metric Edition (v.2.6.0)
+ *
+ * Copyright 2018, Spears Technologies, Inc. and Ricky Spears
+ * ALL RIGHTS RESERVED
+ *
+ * Copying, distributing, or making derivative works
+ * of this source code is forbidden by U.S. and
+ * international copyright law.
+ *
+ * This code can be licensed for use on a web site or intranet.
+ * For licensing information please visit our web site at
+ * https://www.rulergame.net or email me at
+ * webmaster@rulergame.net
+ * 
+ * This script is being delivered to you AS IS. Spears Technologies, Inc. and Ricky Spears
+ * make no warranty as to its use or performance. SPEARS TECHNOLOGIES, INC. AND RICKY SPEARS 
+ * DO NOT AND CANNOT WARRANT THE PERFORMANCE OR RESULTS YOU MAY OBTAIN BY 
+ * USING THIS SCRIPT OR DOCUMENTATION. SPEARS TECHNOLOGIES, INC. AND RICKY SPEARS MAKE 
+ * NO WARRANTIES, EXPRESSED OR IMPLIED, AS TO NONINFRINGEMENT OF THIRD-PARTY 
+ * RIGHTS, MERCHANTABILITY, OR FITNESS FOR ANY PARTICULAR PURPOSE. IN NO EVENT
+ * WILL SPEARS TECHNOLOGIES, INC. OR RICKY SPEARS BE LIABLE TO YOU FOR ANY CONSEQUENTIAL,
+ * INCIDENTAL, OR SPECIAL DAMAGES, ARISING FROM YOUR USE OF, OR YOUR INABILITY TO USE
+ * THIS SCRIPT, INCLUDING ANY LOST PROFITS OR LOST SAVINGS,
+ * EVEN IF A SPEARS TECHNOLOGIES, INC. OR RICKY SPEARS REPRESENTATIVE HAS BEEN ADVISED OF 
+ * THE POSSIBILITY OF SUCH DAMAGES, OR FOR ANY CLAIM BY ANY THIRD PARTY.
+ * ------------------------------------------
+*/
+-->
+<!-- InstanceEndEditable -->
+<html><!-- InstanceBegin template="/Templates/2018-template-master.dwt" codeOutsideHTMLIsLocked="false" -->
+    <head>  
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="UTF-8">
+        <!-- InstanceBeginEditable name="doctitle" -->
+        <title>The Ruler Game - Learn to read a Metric Ruler</title>
+        <meta name="description" content="This online game will help you learn to read a metric ruler (millimeters and centimeters). Fun and easy for both students and adults.">
+		<meta property="og:title" content="The Ruler Game - Learn to read a Metric Ruler">
+<meta property="og:description" content="This online game will help you learn to read a metric ruler (millimeters and centimeters). Fun and easy for both students and adults.">
+<meta property="og:image" content="https://www.rulergame.net/v2-metric-ruler-game.php">
+<meta property="og:url" content="https://www.rulergame.net/v2-metric-ruler-game.php">
+<meta property="og:type" content="website">
+<link rel="canonical" href="v2-metric-ruler-game.php.html">
+        <!-- InstanceEndEditable -->
+        <script src="assets/jquery-3.6.0.min.js"></script>
+        <link rel="stylesheet" href="assets/css/site.css">
+        <link href="css?family=Roboto" rel="stylesheet">
+        <!-- InstanceBeginEditable name="head" -->
+        <script src="assets/rulergame-v2-metricOBF.js"></script>
+        <style type="text/css">
+            h1 {
+                    font-size: 16pt;
+            }
+            .rginput {
+                font-family: Verdana, Arial, Helvetica, sans-serif;
+                font-size: 10pt;
+                background-color: #ddffdd;
+                border: thin solid #339966;
+                font-weight: bold;
+            }
+            body {
+                font-family: Verdana, Arial, Helvetica, sans-serif;
+                font-size: 10pt;
+            }
+            td {
+                font-family: Verdana, Arial, Helvetica, sans-serif;
+                font-size: 10pt;
+            }
+
+            .topads {
+                 padding-top: 5px;
+                 padding-bottom: 5px;
+                 border-top: 3px solid black;	
+                 border-bottom: 3px solid black;
+                 text-align:center;	
+            }
+
+            .leftnav a {
+                font-weight:bold;
+                font-size:12pt;
+            }
+            #preferencesad {
+                z-index:0;
+                text-align:center;	
+                position:absolute;
+                text-align:center;
+                margin-left:40px;
+            }
+            #preferences {
+                z-index:10;
+                position:absolute;
+                margin-left:40px;
+            }
+            #preferences table {
+                min-height: 400px;
+                margin-bottom: 50px;	
+            }
+            #instructions {
+                margin-top: 410px;
+            }
+        </style>
+        <!-- InstanceEndEditable -->
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="gtag/js?id=G-XE0GQQH6FP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-XE0GQQH6FP');
+</script>
+<!-- AdThrive Head Tag Manual -->
+<script data-no-optimize="1" data-cfasync="false">
+(function(w, d) {
+	w.adthrive = w.adthrive || {};
+	w.adthrive.cmd = w.
+	adthrive.cmd || [];
+	w.adthrive.plugin = 'adthrive-ads-manual';
+	w.adthrive.host = 'ads.adthrive.com';var s = d.createElement('script');
+	s.async = true;
+	s.referrerpolicy='no-referrer-when-downgrade';
+	s.src = 'https://' + w.adthrive.host + '/sites/6441cbd48ef14750ba9ecca1/ads.min.js?referrer=' + w.encodeURIComponent(w.location.href) + '&cb=' + (Math.floor(Math.random() * 100) + 1);
+	var n = d.getElementsByTagName('script')[0];
+	n.parentNode.insertBefore(s, n);
+})(window, document);
+</script>
+<!-- End of AdThrive Head Tag -->
+
+    </head>
+
+    <body class="w3-pale-green">
+        <!-- Navbar -->
+<div class="z100">
+    <div class="w3-bar w3-pale-green w3-card w3-left-align w3-large">
+        <a class="w3-bar-item w3-button w3-padding-large rulergame-dark-green" href="javascript:void(0);" onclick="toggleNavMenu()" title="Toggle Navigation Menu">Menu</a>
+        <div id="topBanner"><a href="index.htm"><img src="images/rulergame.gif" id="topBannerImage" alt="The Ruler Game - Learn to read a ruler"></a></div>
+    </div>
+    <div id="NavMenu" class="w3-dropdown-content w3-bar-block w3-border w3-large rulergame-dark-green z100">
+	<a href="index.htm" class="w3-bar-item w3-button w3-padding-large">Home</a>
+        <a href="javascript:void(0);" class="w3-bar-item w3-button w3-padding-large" onclick="toggleCategory('measuringGames')">Measuring Games</a>
+        <div id="measuringGames" class="w3-hide w3-bar-block rulergame-submenu">
+            <a href="new-english-ruler-game.php.html" class="w3-bar-item w3-button w3-padding-large">Inch Ruler Game</a>
+            <a href="new-metric-ruler-game.php.html" class="w3-bar-item w3-button w3-padding-large">Metric Ruler Game</a>
+            <a href="micrometer-game.php.html" class="w3-bar-item w3-button w3-padding-large">Micrometer Game</a>
+            <a href="metric-micrometer-game.php.html" class="w3-bar-item w3-button w3-padding-large">Metric Micrometer Game</a>
+			<a href="dial-caliper-game.php.html" class="w3-bar-item w3-button w3-padding-large">Dial Caliper Game</a>
+			<a href="vernier-caliper-game.php.html" class="w3-bar-item w3-button w3-padding-large">Vernier Caliper Game</a>
+			<a href="graduated-cylinder-game.php.html" class="w3-bar-item w3-button w3-padding-large">Graduated Cylinder Game</a>
+			<a href="architectural-scale-game.php.html" class="w3-bar-item w3-button w3-padding-large">Architectural Scale Game</a>
+			<a href="machinist-ruler-game.php.html" class="w3-bar-item w3-button w3-padding-large">Machinist Ruler Game</a>
+			<a href="triple-beam-balance-game.php.html" class="w3-bar-item w3-button w3-padding-large">Triple Beam Balance Game</a>
+        </div>
+        <a href="javascript:void(0);" class="w3-bar-item w3-button w3-padding-large" onclick="toggleCategory('timeGames')">Time and Temperature Games</a>
+        <div id="timeGames" class="w3-hide w3-bar-block rulergame-submenu">
+            <a href="clock-game.php.html" class="w3-bar-item w3-button w3-padding-large">Clock Game</a>
+            <a href="military-time-game.php.html" class="w3-bar-item w3-button w3-padding-large">Military Time Game</a>
+			<a href="thermometer-game.php.html" class="w3-bar-item w3-button w3-padding-large">Thermometer Reading Game</a>
+            <a href="temperature-conversion-game.php.html" class="w3-bar-item w3-button w3-padding-large">Temperature Conversion Game</a>
+        </div>
+        <a href="javascript:void(0);" class="w3-bar-item w3-button w3-padding-large" onclick="toggleCategory('moneyGames')">Money & Life Games</a>
+        <div id="moneyGames" class="w3-hide w3-bar-block rulergame-submenu">
+            <a href="money-game.php.html" class="w3-bar-item w3-button w3-padding-large">Money Counting Game</a>
+            <a href="shopping-money-counting-game.php.html" class="w3-bar-item w3-button w3-padding-large">Shopping Money Counting Game</a>
+            <a href="counting-back-change-game.php.html" class="w3-bar-item w3-button w3-padding-large">Counting Back Change Game</a>
+			<a href="blood-pressure-game.php.html" class="w3-bar-item w3-button w3-padding-large">Blood Pressure Game</a>
+			<a href="stadiometer-game.php.html" class="w3-bar-item w3-button w3-padding-large">Stadiometer Game</a>
+			<a href="physician-scale-game.php.html" class="w3-bar-item w3-button w3-padding-large">Physician Scale Game</a>
+			<a href="cooking-conversions-game.php.html" class="w3-bar-item w3-button w3-padding-large">Cooking Conversions Game</a>
+        </div>
+    </div>
+</div>
+      
+        <div id="mainBodyContent" class="w3-container w3-margin-top">
+            <!-- InstanceBeginEditable name="mainBodyContent" -->
+
+<table width="1000" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr>
+    <td valign="top" width="750">
+      <h1 align="center">The Ruler Game - Learn To Read A Metric Ruler</h1>
+      <form name="game">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td><b>Score:
+              <input type="text" name="score" size="8" class="rginput" onfocus="this.blur();">
+              </b></td>
+            <td>
+<table width="80" height="20" border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td width="80" height="10"><img src="images_metric/scoretimeron.gif" name="imgtimerstatus" width="80" height="10" id="imgtimerstatus"></td>
+                </tr>
+                <tr>
+                  <td width="80" height="10"><img src="images_metric/scoremetric.gif" name="imgincrementstatus" width="80" height="10" id="imgincrementstatus"></td>
+                </tr>
+        </table></td>
+            <td><b>&nbsp;Strikes: 
+              <input type="text" name="strikes" size="1" class="rginput" onfocus="this.blur();">
+          &nbsp;&nbsp;</b></td>
+            <td><b>Level: 
+              <input type="text" name="level" size="2" class="rginput" onfocus="this.blur();">
+          &nbsp;</b></td>
+            <td><b>Timer: 
+              <input type="text" name="timer" size="3" class="rginput" onfocus="this.blur();">
+              </b></td>
+          </tr>
+        </table>
+        <br>
+        <table width="602" border="0" cellspacing="0" cellpadding="0" align="center">
+        <tr> 
+          <td width="4"><img name="img00" src="images_metric/leftside.gif" width="4" height="35"></td>
+          <td width="6"><img name="img01" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(1)" onmouseover="img01.src='images_metric/mmb.gif';" onmouseout="img01.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img02" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(2)" onmouseover="img02.src='images_metric/mmb.gif';" onmouseout="img02.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img03" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(3)" onmouseover="img03.src='images_metric/mmb.gif';" onmouseout="img03.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img04" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(4)" onmouseover="img04.src='images_metric/mmb.gif';" onmouseout="img04.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img05" src="images_metric/mm5.gif" width="6" height="35" onclick="checkguess(5)" onmouseover="img05.src='images_metric/mm5b.gif';" onmouseout="img05.src='images_metric/mm5.gif'"></td>
+          <td width="6"><img name="img06" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(6)" onmouseover="img06.src='images_metric/mmb.gif';" onmouseout="img06.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img07" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(7)" onmouseover="img07.src='images_metric/mmb.gif';" onmouseout="img07.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img08" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(8)" onmouseover="img08.src='images_metric/mmb.gif';" onmouseout="img08.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img09" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(9)" onmouseover="img09.src='images_metric/mmb.gif';" onmouseout="img09.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img10" src="images_metric/cm.gif" width="6" height="35" onclick="checkguess(10)" onmouseover="img10.src='images_metric/cmb.gif';" onmouseout="img10.src='images_metric/cm.gif'"></td>
+
+          <td width="6"><img name="img11" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(11)" onmouseover="img11.src='images_metric/mmb.gif';" onmouseout="img11.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img12" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(12)" onmouseover="img12.src='images_metric/mmb.gif';" onmouseout="img12.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img13" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(13)" onmouseover="img13.src='images_metric/mmb.gif';" onmouseout="img13.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img14" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(14)" onmouseover="img14.src='images_metric/mmb.gif';" onmouseout="img14.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img15" src="images_metric/mm5.gif" width="6" height="35" onclick="checkguess(15)" onmouseover="img15.src='images_metric/mm5b.gif';" onmouseout="img15.src='images_metric/mm5.gif'"></td>
+          <td width="6"><img name="img16" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(16)" onmouseover="img16.src='images_metric/mmb.gif';" onmouseout="img16.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img17" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(17)" onmouseover="img17.src='images_metric/mmb.gif';" onmouseout="img17.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img18" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(18)" onmouseover="img18.src='images_metric/mmb.gif';" onmouseout="img18.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img19" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(19)" onmouseover="img19.src='images_metric/mmb.gif';" onmouseout="img19.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img20" src="images_metric/cm.gif" width="6" height="35" onclick="checkguess(20)" onmouseover="img20.src='images_metric/cmb.gif';" onmouseout="img20.src='images_metric/cm.gif'"></td>
+
+          <td width="6"><img name="img21" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(21)" onmouseover="img21.src='images_metric/mmb.gif';" onmouseout="img21.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img22" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(22)" onmouseover="img22.src='images_metric/mmb.gif';" onmouseout="img22.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img23" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(23)" onmouseover="img23.src='images_metric/mmb.gif';" onmouseout="img23.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img24" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(24)" onmouseover="img24.src='images_metric/mmb.gif';" onmouseout="img24.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img25" src="images_metric/mm5.gif" width="6" height="35" onclick="checkguess(25)" onmouseover="img25.src='images_metric/mm5b.gif';" onmouseout="img25.src='images_metric/mm5.gif'"></td>
+          <td width="6"><img name="img26" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(26)" onmouseover="img26.src='images_metric/mmb.gif';" onmouseout="img26.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img27" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(27)" onmouseover="img27.src='images_metric/mmb.gif';" onmouseout="img27.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img28" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(28)" onmouseover="img28.src='images_metric/mmb.gif';" onmouseout="img28.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img29" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(29)" onmouseover="img29.src='images_metric/mmb.gif';" onmouseout="img29.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img30" src="images_metric/cm.gif" width="6" height="35" onclick="checkguess(30)" onmouseover="img30.src='images_metric/cmb.gif';" onmouseout="img30.src='images_metric/cm.gif'"></td>
+
+          <td width="6"><img name="img31" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(31)" onmouseover="img31.src='images_metric/mmb.gif';" onmouseout="img31.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img32" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(32)" onmouseover="img32.src='images_metric/mmb.gif';" onmouseout="img32.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img33" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(33)" onmouseover="img33.src='images_metric/mmb.gif';" onmouseout="img33.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img34" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(34)" onmouseover="img34.src='images_metric/mmb.gif';" onmouseout="img34.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img35" src="images_metric/mm5.gif" width="6" height="35" onclick="checkguess(35)" onmouseover="img35.src='images_metric/mm5b.gif';" onmouseout="img35.src='images_metric/mm5.gif'"></td>
+          <td width="6"><img name="img36" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(36)" onmouseover="img36.src='images_metric/mmb.gif';" onmouseout="img36.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img37" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(37)" onmouseover="img37.src='images_metric/mmb.gif';" onmouseout="img37.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img38" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(38)" onmouseover="img38.src='images_metric/mmb.gif';" onmouseout="img38.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img39" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(39)" onmouseover="img39.src='images_metric/mmb.gif';" onmouseout="img39.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img40" src="images_metric/cm.gif" width="6" height="35" onclick="checkguess(40)" onmouseover="img40.src='images_metric/cmb.gif';" onmouseout="img40.src='images_metric/cm.gif'"></td>
+
+          <td width="6"><img name="img41" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(41)" onmouseover="img41.src='images_metric/mmb.gif';" onmouseout="img41.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img42" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(42)" onmouseover="img42.src='images_metric/mmb.gif';" onmouseout="img42.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img43" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(43)" onmouseover="img43.src='images_metric/mmb.gif';" onmouseout="img43.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img44" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(44)" onmouseover="img44.src='images_metric/mmb.gif';" onmouseout="img44.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img45" src="images_metric/mm5.gif" width="6" height="35" onclick="checkguess(45)" onmouseover="img45.src='images_metric/mm5b.gif';" onmouseout="img45.src='images_metric/mm5.gif'"></td>
+          <td width="6"><img name="img46" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(46)" onmouseover="img46.src='images_metric/mmb.gif';" onmouseout="img46.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img47" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(47)" onmouseover="img47.src='images_metric/mmb.gif';" onmouseout="img47.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img48" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(48)" onmouseover="img48.src='images_metric/mmb.gif';" onmouseout="img48.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img49" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(49)" onmouseover="img49.src='images_metric/mmb.gif';" onmouseout="img49.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img50" src="images_metric/cm.gif" width="6" height="35" onclick="checkguess(50)" onmouseover="img50.src='images_metric/cmb.gif';" onmouseout="img50.src='images_metric/cm.gif'"></td>
+
+          <td width="6"><img name="img51" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(51)" onmouseover="img51.src='images_metric/mmb.gif';" onmouseout="img51.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img52" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(52)" onmouseover="img52.src='images_metric/mmb.gif';" onmouseout="img52.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img53" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(53)" onmouseover="img53.src='images_metric/mmb.gif';" onmouseout="img53.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img54" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(54)" onmouseover="img54.src='images_metric/mmb.gif';" onmouseout="img54.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img55" src="images_metric/mm5.gif" width="6" height="35" onclick="checkguess(55)" onmouseover="img55.src='images_metric/mm5b.gif';" onmouseout="img55.src='images_metric/mm5.gif'"></td>
+          <td width="6"><img name="img56" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(56)" onmouseover="img56.src='images_metric/mmb.gif';" onmouseout="img56.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img57" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(57)" onmouseover="img57.src='images_metric/mmb.gif';" onmouseout="img57.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img58" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(58)" onmouseover="img58.src='images_metric/mmb.gif';" onmouseout="img58.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img59" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(59)" onmouseover="img59.src='images_metric/mmb.gif';" onmouseout="img59.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img60" src="images_metric/cm.gif" width="6" height="35" onclick="checkguess(60)" onmouseover="img60.src='images_metric/cmb.gif';" onmouseout="img60.src='images_metric/cm.gif'"></td>
+
+          <td width="6"><img name="img61" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(61)" onmouseover="img61.src='images_metric/mmb.gif';" onmouseout="img61.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img62" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(62)" onmouseover="img62.src='images_metric/mmb.gif';" onmouseout="img62.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img63" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(63)" onmouseover="img63.src='images_metric/mmb.gif';" onmouseout="img63.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img64" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(64)" onmouseover="img64.src='images_metric/mmb.gif';" onmouseout="img64.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img65" src="images_metric/mm5.gif" width="6" height="35" onclick="checkguess(65)" onmouseover="img65.src='images_metric/mm5b.gif';" onmouseout="img65.src='images_metric/mm5.gif'"></td>
+          <td width="6"><img name="img66" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(66)" onmouseover="img66.src='images_metric/mmb.gif';" onmouseout="img66.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img67" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(67)" onmouseover="img67.src='images_metric/mmb.gif';" onmouseout="img67.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img68" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(68)" onmouseover="img68.src='images_metric/mmb.gif';" onmouseout="img68.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img69" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(69)" onmouseover="img69.src='images_metric/mmb.gif';" onmouseout="img69.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img70" src="images_metric/cm.gif" width="6" height="35" onclick="checkguess(70)" onmouseover="img70.src='images_metric/cmb.gif';" onmouseout="img70.src='images_metric/cm.gif'"></td>
+
+          <td width="6"><img name="img71" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(71)" onmouseover="img71.src='images_metric/mmb.gif';" onmouseout="img71.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img72" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(72)" onmouseover="img72.src='images_metric/mmb.gif';" onmouseout="img72.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img73" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(73)" onmouseover="img73.src='images_metric/mmb.gif';" onmouseout="img73.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img74" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(74)" onmouseover="img74.src='images_metric/mmb.gif';" onmouseout="img74.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img75" src="images_metric/mm5.gif" width="6" height="35" onclick="checkguess(75)" onmouseover="img75.src='images_metric/mm5b.gif';" onmouseout="img75.src='images_metric/mm5.gif'"></td>
+          <td width="6"><img name="img76" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(76)" onmouseover="img76.src='images_metric/mmb.gif';" onmouseout="img76.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img77" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(77)" onmouseover="img77.src='images_metric/mmb.gif';" onmouseout="img77.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img78" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(78)" onmouseover="img78.src='images_metric/mmb.gif';" onmouseout="img78.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img79" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(79)" onmouseover="img79.src='images_metric/mmb.gif';" onmouseout="img79.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img80" src="images_metric/cm.gif" width="6" height="35" onclick="checkguess(80)" onmouseover="img80.src='images_metric/cmb.gif';" onmouseout="img80.src='images_metric/cm.gif'"></td>
+
+          <td width="6"><img name="img81" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(81)" onmouseover="img81.src='images_metric/mmb.gif';" onmouseout="img81.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img82" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(82)" onmouseover="img82.src='images_metric/mmb.gif';" onmouseout="img82.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img83" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(83)" onmouseover="img83.src='images_metric/mmb.gif';" onmouseout="img83.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img84" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(84)" onmouseover="img84.src='images_metric/mmb.gif';" onmouseout="img84.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img85" src="images_metric/mm5.gif" width="6" height="35" onclick="checkguess(85)" onmouseover="img85.src='images_metric/mm5b.gif';" onmouseout="img85.src='images_metric/mm5.gif'"></td>
+          <td width="6"><img name="img86" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(86)" onmouseover="img86.src='images_metric/mmb.gif';" onmouseout="img86.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img87" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(87)" onmouseover="img87.src='images_metric/mmb.gif';" onmouseout="img87.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img88" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(88)" onmouseover="img88.src='images_metric/mmb.gif';" onmouseout="img88.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img89" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(89)" onmouseover="img89.src='images_metric/mmb.gif';" onmouseout="img89.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img90" src="images_metric/cm.gif" width="6" height="35" onclick="checkguess(90)" onmouseover="img90.src='images_metric/cmb.gif';" onmouseout="img90.src='images_metric/cm.gif'"></td>
+
+          <td width="6"><img name="img91" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(91)" onmouseover="img91.src='images_metric/mmb.gif';" onmouseout="img91.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img92" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(92)" onmouseover="img92.src='images_metric/mmb.gif';" onmouseout="img92.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img93" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(93)" onmouseover="img93.src='images_metric/mmb.gif';" onmouseout="img93.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img94" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(94)" onmouseover="img94.src='images_metric/mmb.gif';" onmouseout="img94.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img95" src="images_metric/mm5.gif" width="6" height="35" onclick="checkguess(95)" onmouseover="img95.src='images_metric/mm5b.gif';" onmouseout="img95.src='images_metric/mm5.gif'"></td>
+          <td width="6"><img name="img96" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(96)" onmouseover="img96.src='images_metric/mmb.gif';" onmouseout="img96.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img97" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(97)" onmouseover="img97.src='images_metric/mmb.gif';" onmouseout="img97.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img98" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(98)" onmouseover="img98.src='images_metric/mmb.gif';" onmouseout="img98.src='images_metric/mm.gif'"></td>
+          <td width="6"><img name="img99" src="images_metric/mm.gif" width="6" height="35" onclick="checkguess(99)" onmouseover="img99.src='images_metric/mmb.gif';" onmouseout="img99.src='images_metric/mm.gif'"></td>
+          <td width="4"><img src="images_metric/rightside.gif" width="4" height="35"></td>
+        </tr>
+        <tr> 
+            <td colspan="101"><img src="images_metric/metricrulerbottom.gif" width="602" height="35"></td>
+        </tr>
+      </table>
+        <p align="center"><font face="Arial, Helvetica, sans-serif"> 
+          <b>Click on:
+          <input type="text" name="question" size="20" class="rginput" onfocus="this.blur();">
+          </b></font><br>
+          </p>
+                  
+        <table width="660" border="0" cellspacing="0" cellpadding="0" align="center">
+          <tr>
+            <td width="50%" valign="top">
+
+
+<div id="betaMessage" class="w3-panel w3-yellow w3-margin w3-card" style="padding:10px;"><strong>We have a new version of this game. You should really <a href="new-metric-ruler-game.php.html">Check it OUT >></a></strong></div>
+
+<h2 align="center">Why Learn to Read a Metric Ruler?</h2>
+<p>Reading a ruler is a valuable skill that you will likely use on your job, in your hobbies, and in your personal every day life. Without measuring devices like rulers (and people who can read them) we would still be living in caves.</p>
+<p>The metric ruler is divided into millimeters (or millimetres). Ten millimeters is a centimeter (or centimetre). Ten centimeters is a decimeter (or decimetre). Ten decimeters is a meter (or metre). </p>
+<p>Although you are probably familiar with rulers, meter sticks, tape rules, folding rules, and tape measures, you will also find rulers on many machines that you use such as saws, sewing machines, photocopiers, and computer scanners. Computer programs like Microsoft Word and Adobe PhotoShop have electronic rulers that you can turn on to help you with the exact placement of items. Reading a ruler is a valuable skill that you will use almost every day, both on and off the job.</p>
+
+<div id="strikelayer" style="position:absolute; z-index:2; visibility: hidden; top: 200px; width: 660px;" align="center">
+                <div align="center">
+                  <table width="100%" border="0" cellspacing="0" cellpadding="3">
+                    <tr>
+                      <td><div align="center"><img src="images/strike.gif" name="strike2" width="154" height="139" id="strike2"><img src="images/strike.gif" name="strike1" width="154" height="139" id="strike1"><img src="images/strike.gif" name="strike3" width="154" height="139" id="strike3"><br>
+                  <img src="images/gameoverblank.gif" name="imggameover" width="462" height="74" id="imggameover"></div></td>
+                    </tr>
+                  </table>
+                </div>
+</div>
+
+</td>
+             
+            <td width="50%" valign="top"> 
+              <div id="preferences" style="visibility: visible;">
+                <table width="250" height="400" border="2" align="center" cellpadding="3" cellspacing="0" bordercolor="#000000" bgcolor="#FFFF99">
+                  <tr>
+                    <td valign="top"><br><h3 align="center"><font face="Arial, Helvetica, sans-serif">
+                        <input type="button" name="start" value="Start New Game" onclick="newgame(this.form)">
+                        </font></h3>
+                      <h3 align="center">Preferences</h3>
+                      <p><b>Timer: 
+                        
+                        <input name="offOn" type="radio" value="on" checked="">
+                On 
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        
+                        <input type="radio" name="offOn" value="off">
+                Off</b><br>
+                <br>
+                      </p></td>
+                  </tr>
+                </table>
+              </div>
+              <div id="preferencesad"><div class="refreshb">Refresh your browser to start a new game</div></div>
+              <div id="instructions"><p><b>Instructions:</b>
+              </p>
+              <ul>
+                <li>Use this 
+                  game to improve how you read a ruler.</li>
+                <li>After you 
+                  click on the button that says, &quot;Start New Game,&quot; the 
+                  name of a measurement will appear in the text box labeled, &quot;Click 
+                  on:.&quot; </li>
+                <li>As soon 
+                  as you see the measurement appear, click on the corresponding 
+                  measurement on the ruler at the top of the screen. </li>
+                <li>For each 
+                  correct answer, you wil be awarded points. Points are awarded 
+                  based on the following table.
+                  <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+                    <tr> 
+                      <td><b>Level</b></td>
+                      <td><b>Time 
+                    Limit</b></td>
+                      <td><b>Points 
+                    </b></td>
+                    </tr>
+                    <tr> 
+                      <td>1</td>
+                      <td>10 seconds</td>
+                      <td>10</td>
+                    </tr>
+                    <tr> 
+                      <td>2</td>
+                      <td>9 seconds</td>
+                      <td>20</td>
+                    </tr>
+                    <tr> 
+                      <td>3</td>
+                      <td>8 seconds</td>
+                      <td>30</td>
+                    </tr>
+                    <tr> 
+                      <td>4</td>
+                      <td>7 seconds</td>
+                      <td>40</td>
+                    </tr>
+                    <tr> 
+                      <td>5</td>
+                      <td>6 seconds</td>
+                      <td>50</td>
+                    </tr>
+                    <tr> 
+                      <td>6</td>
+                      <td>5 seconds</td>
+                      <td>60</td>
+                    </tr>
+                    <tr> 
+                      <td>7</td>
+                      <td>4 seconds</td>
+                      <td>70</td>
+                    </tr>
+                    <tr> 
+                      <td>8</td>
+                      <td>3 seconds</td>
+                      <td>80</td>
+                    </tr>
+                    <tr> 
+                      <td>9</td>
+                      <td>2 seconds</td>
+                      <td>90</td>
+                    </tr>
+                    <tr> 
+                      <td>10</td>
+                      <td>1 second</td>
+                      <td>100</td>
+                    </tr>
+                  </table>
+                </li>
+                <li>For each 
+                  incorrect answer, you will receive a strike. After three strikes, 
+                  your game is over.</li>
+                <li>Click on 
+                  the, &quot;Start New Game&quot; button to start a new game. </li>
+                <li>Under Preferences turn the timer off  before starting your game to disable the time feature.</li>
+              </ul>
+            <p align="center">&nbsp;</p>
+            </div>
+			  </td>
+          </tr>
+        </table>
+      </form>
+    </td>
+    <td width="250" valign="top">
+
+  
+    </td>
+  </tr>
+</table>
+            <!-- InstanceEndEditable -->
+        </div>
+
+<footer class="w3-container w3-padding rulergame-dark-green">  
+            <div class="w3-row-padding">
+
+              <div class="w3-third">
+                <h3>MEASURING GAMES</h3>
+                <ul class="w3-ul">
+                  <li class="w3-padding-16">
+                    <a href="new-english-ruler-game.php.html" class="w3-text-white w3-hover-opacity w3-large rulergame-no-underline">New Inch Ruler Game</a><br>
+                  </li>
+				  <li class="w3-padding-16">
+                    <a href="new-metric-ruler-game.php.html" class="w3-text-white w3-hover-opacity w3-large rulergame-no-underline">New Metric Ruler Game</a><br>
+                  </li>
+                  <li class="w3-padding-16">
+                    <a href="v2-standard-english-ruler-game.php.html" class="w3-text-white w3-hover-opacity w3-large rulergame-no-underline">Original Inch Ruler Game</a><br>
+                  </li>
+				  <li class="w3-padding-16">
+                    <a href="micrometer-game.php.html" class="w3-text-white w3-hover-opacity w3-large rulergame-no-underline">Inch Mictometer Game</a><br>
+                  </li>
+				  <li class="w3-padding-16">
+                    <a href="metric-micrometer-game.php.html" class="w3-text-white w3-hover-opacity w3-large rulergame-no-underline">Metric Micrometer Game</a><br>
+                  </li>
+                  <li class="w3-padding-16">
+                    <a href="v2-metric-ruler-game.php.html" class="w3-text-white w3-hover-opacity w3-large rulergame-no-underline">Original Metric Ruler Game</a><br>
+                  </li>
+				  <li class="w3-padding-16">
+                    <a href="dial-caliper-game.php.html" class="w3-text-white w3-hover-opacity w3-large rulergame-no-underline">Dial Caliper Game</a><br>
+                  </li>
+				  <li class="w3-padding-16">
+                    <a href="vernier-caliper-game.php.html" class="w3-text-white w3-hover-opacity w3-large rulergame-no-underline">Vernier Caliper Game</a><br>
+                  </li>
+                  <li class="w3-padding-16">
+                    <a href="graduated-cylinder-game.php.html" class="w3-text-white w3-hover-opacity w3-large rulergame-no-underline">Graduated Cylinder Game</a><br>
+                  </li>
+				  <li class="w3-padding-16">
+                    <a href="architectural-scale-game.php.html" class="w3-text-white w3-hover-opacity w3-large rulergame-no-underline">Architectural Scale Game</a><br>
+                  </li>
+				  <li class="w3-padding-16">
+                    <a href="machinist-ruler-game.php.html" class="w3-text-white w3-hover-opacity w3-large rulergame-no-underline">Machinist Ruler Game</a><br>
+                  </li>
+				  <li class="w3-padding-16">
+                    <a href="triple-beam-balance-game.php.html" class="w3-text-white w3-hover-opacity w3-large rulergame-no-underline">Triple Beam Balance Game</a><br>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="w3-third">
+                <h3>TIME AND TEMPERATURE GAMES</h3>
+                <ul class="w3-ul">
+                  <li class="w3-padding-16">
+                    <a href="clock-game.php.html" class="w3-text-white w3-hover-opacity w3-large rulergame-no-underline">Clock Game</a><br>
+                  </li>
+				  <li class="w3-padding-16">
+                    <a href="military-time-game.php.html" class="w3-text-white w3-hover-opacity w3-large rulergame-no-underline">Military Time Game</a><br>
+                  </li>
+				  <li class="w3-padding-16">
+                    <a href="thermometer-game.php.html" class="w3-text-white w3-hover-opacity w3-large rulergame-no-underline">Thermometer Reading Game</a><br>
+                  </li>
+				  <li class="w3-padding-16">
+                    <a href="temperature-conversion-game.php.html" class="w3-text-white w3-hover-opacity w3-large rulergame-no-underline">Temperature Conversion Game</a><br>
+                  </li>
+				</ul>
+				<h3>MONEY AND LIFE GAMES</h3>
+				<ul class="w3-ul">
+				  <li class="w3-padding-16">
+                    <a href="money-game.php.html" class="w3-text-white w3-hover-opacity w3-large rulergame-no-underline">Money Counting Game</a><br>
+                  </li>
+				  <li class="w3-padding-16">
+                    <a href="shopping-money-counting-game.php.html" class="w3-text-white w3-hover-opacity w3-large rulergame-no-underline">Shopping Money Counting Game</a><br>
+                  </li>
+				  <li class="w3-padding-16">
+                    <a href="counting-back-change-game.php.html" class="w3-text-white w3-hover-opacity w3-large rulergame-no-underline">Counting Back Change Game</a><br>
+                  </li>
+				  <li class="w3-padding-16">
+                    <a href="blood-pressure-game.php.html" class="w3-text-white w3-hover-opacity w3-large rulergame-no-underline">Blood Pressure Game</a><br>
+                  </li>
+				  <li class="w3-padding-16">
+                    <a href="stadiometer-game.php.html" class="w3-text-white w3-hover-opacity w3-large rulergame-no-underline">Stadiometer Game</a><br>
+                  </li>
+				  <li class="w3-padding-16">
+                    <a href="physician-scale-game.php.html" class="w3-text-white w3-hover-opacity w3-large rulergame-no-underline">Physician Scale Game</a><br>
+                  </li>
+				  <li class="w3-padding-16">
+                    <a href="cooking-conversions-game.php.html" class="w3-text-white w3-hover-opacity w3-large rulergame-no-underline">Cooking Conversions Game</a><br>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="w3-third">
+                <h3>CONTACT ME</h3>
+                  <p class="w3-xxlarge w3-margin-top w3-margin-bottom">
+                    <a href="privacy-policy.php.html#contact" class="w3-text-white w3-hover-opacity"><img src="contact-button.png" alt="Contact button"></a>
+                    <a href="https://www.facebook.com/RulerGame/" class="w3-text-white w3-hover-opacity" target="_blank"><img src="facebook-button.png" alt="Facebook button"></a>
+                  </p>                   
+                  <p>Spears Technologies, Inc.<br>
+                    Attn: The Ruler Game<br>
+                    576 N. Birdneck Rd. #178<br>
+                    Virginia Beach, VA 23451</p>
+              </div>
+
+            </div>
+<div class="rulergame-dark-green w3-center w3-padding w3-border-top">Copyright &copy; 2025  by RulerGame.net and Ricky D. Spears. All Rights Reserved. <a href="privacy-policy.php.html" class="w3-text-white w3-hover-opacity">Privacy Policy</a><br><br><br></div>
+</footer>
+		  
+<script>
+    function toggleNavMenu() {
+        var x = document.getElementById("NavMenu");
+        if (x.className.indexOf("w3-show") == -1) {  
+            x.className += " w3-show";
+        } else { 
+            x.className = x.className.replace(" w3-show", "");
+        }
+    }
+
+    function toggleCategory(categoryId) {
+        var category = document.getElementById(categoryId);
+        if (category.className.indexOf("w3-show") == -1) {  
+            category.className += " w3-show";
+        } else { 
+            category.className = category.className.replace(" w3-show", " w3-hide");
+        }
+    }
+</script>
+		  
+<script type="text/javascript" async="" src="https://btloader.com/tag?o=5698917485248512&upapi=true&domain=rulergame.net"></script>
+
+<script>!function(){"use strict";var e;e=document,function(){var t,n;function r(){var t=e.createElement("script");t.src="https://cafemedia-com.videoplayerhub.com/galleryplayer.js",e.head.appendChild(t)}function a(){var t=e.cookie.match("(^|[^;]+)\s*__adblocker\s*=\s*([^;]+)");return t&&t.pop()}function c(){clearInterval(n)}return{init:function(){var e;"true"===(t=a())?r():(e=0,n=setInterval((function(){100!==e&&"false" !== t || c(), "true" === t && (r(), c()), t = a(), e++}), 50))}}}().init()}();
+</script>
+    </body>
+<!-- InstanceEnd --></html>

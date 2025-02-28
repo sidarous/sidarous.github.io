@@ -1,0 +1,730 @@
+body, html { overflow-x: hidden; }
+body {
+    font-size: 1em;
+    line-height: 1.4;
+    /* margin-left: 15%;
+    margin-right: 15%; */
+ background: rgb(255,190,190);
+background: linear-gradient(180deg, rgba(255,190,190,1) 0%, rgba(255,255,255,1) 37%, rgba(255,255,255,1) 49%, rgba(200,220,255,1) 100%);
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal; 
+    -webkit-font-smoothing: antialiased; /* Fix for webkit rendering */
+    -webkit-text-size-adjust: 100%;
+}
+
+
+.top_titlebar
+{
+    align-items: center;
+    height: 50px;
+    width: 100%;
+    background: #ddffdd;
+    border-bottom:#155726 2px solid;
+    box-shadow: #155726 ;
+    /*border-left:#155726 2px solid;
+    border-right:#155726 2px solid;
+    */
+}
+
+.top_btn
+{
+    margin-top: 5px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    background-color: #155726 ; 
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 2em;
+    color: white;
+    
+}
+.game-name
+{
+    /* margin-top: 200px; */
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.setting-section
+{
+    height: 110px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+/* 
+.btn-game-start
+{
+    
+    position: relative;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    background-color: #155726 ; 
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1em;
+    color: white;
+} */
+
+.vertical-center
+{
+    margin-top: 40px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+}
+
+.canvas-area
+{
+    /* margin-top: 10px; */
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    /* min-width:100%; */
+
+}
+
+.resultsBarLabel {
+    font-size: 9px;
+    margin-top: 0px;
+}
+#resultsBar {
+    height: 50px;
+	margin: 0 auto;
+	align-items: center;
+    justify-content: center;
+	text-align:center;
+    max-width: 300px;
+    /*border: 2px solid black;*/
+}
+
+#scoreColumn {
+    width: 90px;
+    float: left;
+}
+#txtScore{
+    font-family: Consolas, "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", Monaco, "Courier New", "monospace";
+    font-size: 30px;
+    font-weight: bold;
+    height: 30px;
+}
+ #timerColumn {
+    float: left;
+    width: 40px;
+}
+#timerCanvas {
+    height: 30px;
+    width: 30px;
+}
+#levelColumn {
+    float: left;
+    width: 80px;
+}
+#levelCanvas {
+    height: 30px;
+    width: 70px;
+}
+#strikesColumn {
+    float: left;
+    width: 100px;
+}            
+#txtStrikes {
+    height: 30px;
+}
+#txtStrikes img {
+    height: 30px;
+    width: 30px;
+}                        
+.resultsBarLabel {
+    font-size: 9px;
+    margin-top: 0px;
+}
+#timerColumn .resultsBarLabel,
+#levelColumn .resultsBarLabel {
+    margin-top: -4px;
+}
+
+
+#questionBar {
+    position: absolute;
+    height: 60px;
+    line-height: 1;
+    width: 100%;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    display: none;
+}
+
+#txtQuestion {
+    width: 100%;
+    text-align: center;
+    height: 60px;
+}
+#txtQuestion .questionInstruction{
+    font-size: 20px;
+    font-weight: bold;
+    color: #000000;                
+}
+#txtQuestion .questionMeasurement{
+    font-size: 30px;
+    font-weight: bold;
+    color: #000000;               
+}
+#txtQuestion .questionWrongInstruction{
+    font-size: 30px;
+    font-weight: bold;
+    color: #000000;                
+}
+#txtQuestion .questionWrongMeasurement{
+    font-size: 25px;
+    font-weight: bold;
+    color: #000000;               
+}
+#txtQuestion .gameOver{
+    font-size: 35px;
+    font-weight: bold;
+    color: #339966; 
+}            
+
+
+
+#playerCanvas {
+    position: absolute;
+    /*background-color: #ffffff !important;*/
+    z-index: 1;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+/* 
+#rulerCanvas {
+    position: absolute;
+    z-index: 2;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+} */
+
+
+#rulerCanvas
+{
+   /* min-width:fit-content; */
+   width: 100%; 
+   
+}
+
+#myCanvas
+{
+    width: 100%;
+}
+
+#strikeBoard {
+    margin-top: -120px;
+    position: absolute;
+    height: 80px;
+    width: 240px;
+    display: none;
+    z-index: 3;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+#strikeBoard img {
+    float: left;
+    height: 80px;
+    width: 80px;
+}
+#cheerBoard {
+    position: absolute;
+    height: 60px;
+    width: 310px;
+    margin-top: -70px;
+    display: none;
+    z-index: 4;
+    text-align: center;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);                
+}
+
+.cheer{
+    position: absolute;
+    width: 100%;
+    height: 60px;
+    max-height: 60px;
+    padding-top: 15px;
+    font-size: 30px;
+    color: purple;
+    bottom: 0px;
+}
+.level {
+    margin-top: 150px;
+    position: absolute;
+    width: 100%;
+    height: 60px;
+    max-height: 60px;                
+    font-size: 50px;
+    font-weight: 900;
+    color: darkblue;
+    bottom: 0px;
+}
+
+.settingsLabel {
+    width: 150px;
+}
+
+#preferencesBox {
+    width: 315px;
+    /*border: 2px solid #000;
+    background-color: #ffff99;
+    padding: 3px;*/
+    margin: auto;
+    margin-top: 60px;
+    overflow: auto;
+    display: none;
+    z-index: 5;
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);                  
+}
+#timerBox, #soundsBox, #unitSelection, modeSelection
+{
+    height: 45px;
+
+}
+
+
+#buttonBar {
+    position: absolute;
+    height: 60px;
+    width: 300px;
+    margin: 0px auto 0px auto;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);                
+}
+
+#btnStart,
+#btnSettings {
+    background-color: #339966;
+    color: white;
+    border: 0;
+    border-radius: 5px;
+    height: 40px;
+    width: 140px;
+    font-size: 24px;
+    margin: 10px auto 10px auto;
+    cursor: pointer;
+}
+#btnSettings {
+    float: right;
+}
+
+#btnSubmit
+{
+    /* float: left; */
+    background-color: #339966;
+    color: white;
+    border: 0;
+    border-radius: 5px;
+    height: 40px;
+    width: 200px;
+    font-size: 24px;
+    /* margin: 10px auto 10px auto; */
+    cursor: pointer;
+    left: 50%;
+    /* -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);                 */
+}
+
+#submitColumn
+{
+    /* float: right; */
+    /* float: center; */
+    
+    /* width: 300px; */
+    /* height: 40px; */
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+#displayBoard
+{
+    /* margin: auto; */
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+}
+
+
+#detailedControl
+{
+    height: fit-content;
+
+}
+
+#sleevemain
+{
+    /* position: absolute; */
+    /* left: 200px;
+    top: 800px;  */
+}
+#labelsleevemain
+{
+    /* width: 100px; */
+    /* float: right; */
+    /* text-align: right; */
+    /* margin-right: 5px; */
+    /* padding-right: 5px; */
+    /* align-items: right !important; */
+    /* margin-right: 20px; */
+}
+
+#labelverniersmall
+{
+    /* width: 100px; */
+    /* float: right; */
+    text-align: right;
+    /* margin-right: 5px; */
+    padding-right: 5px;
+    /* align-items: right !important; */
+    /* margin-right: 20px; */
+}
+
+#labelthimblescale
+{
+    /* align-items: center; */
+    /* margin-right: 20px; */
+    text-align: right;
+    /* margin-right: 5px; */
+    padding-right: 5px;
+
+}
+
+#labelvernierscale
+{
+	/* align-items: center; */
+    /* margin-right: 20px; */
+    text-align: right;
+    /* margin-right: 5px; */
+    padding-right: 5px;
+}
+
+#sleevemainControl
+{
+    /* position: relative; */
+    
+
+    /* top: 600px; */
+    /* width: 70px; */
+    /* height: 20px; */
+    /* left: 170px;  */
+    /* top: 10px; */
+    /* left: 100%; */
+    /* border: solid 1px lightgrey; */
+}
+
+
+#verniersmallControl
+{
+    position: relative;
+    
+
+    /* top: 600px; */
+    width: 70px;
+    /* height: 20px; */
+    /* left: 170px;  */
+    /* top: 10px; */
+    /* left: 100%; */
+    border: solid 1px lightgrey;
+}
+#thimble
+{
+    /* position: absolute; */
+    /* left: 200px;
+    top: 800px;  */
+}
+#thimbleControl
+{
+    /* position: absolute;
+    
+    left: 170px; 
+    top: -78px; */
+    width: 70px;
+    /* height: 20px; */
+}
+
+#sleevesmall
+{
+    /* position: absolute; */
+    
+}
+#sleevesmallControl
+{
+	/*
+    position: absolute;
+    
+    
+    left: 170px; 
+    top: -45px;
+	*/
+	width: 70px;
+	/* height: 20px; */
+}
+
+
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  
+  margin: 0;
+}
+
+.number-input {
+  display: flex;
+  font-weight: bold;
+}
+
+input {
+  width: 30px;
+  border: solid 1px lightgrey;
+  border-radius: 0;
+  text-align: center;
+  
+}
+
+.spinner {
+  border: solid 1px lightgrey;
+  
+}
+
+#btntempdecrement
+{
+    width: 45px;
+    /* height: 20px; */
+    /* position: absolute; */
+    text-align: center;
+    padding-left: 0px;
+    padding-right: 0px;
+	margin:0 5px 10px 0;
+}
+#btntempincrement
+{
+    width: 45px;
+    /* height: 20px; */
+    /* position: absolute; */
+    text-align: center;
+    padding-left: 0px;
+    padding-right: 0px;
+	margin:0 5px 10px 0;
+}
+
+.spinner:hover {
+  background: lightgrey;
+}
+
+.spinner:first-child {
+  border-radius: 3px 0 0 3px;
+}
+
+.spinner:last-child {
+  border-radius: 0 3px 3px 0;
+}
+
+#thimbledecrement
+{
+    /* left: 150px; 
+    top: -78px;
+    position: absolute; */
+    width: 25px;
+    /* height: 20px; */
+    text-align: center;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+#thimbleincrement
+{
+    /* left: 252px; 
+    top: -78px;
+    position: absolute; */
+    width: 25px;
+    /* height: 20px; */
+    text-align: center;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+#vernierdecrement
+{
+	/*
+    left: 150px; 
+    top: -45px;
+    position: absolute;
+	*/
+    width: 25px;
+	/* height: 20px; */
+    text-align: center;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+#vernierincrement
+{
+	/*
+    left: 252px; 
+    top: -45px;
+    position: absolute;
+	*/
+    width: 25px;
+	/* height: 20px; */
+    text-align: center;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+#instructionsBox {
+max-width:1100px;
+align:center;
+margin:auto;
+}
+
+#btnStart:hover,
+#btnSettings:hover,
+#btnSubmit:hover {
+    background-color: #127041;
+
+}
+.split-screen-layout {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.section {
+  padding: 15px;
+}
+.section #resultsBar{
+    width:100%;
+}
+
+.section-60 {
+}
+
+.section-40 {
+}
+
+.section-50 {
+}
+
+/* Default: Sections take full width */
+.section {
+  width: 100%;
+}
+
+.section #canvasArea{
+    position:relative;
+}
+.section #displayBoard{
+    justify-content: left;
+}
+.section #submitColumn{
+    margin-top:30px;
+}
+#verniersmall{
+  max-width: 100%;
+}
+
+#labelverniersmall{
+    text-align:right;
+}
+.typecanvs-area{
+    text-align:center;
+}
+.section .number-input{
+    justify-content: center;
+}
+.section #detailedControl{
+    margin-top:60px;
+}
+
+.nametwocolumn{
+	margin: 0 auto 10px auto;
+	max-width: 280px;
+	text-align:center;
+	}
+
+@media screen and (min-aspect-ratio: 1/1) and (orientation: landscape) { 
+    .section .canvas-area{
+        justify-content:end;
+    }
+    .section-60 {
+        width: 60%;
+    }
+    .section-50 {
+        width: 50%;
+    }
+    .section-40 {
+     width: 40%;
+    }
+    #verniersmall{
+      max-width: 390px;
+    }
+    #labelverniersmall{
+        text-align:left;
+    }
+    .typecanvs-area{
+        text-align:left;
+    }
+    .section .number-input{
+        justify-content:start;
+    }
+    
+    .section #buttonBar{
+        position: unset; 
+         margin: 0; 
+         left: 0; 
+         -webkit-transform: unset; 
+         transform: unset;
+    }
+    .section #questionBar{
+         position: unset; 
+         height: 60px; 
+         line-height: 1; 
+         width: 100%; 
+         left: 0; 
+		 text-align:left;
+         -webkit-transform: unset; 
+         transform: unset; 
+    }
+	
+		#txtQuestion {
+    width: 100%;
+    text-align: left;
+    height: 60px;
+}
+	
+    .section #detailedControl{
+        margin-top:0;
+    }
+    #resultsBar {
+    margin: 20px 0 20px 0;
+	text-align:left;
+    max-width: 500px;
+    /*border: 2px solid black;*/
+    }
+
+	.nametwocolumn{
+	max-width: 280px;
+	margin: 0 auto 10px 20px;
+	text-align: left;
+	}
+	
+}
