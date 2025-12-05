@@ -1,0 +1,1 @@
+chrome-extension://ddkjiahejlhfcafbddmgiahcphecmpfh/rulesets/scripting/scriptlet/ublock-filters.trusted-suppress-native-method.js

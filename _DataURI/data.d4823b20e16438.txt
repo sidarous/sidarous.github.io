@@ -1,0 +1,1 @@
+chrome-extension://ddkjiahejlhfcafbddmgiahcphecmpfh/rulesets/scripting/scriptlet/ublock-filters.nowebrtc.js
