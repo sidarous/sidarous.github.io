@@ -1,1 +1,0 @@
-chrome-extension://ddkjiahejlhfcafbddmgiahcphecmpfh/rulesets/scripting/scriptlet/ublock-filters.trusted-replace-node-text.js

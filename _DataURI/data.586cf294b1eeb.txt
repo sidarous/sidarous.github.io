@@ -1,1 +1,0 @@
-chrome-extension://ldjkgaaoikpmhmkelcgkgacicjfbofhh/js/highlights-ugly.js
