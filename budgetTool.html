@@ -1,0 +1,1786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lindblom Homecoming Budget Simulator | LMSA</title>
+  <meta name="description" content="Interactive Homecoming Dance Budget Simulator for Lindblom Math & Science Academy students to explore financial planning, revenue, and event trade-offs.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+  
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+  <style>
+    :root {
+      --lmsa-maroon: #7b181e;
+      --lmsa-maroon-dark: #520e12;
+      --lmsa-maroon-light: #9d2229;
+      --lmsa-gold: #d4af37;
+      --lmsa-gold-light: #f5d76e;
+      --lmsa-gold-dark: #aa8c2c;
+      
+      --bg-base: #0c0e14;
+      --bg-surface: #141721;
+      --bg-card: #1a1e2b;
+      --bg-card-hover: #212636;
+      --bg-input: #0f121a;
+      
+      --border-subtle: #2a3144;
+      --border-focus: #d4af37;
+      
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --text-dim: #6b7280;
+      
+      --color-success: #10b981;
+      --color-success-bg: rgba(16, 185, 129, 0.12);
+      --color-danger: #ef4444;
+      --color-danger-bg: rgba(239, 68, 68, 0.12);
+      --color-warning: #f59e0b;
+      --color-warning-bg: rgba(245, 158, 11, 0.12);
+      --color-info: #38bdf8;
+      
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-full: 9999px;
+      
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+      --shadow-md: 0 6px 20px rgba(0, 0, 0, 0.4);
+      --shadow-glow: 0 0 20px rgba(212, 175, 55, 0.2);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-base);
+      color: var(--text-main);
+      line-height: 1.5;
+      min-height: 100vh;
+      padding-bottom: 60px;
+    }
+
+    h1, h2, h3, h4, .font-heading {
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .font-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Container */
+    .app-container {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 24px 20px;
+    }
+
+    /* Top Navigation / Header */
+    header.hero-header {
+      background: linear-gradient(135deg, var(--lmsa-maroon-dark) 0%, #171118 60%, var(--bg-surface) 100%);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 24px 28px;
+      margin-bottom: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      box-shadow: var(--shadow-md);
+      position: relative;
+      overflow: hidden;
+    }
+
+    header.hero-header::before {
+      content: '';
+      position: absolute;
+      top: -40px;
+      right: -40px;
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .school-badge-wrapper {
+      position: relative;
+      width: 76px;
+      height: 76px;
+      flex-shrink: 0;
+    }
+
+    .school-badge {
+      width: 76px;
+      height: 76px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.35), 0 4px 15px rgba(0, 0, 0, 0.5);
+      position: relative;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      background: #4a0e12;
+      border: 2px solid var(--lmsa-gold);
+      overflow: hidden;
+      padding: 2px;
+    }
+
+    .school-badge:hover {
+      transform: scale(1.06) rotate(-2deg);
+      box-shadow: 0 0 26px rgba(212, 175, 55, 0.55), 0 6px 20px rgba(0, 0, 0, 0.6);
+    }
+
+    .lmsa-logo-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 50%;
+      display: block;
+    }
+
+    .lmsa-logo-svg {
+      width: 100%;
+      height: 100%;
+      display: none;
+    }
+
+    .header-titles h1 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .header-tagline {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 3px;
+    }
+
+    .school-motto {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      background: rgba(212, 175, 55, 0.18);
+      color: var(--lmsa-gold-light);
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+
+    .header-titles p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-top: 2px;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 16px;
+      border-radius: var(--radius-sm);
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: 1px solid transparent;
+      text-decoration: none;
+      font-family: inherit;
+    }
+
+    .btn-secondary {
+      background-color: var(--bg-card);
+      color: var(--text-main);
+      border-color: var(--border-subtle);
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--bg-card-hover);
+      border-color: var(--lmsa-gold);
+      color: #fff;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--lmsa-maroon) 0%, var(--lmsa-maroon-light) 100%);
+      color: #ffffff;
+      border-color: rgba(212, 175, 55, 0.4);
+    }
+
+    .btn-primary:hover {
+      filter: brightness(1.1);
+      box-shadow: 0 4px 12px rgba(123, 24, 30, 0.4);
+    }
+
+    .btn-gold {
+      background: linear-gradient(135deg, var(--lmsa-gold) 0%, var(--lmsa-gold-dark) 100%);
+      color: #171118;
+      font-weight: 700;
+    }
+
+    .btn-gold:hover {
+      filter: brightness(1.08);
+      box-shadow: var(--shadow-glow);
+    }
+
+    /* Preset Buttons Bar */
+    .preset-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 10px 16px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .preset-label {
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.75px;
+      color: var(--lmsa-gold);
+      margin-right: 8px;
+    }
+
+    .preset-chip {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      padding: 6px 13px;
+      border-radius: var(--radius-full);
+      font-size: 0.84rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .preset-chip:hover, .preset-chip.active {
+      background: rgba(212, 175, 55, 0.15);
+      border-color: var(--lmsa-gold);
+      color: var(--lmsa-gold-light);
+      font-weight: 600;
+    }
+
+    /* Main Grid Layout */
+    .dashboard-layout {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    @media (max-width: 1080px) {
+      .dashboard-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Sections and Cards */
+    .card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 22px;
+      margin-bottom: 22px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .card-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .card-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .card-title .icon {
+      font-size: 1.3rem;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 3px 10px;
+      border-radius: var(--radius-full);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .badge-gold {
+      background: rgba(212, 175, 55, 0.15);
+      color: var(--lmsa-gold-light);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+    }
+
+    .badge-maroon {
+      background: rgba(123, 24, 30, 0.25);
+      color: #fca5a5;
+      border: 1px solid rgba(123, 24, 30, 0.5);
+    }
+
+    /* Sliders & Controls */
+    .control-group {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 16px 18px;
+      margin-bottom: 14px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .control-group:hover {
+      border-color: rgba(212, 175, 55, 0.4);
+    }
+
+    .control-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .control-label-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .control-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .control-subtitle {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .control-val-badge {
+      background: var(--bg-input);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 4px 10px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--lmsa-gold-light);
+      min-width: 75px;
+      text-align: right;
+    }
+
+    /* Range Slider Styling */
+    .range-wrap {
+      position: relative;
+      margin: 10px 0 6px 0;
+    }
+
+    input[type="range"] {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 8px;
+      background: #252b3b;
+      border-radius: 4px;
+      outline: none;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--lmsa-gold);
+      border: 2px solid #ffffff;
+      box-shadow: 0 0 10px rgba(212, 175, 55, 0.6);
+      cursor: pointer;
+      transition: transform 0.15s, background 0.15s;
+    }
+
+    input[type="range"]::-webkit-slider-thumb:hover {
+      transform: scale(1.18);
+      background: var(--lmsa-gold-light);
+    }
+
+    input[type="range"]::-moz-range-thumb {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--lmsa-gold);
+      border: 2px solid #ffffff;
+      box-shadow: 0 0 10px rgba(212, 175, 55, 0.6);
+      cursor: pointer;
+    }
+
+    /* Dynamic Tier Card Inside Control */
+    .tier-detail-box {
+      margin-top: 10px;
+      background: rgba(12, 14, 20, 0.6);
+      border-left: 3px solid var(--lmsa-gold);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 10px 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .tier-info {
+      flex: 1;
+    }
+
+    .tier-name {
+      font-weight: 700;
+      font-size: 0.88rem;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .tier-desc {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .tier-cost-tag {
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    .tier-cost-amount {
+      font-weight: 700;
+      font-size: 0.92rem;
+      color: var(--lmsa-gold-light);
+    }
+
+    .tier-cost-type {
+      font-size: 0.72rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
+    }
+
+    /* RIGHT COLUMN: Results Dashboard */
+    .sticky-panel {
+      position: sticky;
+      top: 20px;
+    }
+
+    /* Health Banner */
+    .health-banner {
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      border: 1px solid transparent;
+      transition: all 0.3s ease;
+    }
+
+    .health-banner.surplus {
+      background: var(--color-success-bg);
+      border-color: rgba(16, 185, 129, 0.3);
+      color: #a7f3d0;
+    }
+
+    .health-banner.deficit {
+      background: var(--color-danger-bg);
+      border-color: rgba(239, 68, 68, 0.3);
+      color: #fca5a5;
+    }
+
+    .health-banner.balanced {
+      background: var(--color-warning-bg);
+      border-color: rgba(245, 158, 11, 0.3);
+      color: #fde68a;
+    }
+
+    .health-icon {
+      font-size: 1.6rem;
+      line-height: 1;
+      margin-top: 2px;
+    }
+
+    .health-content h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .health-content p {
+      font-size: 0.85rem;
+      opacity: 0.9;
+    }
+
+    /* Metrics Grid */
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .metric-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 14px 16px;
+    }
+
+    .metric-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .metric-value {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .metric-subtext {
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      margin-top: 2px;
+    }
+
+    /* Hype Meter */
+    .hype-container {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 16px 18px;
+      margin-bottom: 20px;
+    }
+
+    .hype-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .hype-title {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hype-score-val {
+      font-weight: 800;
+      font-size: 1.05rem;
+      color: var(--lmsa-gold-light);
+    }
+
+    .progress-bar-bg {
+      height: 12px;
+      background: #11141e;
+      border-radius: var(--radius-full);
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #f59e0b, #ef4444, #8b5cf6, #ec4899);
+      width: 50%;
+      border-radius: var(--radius-full);
+      transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .hype-descriptor {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 6px;
+      text-align: right;
+      font-style: italic;
+    }
+
+    /* Running Total Table */
+    .table-container {
+      overflow-x: auto;
+      margin-top: 14px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-subtle);
+    }
+
+    table.budget-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.84rem;
+      text-align: left;
+    }
+
+    table.budget-table th {
+      background: #11141e;
+      color: var(--text-muted);
+      padding: 10px 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.72rem;
+      letter-spacing: 0.5px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    table.budget-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid rgba(42, 49, 68, 0.5);
+      color: var(--text-main);
+    }
+
+    table.budget-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    table.budget-table tr:hover td {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    table.budget-table tfoot td {
+      background: #11141e;
+      font-weight: 700;
+      color: #fff;
+      border-top: 2px solid var(--border-subtle);
+    }
+
+    .text-right {
+      text-align: right;
+    }
+
+    /* Chart Card */
+    .chart-container {
+      position: relative;
+      height: 240px;
+      margin-top: 10px;
+    }
+
+    .chart-tabs {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+
+    .chart-tab-btn {
+      padding: 5px 12px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-full);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .chart-tab-btn.active {
+      background: var(--lmsa-maroon);
+      border-color: var(--lmsa-gold);
+      color: #fff;
+      font-weight: 600;
+    }
+
+    /* Educational Reflection Callout */
+    .reflection-box {
+      background: rgba(212, 175, 55, 0.05);
+      border: 1px dashed rgba(212, 175, 55, 0.35);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      margin-top: 20px;
+    }
+
+    .reflection-box h4 {
+      color: var(--lmsa-gold-light);
+      font-size: 0.92rem;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .reflection-box p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    /* Print Specific Styles */
+    @media print {
+      body {
+        background: #ffffff;
+        color: #111827;
+        padding: 0;
+      }
+
+      .preset-bar, .header-actions, input[type="range"], .chart-tabs {
+        display: none !important;
+      }
+
+      .dashboard-layout {
+        display: block;
+      }
+
+      .hero-header {
+        background: #f9fafb !important;
+        border: 1px solid #d1d5db !important;
+        color: #111827 !important;
+      }
+
+      .hero-header h1 {
+        color: #7b181e !important;
+      }
+
+      .school-motto {
+        color: #7b181e !important;
+        border-color: #7b181e !important;
+        background: rgba(123, 24, 30, 0.1) !important;
+      }
+
+      .school-badge {
+        box-shadow: none !important;
+      }
+
+      .card, .control-group, .metric-card, .health-banner, .reflection-box {
+        background: #ffffff !important;
+        border: 1px solid #d1d5db !important;
+        color: #111827 !important;
+        box-shadow: none !important;
+        break-inside: avoid;
+      }
+
+      .card-title, .control-title, .metric-value, h1, h2, h3, h4 {
+        color: #111827 !important;
+      }
+
+      table.budget-table th {
+        background: #f3f4f6 !important;
+        color: #374151 !important;
+      }
+
+      table.budget-table td {
+        color: #111827 !important;
+      }
+
+      .tier-detail-box {
+        background: #f9fafb !important;
+        border-left-color: #7b181e !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="app-container">
+
+  <!-- Main Header -->
+  <header class="hero-header">
+    <div class="brand-group">
+      <div class="school-badge-wrapper">
+        <div class="school-badge" title="Lindblom Math and Science Academy - Official Seal">
+          <!-- Official LMSA Circular Seal Emblem -->
+          <img src="lmsa-logo.png" alt="Lindblom Math and Science Academy Seal" class="lmsa-logo-img" onerror="this.style.display='none'; document.getElementById('lmsa-vector-logo').style.display='block';">
+          
+          <!-- LMSA Official Eagle Crest Vector Logo -->
+          <svg id="lmsa-vector-logo" class="lmsa-logo-svg" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="shieldBg" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#8a1c22" />
+                <stop offset="60%" stop-color="#601015" />
+                <stop offset="100%" stop-color="#3d0a0d" />
+              </linearGradient>
+              <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#fae082" />
+                <stop offset="50%" stop-color="#d4af37" />
+                <stop offset="100%" stop-color="#a6841f" />
+              </linearGradient>
+              <linearGradient id="beakGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#fbbf24" />
+                <stop offset="100%" stop-color="#d97706" />
+              </linearGradient>
+              <filter id="badgeShadow" x="-10%" y="-10%" width="120%" height="120%">
+                <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000000" flood-opacity="0.6"/>
+              </filter>
+            </defs>
+            
+            <!-- Outer Shield Base -->
+            <path d="M60 4 L108 20 C108 20 112 68 60 116 C8 68 12 20 12 20 L60 4 Z" fill="url(#shieldBg)" stroke="url(#goldGrad)" stroke-width="4" stroke-linejoin="round" filter="url(#badgeShadow)"/>
+            
+            <!-- Inner Shield Ring -->
+            <path d="M60 11 L100 24 C100 24 104 64 60 106 C16 64 20 24 20 24 L60 11 Z" fill="none" stroke="url(#goldGrad)" stroke-width="1.5" stroke-dasharray="3 2" opacity="0.6"/>
+            
+            <!-- Eagle Head Crown Feathers -->
+            <path d="M38 46 C44 32 60 28 78 33 C86 35 94 40 92 48 C90 51 84 50 82 48 C88 56 82 62 76 64 C70 66 65 62 67 58 C62 65 54 67 46 64 C42 62 40 56 42 52 C38 52 36 49 38 46 Z" fill="#ffffff" opacity="0.95"/>
+            
+            <!-- Eagle Feather Highlights (Gold) -->
+            <path d="M48 40 C55 34 68 33 80 37 C74 41 66 43 56 46 C50 47 46 45 48 40 Z" fill="url(#goldGrad)"/>
+            <path d="M52 50 C60 48 70 50 78 54 C72 56 64 57 56 57 C53 57 51 54 52 50 Z" fill="url(#goldGrad)" opacity="0.8"/>
+            
+            <!-- Eagle Head Profile & Beak Base -->
+            <path d="M58 44 C68 44 80 47 88 53 C92 56 95 61 93 67 C90 73 80 77 72 76 C62 75 52 70 48 62 C46 58 47 52 52 48 C54 46 56 44 58 44 Z" fill="url(#shieldBg)"/>
+            
+            <!-- Eagle Sharp Curved Beak -->
+            <path d="M84 54 C94 54 104 59 107 68 C108 72 104 77 98 78 C90 80 84 76 80 72 C85 71 88 68 87 64 C86 60 81 58 78 58 L84 54 Z" fill="url(#beakGrad)" stroke="#78350f" stroke-width="0.75"/>
+            
+            <!-- Fierce Eagle Eye -->
+            <circle cx="68" cy="52" r="4" fill="url(#goldGrad)"/>
+            <circle cx="69" cy="52" r="2" fill="#0c0e14"/>
+            <circle cx="70" cy="51" r="0.75" fill="#ffffff"/>
+            <!-- Eye Brow Ridge -->
+            <path d="M62 49 C66 47 72 47 76 50" stroke="#d4af37" stroke-width="1.8" stroke-linecap="round"/>
+            
+            <!-- Collegiate Banner at Shield Base -->
+            <path d="M22 84 L98 84 L90 98 L30 98 Z" fill="url(#goldGrad)" filter="url(#badgeShadow)"/>
+            <path d="M22 84 L14 91 L22 98 L20 84 Z" fill="#8a6b14"/>
+            <path d="M98 84 L106 91 L98 98 L100 84 Z" fill="#8a6b14"/>
+            
+            <!-- Banner Text: LMSA -->
+            <text x="60" y="94.5" font-family="'Outfit', sans-serif" font-weight="900" font-size="11" fill="#4a0e12" text-anchor="middle" letter-spacing="2">LMSA</text>
+            
+            <!-- Top Arched Header Text -->
+            <path id="textArc" d="M24 30 C35 18 85 18 96 30" fill="none"/>
+            <text font-family="'Outfit', sans-serif" font-weight="800" font-size="7" fill="url(#goldGrad)" letter-spacing="1.5">
+              <textPath href="#textArc" startOffset="50%" text-anchor="middle">
+                LINDBLOM
+              </textPath>
+            </text>
+          </svg>
+        </div>
+      </div>
+      <div class="header-titles">
+        <h1>
+          Lindblom Homecoming Budget Simulator
+        </h1>
+        <div class="header-tagline">
+          <span class="school-motto">🦅 EST. 1919 • Our History Guides Our Future</span>
+          <p>Explore trade-offs, ticket pricing, and event finances as a Student Council Committee</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="header-actions">
+      <button class="btn btn-secondary" onclick="window.print()" title="Print or save PDF report for classwork">
+        📄 Print / Save Summary
+      </button>
+      <button class="btn btn-gold" onclick="resetToDefault()">
+        🔄 Reset Defaults
+      </button>
+    </div>
+  </header>
+
+  <!-- Scenario Presets Bar -->
+  <div class="preset-bar">
+    <span class="preset-label">⚡ Quick Scenarios:</span>
+    <button class="preset-chip" onclick="applyPreset('barebones')" id="preset-barebones">🎒 Tight Budget (Bare Bones)</button>
+    <button class="preset-chip active" onclick="applyPreset('balanced')" id="preset-balanced">🦅 Balanced Eagle Pride</button>
+    <button class="preset-chip" onclick="applyPreset('extravaganza')" id="preset-extravaganza">✨ Luxury Gala Extravaganza</button>
+    <button class="preset-chip" onclick="applyPreset('freeDance')" id="preset-freeDance">🎟️ 100% Free Student Dance</button>
+  </div>
+
+  <!-- Main 2-Column Dashboard Grid -->
+  <div class="dashboard-layout">
+    
+    <!-- LEFT COLUMN: CONTROLS & SLIDERS -->
+    <div class="controls-column">
+      
+      <!-- 1. Scale & Revenue Section -->
+      <div class="card">
+        <div class="card-title-row">
+          <div class="card-title">
+            <span class="icon">👥</span> Event Scale & Revenue Sources
+          </div>
+          <span class="badge badge-gold">Inflows</span>
+        </div>
+
+        <!-- Attendance Slider -->
+        <div class="control-group">
+          <div class="control-header">
+            <div class="control-label-group">
+              <span class="control-title">🎓 Expected Student Attendance</span>
+              <span class="control-subtitle">Determines ticket volume and per-student food & drink orders</span>
+            </div>
+            <div class="control-val-badge font-mono" id="disp-attendance">400 Students</div>
+          </div>
+          <div class="range-wrap">
+            <input type="range" id="input-attendance" min="50" max="1000" step="10" value="400" oninput="updateBudget()">
+          </div>
+        </div>
+
+        <!-- Ticket Price Slider -->
+        <div class="control-group">
+          <div class="control-header">
+            <div class="control-label-group">
+              <span class="control-title">🎟️ Ticket Price per Student</span>
+              <span class="control-subtitle">Revenue generated directly from student ticket purchases</span>
+            </div>
+            <div class="control-val-badge font-mono" id="disp-ticketPrice">$25 / ticket</div>
+          </div>
+          <div class="range-wrap">
+            <input type="range" id="input-ticketPrice" min="0" max="75" step="1" value="25" oninput="updateBudget()">
+          </div>
+          <div class="tier-detail-box">
+            <div class="tier-info">
+              <div class="tier-name">Total Student Ticket Revenue</div>
+              <div class="tier-desc">Attendance × Ticket Price</div>
+            </div>
+            <div class="tier-cost-tag">
+              <div class="tier-cost-amount font-mono" id="calc-ticketRev">$10,000</div>
+              <div class="tier-cost-type">Projected Sales</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- School Budget Subsidy Slider -->
+        <div class="control-group">
+          <div class="control-header">
+            <div class="control-label-group">
+              <span class="control-title">🏫 School Activity Budget Subsidy</span>
+              <span class="control-subtitle">Discretionary student activity funds allocated by Administration/LSC</span>
+            </div>
+            <div class="control-val-badge font-mono" id="disp-schoolBudget">$1,500</div>
+          </div>
+          <div class="range-wrap">
+            <input type="range" id="input-schoolBudget" min="0" max="8000" step="100" value="1500" oninput="updateBudget()">
+          </div>
+        </div>
+
+        <!-- Community Partner / Sponsor Contribution -->
+        <div class="control-group">
+          <div class="control-header">
+            <div class="control-label-group">
+              <span class="control-title">🤝 Community Partners & Alumni Sponsors</span>
+              <span class="control-subtitle">Fundraising, local Englewood business grants, and Alumni donations</span>
+            </div>
+            <div class="control-val-badge font-mono" id="disp-partnerBudget">$500</div>
+          </div>
+          <div class="range-wrap">
+            <input type="range" id="input-partnerBudget" min="0" max="5000" step="50" value="500" oninput="updateBudget()">
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 2. Variable Expenses (Per Student) -->
+      <div class="card">
+        <div class="card-title-row">
+          <div class="card-title">
+            <span class="icon">🍕</span> Food & Beverage (Per-Student Costs)
+          </div>
+          <span class="badge badge-maroon">Variable Outflows</span>
+        </div>
+
+        <!-- Food Options Slider -->
+        <div class="control-group">
+          <div class="control-header">
+            <div class="control-label-group">
+              <span class="control-title">🍴 Food & Catering Option</span>
+              <span class="control-subtitle">Drag to choose meal package tier</span>
+            </div>
+            <div class="control-val-badge font-mono" id="disp-foodTier">Tier 2 of 4</div>
+          </div>
+          <div class="range-wrap">
+            <input type="range" id="input-food" min="0" max="4" step="1" value="2" oninput="updateBudget()">
+          </div>
+          <div class="tier-detail-box" id="box-food">
+            <div class="tier-info">
+              <div class="tier-name" id="food-name">Deep Dish Pizza, Wings & Cookies</div>
+              <div class="tier-desc" id="food-desc">Chicago deep dish slices, salad cups, and bakery cookies.</div>
+            </div>
+            <div class="tier-cost-tag">
+              <div class="tier-cost-amount font-mono" id="food-rate">$8.00 / student</div>
+              <div class="tier-cost-type" id="food-total">Subtotal: $3,200</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Drink Options Slider -->
+        <div class="control-group">
+          <div class="control-header">
+            <div class="control-label-group">
+              <span class="control-title">🥤 Drink & Refreshment Station</span>
+              <span class="control-subtitle">Hydration and specialty beverages</span>
+            </div>
+            <div class="control-val-badge font-mono" id="disp-drinkTier">Tier 2 of 3</div>
+          </div>
+          <div class="range-wrap">
+            <input type="range" id="input-drink" min="0" max="3" step="1" value="2" oninput="updateBudget()">
+          </div>
+          <div class="tier-detail-box" id="box-drink">
+            <div class="tier-info">
+              <div class="tier-name" id="drink-name">Unlimited Soda, Lemonade & Punch Station</div>
+              <div class="tier-desc" id="drink-desc">Self-serve dispensers with iced punch, lemonade, soda, and cups.</div>
+            </div>
+            <div class="tier-cost-tag">
+              <div class="tier-cost-amount font-mono" id="drink-rate">$3.50 / student</div>
+              <div class="tier-cost-type" id="drink-total">Subtotal: $1,400</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 3. Fixed Event Expenses (Flat Fees) -->
+      <div class="card">
+        <div class="card-title-row">
+          <div class="card-title">
+            <span class="icon">🎪</span> Venue, Production & Entertainment
+          </div>
+          <span class="badge badge-maroon">Fixed Outflows</span>
+        </div>
+
+        <!-- Venue Slider -->
+        <div class="control-group">
+          <div class="control-header">
+            <div class="control-label-group">
+              <span class="control-title">🏛️ Venue Location</span>
+              <span class="control-subtitle">From school grounds to premier Chicago halls</span>
+            </div>
+            <div class="control-val-badge font-mono" id="disp-venueTier">Tier 0 of 3</div>
+          </div>
+          <div class="range-wrap">
+            <input type="range" id="input-venue" min="0" max="3" step="1" value="0" oninput="updateBudget()">
+          </div>
+          <div class="tier-detail-box">
+            <div class="tier-info">
+              <div class="tier-name" id="venue-name">Lindblom Ballroom / Gymnasium</div>
+              <div class="tier-desc" id="venue-desc">Free on-campus school facility with security and gym floor cover.</div>
+            </div>
+            <div class="tier-cost-tag">
+              <div class="tier-cost-amount font-mono" id="venue-cost">$0</div>
+              <div class="tier-cost-type">Flat Fee</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- DJ & Music Slider -->
+        <div class="control-group">
+          <div class="control-header">
+            <div class="control-label-group">
+              <span class="control-title">🎧 DJ & Music Entertainment</span>
+              <span class="control-subtitle">Audio equipment, MC, and sound mixing</span>
+            </div>
+            <div class="control-val-badge font-mono" id="disp-djTier">Tier 2 of 4</div>
+          </div>
+          <div class="range-wrap">
+            <input type="range" id="input-dj" min="0" max="4" step="1" value="2" oninput="updateBudget()">
+          </div>
+          <div class="tier-detail-box">
+            <div class="tier-info">
+              <div class="tier-name" id="dj-name">Local Club / Radio DJ</div>
+              <div class="tier-desc" id="dj-desc">Experienced local DJ with high-powered sound system and crowd MC.</div>
+            </div>
+            <div class="tier-cost-tag">
+              <div class="tier-cost-amount font-mono" id="dj-cost">$900</div>
+              <div class="tier-cost-type">Flat Fee</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Special FX Slider -->
+        <div class="control-group">
+          <div class="control-header">
+            <div class="control-label-group">
+              <span class="control-title">✨ Special FX & Lighting Production</span>
+              <span class="control-subtitle">Stage lights, atmospheric effects, lasers</span>
+            </div>
+            <div class="control-val-badge font-mono" id="disp-fxTier">Tier 1 of 3</div>
+          </div>
+          <div class="range-wrap">
+            <input type="range" id="input-fx" min="0" max="3" step="1" value="1" oninput="updateBudget()">
+          </div>
+          <div class="tier-detail-box">
+            <div class="tier-info">
+              <div class="tier-name" id="fx-name">Club Laser & Strobe Light Package</div>
+              <div class="tier-desc" id="fx-desc">Synchronized DMX dancefloor strobes and multi-beam lasers.</div>
+            </div>
+            <div class="tier-cost-tag">
+              <div class="tier-cost-amount font-mono" id="fx-cost">$300</div>
+              <div class="tier-cost-type">Flat Fee</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Decorations & Theme Slider -->
+        <div class="control-group">
+          <div class="control-header">
+            <div class="control-label-group">
+              <span class="control-title">🎨 Theme Decorations & Photo Booth</span>
+              <span class="control-subtitle">Room styling, backdrops, and photo ops</span>
+            </div>
+            <div class="control-val-badge font-mono" id="disp-decorTier">Tier 2 of 3</div>
+          </div>
+          <div class="range-wrap">
+            <input type="range" id="input-decor" min="0" max="3" step="1" value="2" oninput="updateBudget()">
+          </div>
+          <div class="tier-detail-box">
+            <div class="tier-info">
+              <div class="tier-name" id="decor-name">Full Theme Transformation + 360 Photo Booth</div>
+              <div class="tier-desc" id="decor-desc">Ceiling drapery, balloon arches, table centerpieces, and 360° video booth.</div>
+            </div>
+            <div class="tier-cost-tag">
+              <div class="tier-cost-amount font-mono" id="decor-cost">$2,000</div>
+              <div class="tier-cost-type">Flat Fee</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Royalty Gear Slider -->
+        <div class="control-group">
+          <div class="control-header">
+            <div class="control-label-group">
+              <span class="control-title">👑 Homecoming Royalty Gear</span>
+              <span class="control-subtitle">Crowns, tiaras, sashes, and keepsake awards</span>
+            </div>
+            <div class="control-val-badge font-mono" id="disp-royaltyTier">Tier 2 of 3</div>
+          </div>
+          <div class="range-wrap">
+            <input type="range" id="input-royalty" min="0" max="3" step="1" value="2" oninput="updateBudget()">
+          </div>
+          <div class="tier-detail-box">
+            <div class="tier-info">
+              <div class="tier-name" id="royalty-name">Velvet Rhinestone Crowns & Embroidered Sashes</div>
+              <div class="tier-desc" id="royalty-desc">Sturdy metal crowns, tiaras, and custom gold-embroidered maroon sashes.</div>
+            </div>
+            <div class="tier-cost-tag">
+              <div class="tier-cost-amount font-mono" id="royalty-cost">$500</div>
+              <div class="tier-cost-type">Flat Fee</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Marketing & Promotion Slider -->
+        <div class="control-group">
+          <div class="control-header">
+            <div class="control-label-group">
+              <span class="control-title">📣 Marketing, Wristbands & Swag</span>
+              <span class="control-subtitle">Promotion, wristbands, and student souvenirs</span>
+            </div>
+            <div class="control-val-badge font-mono" id="disp-marketingTier">Tier 1 of 3</div>
+          </div>
+          <div class="range-wrap">
+            <input type="range" id="input-marketing" min="0" max="3" step="1" value="1" oninput="updateBudget()">
+          </div>
+          <div class="tier-detail-box">
+            <div class="tier-info">
+              <div class="tier-name" id="marketing-name">Printed Posters & Holographic Wristbands</div>
+              <div class="tier-desc" id="marketing-desc">Hallway color posters, morning hype flyers, and secure gold entry bands.</div>
+            </div>
+            <div class="tier-cost-tag">
+              <div class="tier-cost-amount font-mono" id="marketing-cost">$250</div>
+              <div class="tier-cost-type">Flat Fee</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- RIGHT COLUMN: FINANCIAL DASHBOARD & VISUALIZATIONS -->
+    <div class="results-column sticky-panel">
+      
+      <!-- Live Financial Health Alert Banner -->
+      <div class="health-banner surplus" id="health-banner">
+        <div class="health-icon" id="health-icon">🎉</div>
+        <div class="health-content">
+          <h3 id="health-title">Budget In Surplus (+$3,450)</h3>
+          <p id="health-message">Your homecoming revenue exceeds total expenses! You have surplus funds to lower ticket prices or invest in upgrades.</p>
+        </div>
+      </div>
+
+      <!-- Key Metrics KPI Cards -->
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <div class="metric-label">Total Revenue</div>
+          <div class="metric-value font-mono" id="metric-revenue" style="color: var(--color-success);">$12,000</div>
+          <div class="metric-subtext" id="metric-rev-sub">Tickets + School + Partners</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Total Expenses</div>
+          <div class="metric-value font-mono" id="metric-expenses" style="color: var(--lmsa-gold-light);">$8,550</div>
+          <div class="metric-subtext" id="metric-exp-sub">8 Expense Categories</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Net Balance</div>
+          <div class="metric-value font-mono" id="metric-balance">+$3,450</div>
+          <div class="metric-subtext">Surplus / Profit</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Break-Even Ticket</div>
+          <div class="metric-value font-mono" id="metric-breakeven">$16.38</div>
+          <div class="metric-subtext">Min. price to cover costs</div>
+        </div>
+      </div>
+
+      <!-- Student Experience Hype Meter -->
+      <div class="hype-container">
+        <div class="hype-header">
+          <div class="hype-title">🔥 Student Experience "Hype Meter"</div>
+          <div class="hype-score-val font-mono" id="disp-hypeScore">72 / 100</div>
+        </div>
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill" id="hype-bar-fill" style="width: 72%;"></div>
+        </div>
+        <div class="hype-descriptor" id="hype-text">"High-Energy Eagle Party! Great food and beats."</div>
+      </div>
+
+      <!-- Interactive Charts -->
+      <div class="card" style="margin-bottom: 20px;">
+        <div class="card-title-row">
+          <div class="card-title">
+            <span class="icon">📊</span> Budget Visualizer
+          </div>
+          <div class="chart-tabs">
+            <button class="chart-tab-btn active" onclick="switchChart('donut')" id="btn-chart-donut">Expenses Breakdown</button>
+            <button class="chart-tab-btn" onclick="switchChart('bar')" id="btn-chart-bar">Revenue vs Cost</button>
+          </div>
+        </div>
+        <div class="chart-container">
+          <canvas id="budgetChart"></canvas>
+        </div>
+      </div>
+
+      <!-- Itemized Running Total Table -->
+      <div class="card">
+        <div class="card-title-row">
+          <div class="card-title">
+            <span class="icon">🧾</span> Itemized Running Total
+          </div>
+          <span class="badge badge-gold font-mono" id="cost-per-student-badge">$21.38 / student cost</span>
+        </div>
+
+        <div class="table-container">
+          <table class="budget-table">
+            <thead>
+              <tr>
+                <th>Category</th>
+                <th>Selected Package</th>
+                <th class="text-right">Type</th>
+                <th class="text-right">Subtotal</th>
+                <th class="text-right">% of Total</th>
+              </tr>
+            </thead>
+            <tbody id="budget-table-body">
+              <!-- Dynamically populated via JS -->
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="3">Total Homecoming Expenditure</td>
+                <td class="text-right font-mono" id="table-total-exp">$8,550</td>
+                <td class="text-right font-mono">100%</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+
+        <!-- Student Discussion & Reflection Box -->
+        <div class="reflection-box">
+          <h4>💡 Classroom Discussion Questions</h4>
+          <p>
+            1. If ticket sales drop by 25% due to bad weather, what is the first category you would adjust to keep the dance solvent?<br>
+            2. Is it fair to charge students $40+ for a ticket to fund a downtown luxury venue, or should school dances prioritize accessibility for all students?
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+  // --- TIER DATA DEFINITIONS ---
+  const FOOD_TIERS = [
+    { name: "BYO Snacks / None", desc: "No catered food provided. Students purchase own snacks at concessions.", rate: 0, hype: 0 },
+    { name: "Chips, Pretzels & Cookies", desc: "Individually wrapped chip bags, pretzel packs, and Otis Spunkmeyer cookies.", rate: 3.0, hype: 8 },
+    { name: "Deep Dish Pizza & Cookies", desc: "Hot Chicago deep dish slices (Cheese/Sausage), salad cups, and bakery cookies.", rate: 8.0, hype: 16 },
+    { name: "Chicago Food Truck Buffet", desc: "Sliders, tacos, gourmet mac & cheese bar, and warm churros.", rate: 16.0, hype: 24 },
+    { name: "Full Gourmet Catered Dinner", desc: "Carving station, pasta bar, dessert fondue fountain, and mocktail pairings.", rate: 28.0, hype: 30 }
+  ];
+
+  const DRINK_TIERS = [
+    { name: "School Water Fountains", desc: "Standard hydration stations around the facility.", rate: 0, hype: 0 },
+    { name: "Bottled Water & Juice Boxes", desc: "Chilled bottled water and assorted Capri Sun / juices on ice.", rate: 1.5, hype: 6 },
+    { name: "Unlimited Soda & Punch Station", desc: "Self-serve dispensers with fruit punch, lemonade, sodas, and ice.", rate: 3.5, hype: 14 },
+    { name: "Deluxe Mocktail Bar", desc: "Student mixologist bar serving sparkling Shirley Temples, Mojito mocktails & boba.", rate: 7.0, hype: 22 }
+  ];
+
+  const DJ_TIERS = [
+    { name: "Spotify Playlist & Aux Cord", desc: "Student Council curated Spotify playlist plugged into gym speaker.", cost: 0, hype: 2 },
+    { name: "Student / Alumni DJ", desc: "Talented LMSA student or recent alumni with a starter controller and speakers.", cost: 350, hype: 12 },
+    { name: "Local Club / Radio DJ", desc: "Experienced Chicago club DJ with dual subwoofers and live MC hypeman.", cost: 900, hype: 20 },
+    { name: "Pro Event DJ & MC Production", desc: "Professional wedding/gala DJ team, concert-grade sound, wireless mics & MC.", cost: 2200, hype: 28 },
+    { name: "Celebrity / Festival DJ Setup", desc: "Touring Chicago DJ, festival-grade sound rigs, live remixers, and heavy bass.", cost: 5000, hype: 35 }
+  ];
+
+  const FX_TIERS = [
+    { name: "Standard Ambient Lighting", desc: "Dimmed house lights and standard wall sconces.", cost: 0, hype: 0 },
+    { name: "Club Lasers & Strobes", desc: "Multi-colored laser patterns, strobe lights, and sound-activated par cans.", cost: 300, hype: 8 },
+    { name: "Low-Fog & Cold Spark Fountains", desc: "Dancing on clouds low-fog effect and indoor-safe cold pyro spark fountains.", cost: 850, hype: 16 },
+    { name: "CO2 Jets, Confetti & LED Wall", desc: "Cryo blast CO2 cannons, dramatic confetti drop, and 12-foot stage LED video wall.", cost: 2800, hype: 25 }
+  ];
+
+  const DECOR_TIERS = [
+    { name: "DIY Streamers & Balloons", desc: "Paper streamers, simple maroon/gold balloon clusters hung by volunteers.", cost: 150, hype: 3 },
+    { name: "Balloon Arches & Centerpieces", desc: "Professional balloon entryway arch, illuminated table centerpieces, and photo corner.", cost: 700, hype: 10 },
+    { name: "Full Theme Transformation & 360 Booth", desc: "Themed wall drapes, custom lighting wash, floral accents, and 360° video spinner booth.", cost: 2000, hype: 20 },
+    { name: "Luxury Stage Rig & Hollywood Set", desc: "Complete red carpet entry, velvet ropes, custom stage props, and pro photographer studio.", cost: 4500, hype: 28 }
+  ];
+
+  const ROYALTY_TIERS = [
+    { name: "DIY Paper / Plastic Crowns", desc: "Paper crowns with glitter and cardstock sashes.", cost: 30, hype: 2 },
+    { name: "Plastic Tiaras & Printed Sashes", desc: "Metallic plastic crowns, tiaras, and printed satin ribbon sashes.", cost: 180, hype: 6 },
+    { name: "Velvet Crowns & Embroidered Sashes", desc: "Heavy metal rhinestone crowns, velvet caps, and custom gold-threaded LMSA sashes.", cost: 500, hype: 12 },
+    { name: "Deluxe Heirloom Crowns & Medals", desc: "Engraved keepsake crowns, sashes, medallion awards, and fresh floral bouquets.", cost: 1200, hype: 18 }
+  ];
+
+  const VENUE_TIERS = [
+    { name: "Lindblom Ballroom / Gym", desc: "Free on-campus school facility. Nostalgic Eagle pride, zero venue rental fee.", cost: 0, hype: 8 },
+    { name: "Local Park District / Hall", desc: "Nearby community center banquet hall with wooden dancefloor and basic seating.", cost: 950, hype: 14 },
+    { name: "South Shore Cultural / Bridgeport Art", desc: "Historic Chicago architectural venue with high ceilings, scenic views, and chandeliers.", cost: 4000, hype: 26 },
+    { name: "Museum of Science / Downtown Hotel", desc: "Iconic Chicago landmark or 5-star Michigan Ave ballroom with skyline views.", cost: 10000, hype: 35 }
+  ];
+
+  const MARKETING_TIERS = [
+    { name: "Word of Mouth & Announcements", desc: "Morning intercom announcements and student-to-student chatter.", cost: 0, hype: 2 },
+    { name: "Printed Posters & Wristbands", desc: "Full-color hallway posters, flyer handouts, and numbered gold security wristbands.", cost: 250, hype: 8 },
+    { name: "Social Promo, Custom Tickets & Merch", desc: "Instagram hype videos, collectible physical metallic tickets, and glowing cheer sticks.", cost: 650, hype: 15 },
+    { name: "Commemorative T-Shirts & Swag Bags", desc: "Custom designed Homecoming T-shirt for every attendee + VIP swag bag.", cost: 1600, hype: 24 }
+  ];
+
+  // Helper Formatter
+  const formatMoney = (num) => {
+    return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(num);
+  };
+  const formatMoneyExact = (num) => {
+    return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(num);
+  };
+
+  // State Management
+  let currentChartType = 'donut';
+  let chartInstance = null;
+
+  function initChart() {
+    if (typeof Chart === 'undefined') return;
+    const ctx = document.getElementById('budgetChart');
+    if (!ctx) return;
+
+    chartInstance = new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        labels: ['Food', 'Drinks', 'DJ', 'FX', 'Decor', 'Royalty', 'Venue', 'Marketing'],
+        datasets: [{
+          data: [0, 0, 0, 0, 0, 0, 0, 0],
+          backgroundColor: [
+            '#f59e0b', '#38bdf8', '#a855f7', '#ec4899', 
+            '#10b981', '#fbbf24', '#7b181e', '#6366f1'
+          ],
+          borderColor: '#141721',
+          borderWidth: 2
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            position: 'right',
+            labels: {
+              color: '#9ca3af',
+              font: { family: 'Plus Jakarta Sans', size: 11 },
+              boxWidth: 12,
+              padding: 8
+            }
+          },
+          tooltip: {
+            callbacks: {
+              label: function(context) {
+                const label = context.label || '';
+                const val = formatMoney(context.raw || 0);
+                return ` ${label}: ${val}`;
+              }
+            }
+          }
+        }
+      }
+    });
+  }
+
+  function switchChart(type) {
+    currentChartType = type;
+    document.getElementById('btn-chart-donut').classList.toggle('active', type === 'donut');
+    document.getElementById('btn-chart-bar').classList.toggle('active', type === 'bar');
+    updateBudget();
+  }
+
+  function updateBudget() {
+    // 1. Read Inputs
+    const attendance = parseInt(document.getElementById('input-attendance').value) || 0;
+    const ticketPrice = parseFloat(document.getElementById('input-ticketPrice').value) || 0;
+    const schoolBudget = parseFloat(document.getElementById('input-schoolBudget').value) || 0;
+    const partnerBudget = parseFloat(document.getElementById('input-partnerBudget').value) || 0;
+
+    const foodIdx = parseInt(document.getElementById('input-food').value) || 0;
+    const drinkIdx = parseInt(document.getElementById('input-drink').value) || 0;
+    const djIdx = parseInt(document.getElementById('input-dj').value) || 0;
+    const fxIdx = parseInt(document.getElementById('input-fx').value) || 0;
+    const decorIdx = parseInt(document.getElementById('input-decor').value) || 0;
+    const royaltyIdx = parseInt(document.getElementById('input-royalty').value) || 0;
+    const venueIdx = parseInt(document.getElementById('input-venue').value) || 0;
+    const marketingIdx = parseInt(document.getElementById('input-marketing').value) || 0;
+
+    // 2. Lookup Tier Details
+    const food = FOOD_TIERS[foodIdx];
+    const drink = DRINK_TIERS[drinkIdx];
+    const dj = DJ_TIERS[djIdx];
+    const fx = FX_TIERS[fxIdx];
+    const decor = DECOR_TIERS[decorIdx];
+    const royalty = ROYALTY_TIERS[royaltyIdx];
+    const venue = VENUE_TIERS[venueIdx];
+    const marketing = MARKETING_TIERS[marketingIdx];
+
+    // 3. Compute Itemized Costs
+    const foodCost = food.rate * attendance;
+    const drinkCost = drink.rate * attendance;
+    const djCost = dj.cost;
+    const fxCost = fx.cost;
+    const decorCost = decor.cost;
+    const royaltyCost = royalty.cost;
+    const venueCost = venue.cost;
+    const marketingCost = marketing.cost;
+
+    const totalExpenses = foodCost + drinkCost + djCost + fxCost + decorCost + royaltyCost + venueCost + marketingCost;
+    
+    // Compute Revenues
+    const ticketRevenue = attendance * ticketPrice;
+    const totalRevenue = ticketRevenue + schoolBudget + partnerBudget;
+    const netBalance = totalRevenue - totalExpenses;
+
+    const costPerStudent = attendance > 0 ? (totalExpenses / attendance) : 0;
+    const breakEvenTicketPrice = attendance > 0 ? Math.max(0, (totalExpenses - schoolBudget - partnerBudget) / attendance) : 0;
+
+    // Compute Hype Score (0 - 100)
+    let rawHype = food.hype + drink.hype + dj.hype + fx.hype + decor.hype + royalty.hype + venue.hype + marketing.hype;
+    // Base bonus for attendance density
+    let attendanceFactor = Math.min(20, (attendance / 1000) * 20);
+    let finalHype = Math.min(100, Math.round(rawHype * 0.75 + attendanceFactor));
+
+    // 4. Update UI Displays
+    document.getElementById('disp-attendance').innerText = `${attendance} Students`;
+    document.getElementById('disp-ticketPrice').innerText = `$${ticketPrice} / ticket`;
+    document.getElementById('calc-ticketRev').innerText = formatMoney(ticketRevenue);
+    document.getElementById('disp-schoolBudget').innerText = formatMoney(schoolBudget);
+    document.getElementById('disp-partnerBudget').innerText = formatMoney(partnerBudget);
+
+    // Food Card Update
+    document.getElementById('disp-foodTier').innerText = `Tier ${foodIdx} of 4`;
+    document.getElementById('food-name').innerText = food.name;
+    document.getElementById('food-desc').innerText = food.desc;
+    document.getElementById('food-rate').innerText = `$${food.rate.toFixed(2)} / student`;
+    document.getElementById('food-total').innerText = `Subtotal: ${formatMoney(foodCost)}`;
+
+    // Drink Card Update
+    document.getElementById('disp-drinkTier').innerText = `Tier ${drinkIdx} of 3`;
+    document.getElementById('drink-name').innerText = drink.name;
+    document.getElementById('drink-desc').innerText = drink.desc;
+    document.getElementById('drink-rate').innerText = `$${drink.rate.toFixed(2)} / student`;
+    document.getElementById('drink-total').innerText = `Subtotal: ${formatMoney(drinkCost)}`;
+
+    // DJ Card Update
+    document.getElementById('disp-djTier').innerText = `Tier ${djIdx} of 4`;
+    document.getElementById('dj-name').innerText = dj.name;
+    document.getElementById('dj-desc').innerText = dj.desc;
+    document.getElementById('dj-cost').innerText = formatMoney(djCost);
+
+    // FX Card Update
+    document.getElementById('disp-fxTier').innerText = `Tier ${fxIdx} of 3`;
+    document.getElementById('fx-name').innerText = fx.name;
+    document.getElementById('fx-desc').innerText = fx.desc;
+    document.getElementById('fx-cost').innerText = formatMoney(fxCost);
+
+    // Decor Card Update
+    document.getElementById('disp-decorTier').innerText = `Tier ${decorIdx} of 3`;
+    document.getElementById('decor-name').innerText = decor.name;
+    document.getElementById('decor-desc').innerText = decor.desc;
+    document.getElementById('decor-cost').innerText = formatMoney(decorCost);
+
+    // Royalty Card Update
+    document.getElementById('disp-royaltyTier').innerText = `Tier ${royaltyIdx} of 3`;
+    document.getElementById('royalty-name').innerText = royalty.name;
+    document.getElementById('royalty-desc').innerText = royalty.desc;
+    document.getElementById('royalty-cost').innerText = formatMoney(royaltyCost);
+
+    // Venue Card Update
+    document.getElementById('disp-venueTier').innerText = `Tier ${venueIdx} of 3`;
+    document.getElementById('venue-name').innerText = venue.name;
+    document.getElementById('venue-desc').innerText = venue.desc;
+    document.getElementById('venue-cost').innerText = formatMoney(venueCost);
+
+    // Marketing Card Update
+    document.getElementById('disp-marketingTier').innerText = `Tier ${marketingIdx} of 3`;
+    document.getElementById('marketing-name').innerText = marketing.name;
+    document.getElementById('marketing-desc').innerText = marketing.desc;
+    document.getElementById('marketing-cost').innerText = formatMoney(marketingCost);
+
+    // Metrics Cards Update
+    document.getElementById('metric-revenue').innerText = formatMoney(totalRevenue);
+    document.getElementById('metric-expenses').innerText = formatMoney(totalExpenses);
+    
+    const balanceElem = document.getElementById('metric-balance');
+    balanceElem.innerText = (netBalance >= 0 ? '+' : '') + formatMoney(netBalance);
+    balanceElem.style.color = netBalance >= 0 ? 'var(--color-success)' : 'var(--color-danger)';
+    
+    document.getElementById('metric-breakeven').innerText = formatMoneyExact(breakEvenTicketPrice);
+    document.getElementById('cost-per-student-badge').innerText = `${formatMoneyExact(costPerStudent)} / student cost`;
+
+    // Health Alert Banner Update
+    const banner = document.getElementById('health-banner');
+    const healthIcon = document.getElementById('health-icon');
+    const healthTitle = document.getElementById('health-title');
+    const healthMsg = document.getElementById('health-message');
+
+    banner.classList.remove('surplus', 'deficit', 'balanced');
+
+    if (netBalance > 500) {
+      banner.classList.add('surplus');
+      healthIcon.innerText = '🎉';
+      healthTitle.innerText = `Budget In Surplus (+${formatMoney(netBalance)})`;
+      healthMsg.innerText = `Great job! Your projected revenues easily cover all homecoming costs. You have extra funds to reinvest, save for prom, or reduce ticket prices!`;
+    } else if (netBalance >= 0) {
+      banner.classList.add('balanced');
+      healthIcon.innerText = '⚖️';
+      healthTitle.innerText = `Balanced Budget (+${formatMoney(netBalance)})`;
+      healthMsg.innerText = `Your event is solvent and breaking even! Small fluctuations in attendance won't jeopardize the event.`;
+    } else {
+      banner.classList.add('deficit');
+      healthIcon.innerText = '⚠️';
+      healthTitle.innerText = `Budget Deficit (${formatMoney(netBalance)})`;
+      healthMsg.innerText = `You are spending more than your available funds. To balance the budget, consider raising tickets to at least ${formatMoneyExact(breakEvenTicketPrice)}, lowering venue/catering tiers, or securing more partner grants.`;
+    }
+
+    // Hype Meter Update
+    document.getElementById('disp-hypeScore').innerText = `${finalHype} / 100`;
+    document.getElementById('hype-bar-fill').style.width = `${finalHype}%`;
+    
+    let hypeText = "";
+    if (finalHype >= 85) {
+      hypeText = "🌟 Legendary Extravaganza! The most talked-about Homecoming in Lindblom history.";
+    } else if (finalHype >= 68) {
+      hypeText = "🔥 High-Energy Eagle Pride! Great music, delicious food, and awesome photo ops.";
+    } else if (finalHype >= 45) {
+      hypeText = "🎈 Solid School Dance! Fun atmosphere with standard essentials.";
+    } else {
+      hypeText = "📦 Minimalist Gathering. Basic tunes and DIY setup. Could use a boost in food or entertainment.";
+    }
+    document.getElementById('hype-text').innerText = `"${hypeText}"`;
+
+    // 5. Update Running Total Table
+    const items = [
+      { cat: "🍴 Food Catering", pkg: food.name, type: `$${food.rate.toFixed(2)}/ea`, sub: foodCost },
+      { cat: "🥤 Refreshments", pkg: drink.name, type: `$${drink.rate.toFixed(2)}/ea`, sub: drinkCost },
+      { cat: "🏛️ Venue Rental", pkg: venue.name, type: "Flat Fee", sub: venueCost },
+      { cat: "🎧 DJ & MC Audio", pkg: dj.name, type: "Flat Fee", sub: djCost },
+      { cat: "✨ Special FX / Lights", pkg: fx.name, type: "Flat Fee", sub: fxCost },
+      { cat: "🎨 Decor & 360 Booth", pkg: decor.name, type: "Flat Fee", sub: decorCost },
+      { cat: "👑 Royalty Gear", pkg: royalty.name, type: "Flat Fee", sub: royaltyCost },
+      { cat: "📣 Marketing & Swag", pkg: marketing.name, type: "Flat Fee", sub: marketingCost },
+    ];
+
+    const tbody = document.getElementById('budget-table-body');
+    tbody.innerHTML = '';
+
+    items.forEach(item => {
+      const pct = totalExpenses > 0 ? ((item.sub / totalExpenses) * 100).toFixed(1) : 0;
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td><strong>${item.cat}</strong></td>
+        <td style="color: var(--text-muted); font-size: 0.8rem;">${item.pkg}</td>
+        <td class="text-right font-mono" style="font-size: 0.78rem; color: var(--text-dim);">${item.type}</td>
+        <td class="text-right font-mono font-weight-bold">${formatMoney(item.sub)}</td>
+        <td class="text-right font-mono" style="color: var(--lmsa-gold-light);">${pct}%</td>
+      `;
+      tbody.appendChild(tr);
+    });
+
+    document.getElementById('table-total-exp').innerText = formatMoney(totalExpenses);
+
+    // 6. Update Chart
+    updateChartData(items, totalRevenue, totalExpenses, ticketRevenue, schoolBudget, partnerBudget);
+  }
+
+  function updateChartData(items, totalRev, totalExp, ticketRev, schoolBud, partnerBud) {
+    if (!chartInstance) return;
+
+    if (currentChartType === 'donut') {
+      chartInstance.config.type = 'doughnut';
+      chartInstance.data = {
+        labels: items.map(i => i.cat.replace(/^[^\s]+\s/, '')),
+        datasets: [{
+          data: items.map(i => i.sub),
+          backgroundColor: [
+            '#f59e0b', '#38bdf8', '#7b181e', '#a855f7', 
+            '#ec4899', '#10b981', '#fbbf24', '#6366f1'
+          ],
+          borderColor: '#141721',
+          borderWidth: 2
+        }]
+      };
+      chartInstance.options.plugins.legend.display = true;
+    } else {
+      chartInstance.config.type = 'bar';
+      chartInstance.data = {
+        labels: ['Ticket Sales', 'School Grant', 'Partner Grants', 'Total Expenses'],
+        datasets: [{
+          label: 'Amount ($)',
+          data: [ticketRev, schoolBud, partnerBud, totalExp],
+          backgroundColor: ['#10b981', '#38bdf8', '#d4af37', '#ef4444'],
+          borderRadius: 6
+        }]
+      };
+      chartInstance.options.plugins.legend.display = false;
+    }
+
+    chartInstance.update();
+  }
+
+  // Preset Configurations
+  function applyPreset(type) {
+    document.querySelectorAll('.preset-chip').forEach(el => el.classList.remove('active'));
+    const btn = document.getElementById(`preset-${type}`);
+    if (btn) btn.classList.add('active');
+
+    if (type === 'barebones') {
+      document.getElementById('input-attendance').value = 300;
+      document.getElementById('input-ticketPrice').value = 10;
+      document.getElementById('input-schoolBudget').value = 500;
+      document.getElementById('input-partnerBudget').value = 0;
+      document.getElementById('input-food').value = 1; // Chips & Cookies
+      document.getElementById('input-drink').value = 1; // Bottled Water
+      document.getElementById('input-venue').value = 0; // Gym
+      document.getElementById('input-dj').value = 1; // Student DJ
+      document.getElementById('input-fx').value = 0; // None
+      document.getElementById('input-decor').value = 0; // DIY
+      document.getElementById('input-royalty').value = 0; // Paper
+      document.getElementById('input-marketing').value = 0; // Announcements
+    } else if (type === 'balanced') {
+      resetToDefault();
+      return;
+    } else if (type === 'extravaganza') {
+      document.getElementById('input-attendance').value = 600;
+      document.getElementById('input-ticketPrice').value = 55;
+      document.getElementById('input-schoolBudget').value = 3000;
+      document.getElementById('input-partnerBudget').value = 2500;
+      document.getElementById('input-food').value = 3; // Food Truck Buffet
+      document.getElementById('input-drink').value = 3; // Mocktail Bar
+      document.getElementById('input-venue').value = 2; // South Shore Cultural Center
+      document.getElementById('input-dj').value = 3; // Pro Event DJ
+      document.getElementById('input-fx').value = 2; // Cold Sparks & Low Fog
+      document.getElementById('input-decor').value = 2; // Full Theme & 360 Booth
+      document.getElementById('input-royalty').value = 2; // Velvet Crowns
+      document.getElementById('input-marketing').value = 2; // Social + Wristbands
+    } else if (type === 'freeDance') {
+      document.getElementById('input-attendance').value = 450;
+      document.getElementById('input-ticketPrice').value = 0; // FREE
+      document.getElementById('input-schoolBudget').value = 4000;
+      document.getElementById('input-partnerBudget').value = 2000;
+      document.getElementById('input-food').value = 2; // Pizza
+      document.getElementById('input-drink').value = 2; // Punch Station
+      document.getElementById('input-venue').value = 0; // School Gym
+      document.getElementById('input-dj').value = 2; // Club DJ
+      document.getElementById('input-fx').value = 1; // Lasers
+      document.getElementById('input-decor').value = 1; // Balloon Arches
+      document.getElementById('input-royalty').value = 1; // Basic Sashes
+      document.getElementById('input-marketing').value = 1; // Posters
+    }
+
+    updateBudget();
+  }
+
+  function resetToDefault() {
+    document.querySelectorAll('.preset-chip').forEach(el => el.classList.remove('active'));
+    const btn = document.getElementById('preset-balanced');
+    if (btn) btn.classList.add('active');
+
+    document.getElementById('input-attendance').value = 400;
+    document.getElementById('input-ticketPrice').value = 25;
+    document.getElementById('input-schoolBudget').value = 1500;
+    document.getElementById('input-partnerBudget').value = 500;
+
+    document.getElementById('input-food').value = 2; // Pizza
+    document.getElementById('input-drink').value = 2; // Lemonade/Soda
+    document.getElementById('input-venue').value = 0; // Gym
+    document.getElementById('input-dj').value = 2; // Local Club DJ
+    document.getElementById('input-fx').value = 1; // Lasers
+    document.getElementById('input-decor').value = 2; // Theme + 360 Booth
+    document.getElementById('input-royalty').value = 2; // Velvet Crowns
+    document.getElementById('input-marketing').value = 1; // Posters
+
+    updateBudget();
+  }
+
+  // Initialize on page load
+  window.addEventListener('DOMContentLoaded', () => {
+    initChart();
+    updateBudget();
+  });
+</script>
+
+</body>
+</html>
