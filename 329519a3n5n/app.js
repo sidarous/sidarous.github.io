@@ -20,7 +20,7 @@
 
   const STUDENT_CSV_URL = "studname.csv";
 
-  const DEFAULT_PIN = "Ac6q4JpYf8mujPgRPBLik7CT";
+  const DEFAULT_PIN = "teacher123";
 
   let state = {
     isAuthenticated: false,
@@ -1343,10 +1343,7 @@
       return;
     }
 
-    // Limit DOM rendering to first 120 students if searching for fast scrolling, load more on scroll
-    const displayList = students.slice(0, 150);
-
-    grid.innerHTML = displayList
+    grid.innerHTML = students
       .map((s) => {
         const mastery = s.stats ? s.stats.mastery || 1 : 1;
         const pct = (mastery / 5) * 100;
@@ -1384,13 +1381,6 @@
         `;
       })
       .join("");
-
-    if (students.length > 150) {
-      const moreMsg = document.createElement("div");
-      moreMsg.style.cssText = "grid-column: 1/-1; text-align: center; padding: 1.5rem; color: var(--text-muted); font-size: 0.9rem;";
-      moreMsg.textContent = `Showing 150 of ${students.length.toLocaleString()} students. Use search above to narrow results.`;
-      grid.appendChild(moreMsg);
-    }
 
     grid.querySelectorAll(".btn-speak").forEach((btn) => {
       btn.addEventListener("click", (e) => {
