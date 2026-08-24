@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lindblom Math & Science Academy - Student Recognition Suite</title>
+  <meta name="description" content="Lindblom Math and Science Academy teacher portal for learning and mastering student names and faces." />
+  <link rel="icon" type="image/png" href="lindblomlogo.png" />
+  
+  <!-- Typography (Outfit) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Ambient background glow -->
+  <div class="ambient-glow"></div>
+  
+  <!-- Confetti canvas for celebrations -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- =========================================================================
+       1. AUTHENTICATION & SECURE LOGIN SCREEN
+       ========================================================================= -->
+  <div id="lock-screen">
+    <div class="lock-card">
+      <div class="lock-logo-wrap">
+        <img src="lindblomlogo.png" class="lock-school-logo" alt="Lindblom Math & Science Academy" />
+      </div>
+      <h1 class="lock-title">Lindblom Math & Science Academy</h1>
+      <p class="lock-subtitle">The Name Game</p>
+
+      <form id="login-form" class="login-form">
+        <div class="password-input-group">
+          <svg class="input-leading-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+          </svg>
+          <input 
+            type="password" 
+            id="login-password-input" 
+            class="password-input-field" 
+            placeholder="Enter teacher password..." 
+            autocomplete="current-password" 
+            autofocus 
+            required 
+          />
+          <button 
+            type="button" 
+            id="btn-toggle-password-visibility" 
+            class="password-toggle-btn" 
+            title="Show / Hide password" 
+            aria-label="Show or hide password"
+          >
+            <!-- Eye Show Icon -->
+            <svg id="eye-icon-show" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+              <circle cx="12" cy="12" r="3"></circle>
+            </svg>
+            <!-- Eye Hide Icon -->
+            <svg id="eye-icon-hide" style="display:none;" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+              <line x1="1" y1="1" x2="23" y2="23"></line>
+            </svg>
+          </button>
+        </div>
+
+        <div id="login-error-msg" class="login-error-msg" style="display:none;"></div>
+
+        <button type="submit" id="btn-login-submit" class="btn-primary login-submit-btn">
+          <span>Unlock Portal</span>
+          <span style="font-size:1.1rem;">➔</span>
+        </button>
+
+        <div class="lock-footer">
+          <label class="remember-row">
+            <input type="checkbox" id="remember-me-checkbox" checked />
+            <span>Keep me signed in on this device</span>
+          </label>
+        </div>
+      </form>
+
+      <div id="roster-import-panel" class="roster-import-panel" style="display:none;">
+        <div class="roster-import-icon">📋</div>
+        <h2>Choose your roster</h2>
+        <p>Select a roster CSV file to continue. The roster stays in this browser and is never uploaded.</p>
+        <button type="button" id="btn-select-roster" class="btn-primary roster-select-btn">Choose CSV File</button>
+        <input type="file" id="roster-file-input" accept=".csv,text/csv" hidden />
+        <div id="roster-import-status" class="roster-import-status" role="status" aria-live="polite"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       2. MAIN APP SHELL
+       ========================================================================= -->
+  <div id="app">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="brand-section">
+        <div class="brand-logo-wrap">
+          <img src="lindblomlogo.png" class="brand-logo-img" alt="Lindblom Logo" />
+        </div>
+        <div>
+          <h2 class="brand-name">Lindblom Math & Science Academy</h2>
+          <span class="brand-tagline">The Name Game</span>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <div class="stat-chip" title="Total active students in roster">
+          <span>👥</span>
+          <span id="stat-total-students">1,245</span>
+        </div>
+        <div class="stat-chip" title="Overall mastery score">
+          <span>🎯</span>
+          <span id="stat-mastery-percent">0% Mastered</span>
+        </div>
+
+        <button class="icon-btn" id="btn-toggle-theme" title="Toggle Light/Dark Theme">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </button>
+
+        <button class="icon-btn" id="btn-open-settings" title="Settings">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+          </svg>
+        </button>
+
+        <button class="icon-btn" id="btn-lock-app" title="Lock App Now">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Grade Filter Pill Bar (Grades 7, 8, 9, 10, 11, 12) -->
+    <div class="filter-bar-container">
+      <div class="grade-filter-group">
+        <button class="grade-pill active" data-grade="all">All Grades (1,245)</button>
+        <button class="grade-pill" data-grade="7">7th Grade</button>
+        <button class="grade-pill" data-grade="8">8th Grade</button>
+        <button class="grade-pill" data-grade="9">9th Grade</button>
+        <button class="grade-pill" data-grade="10">10th Grade</button>
+        <button class="grade-pill" data-grade="11">11th Grade</button>
+        <button class="grade-pill" data-grade="12">12th Grade</button>
+      </div>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <nav class="app-nav">
+      <div class="nav-tabs">
+        <button class="nav-tab active" data-tab="flashcards">
+          <span>🗂️</span> Flashcards
+        </button>
+        <button class="nav-tab" data-tab="multiple-choice">
+          <span>🎯</span> Multiple Choice
+        </button>
+        <button class="nav-tab" data-tab="type-in">
+          <span>✍️</span> Name Spelling
+        </button>
+        <button class="nav-tab" data-tab="speed-match">
+          <span>⚡</span> Speed Match
+        </button>
+        <button class="nav-tab" data-tab="directory">
+          <span>👥</span> Student Roster
+        </button>
+      </div>
+    </nav>
+
+    <!-- Main Workspace Area -->
+    <main class="main-content">
+      <!-- =========================================================================
+           TAB 1: FLASHCARDS (3D FLIP & SRS)
+           ========================================================================= -->
+      <section id="section-flashcards" class="view-section active">
+        <div class="flashcard-wrapper">
+          <div class="flashcard-header-bar">
+            <span>Flip to reveal student details</span>
+            <span id="fc-count-badge" style="font-weight:700; color:var(--accent-primary)">Card 1 of 1,245</span>
+          </div>
+
+          <div id="fc-empty-state" style="display:none; text-align:center; padding:3rem;">
+            <h3>No students in selected grade level</h3>
+            <p style="color:var(--text-secondary)">Try selecting "All Grades".</p>
+          </div>
+
+          <div id="flashcard-render-area" style="width:100%;">
+            <div class="card-container" id="main-flashcard-container">
+              <div class="card-inner" id="main-flashcard-inner">
+                <!-- Front Side: Face Photo & Grade Badge -->
+                <div class="card-face card-face-front">
+                  <div class="card-top-bar">
+                    <span class="grade-badge" id="fc-front-grade" data-grade="7">Grade 7</span>
+                    <span style="font-size:0.75rem; color:var(--text-muted);">Click or Space to Flip</span>
+                  </div>
+                  <div class="photo-container" id="fc-front-photo-wrap">
+                    <img id="fc-front-photo" class="student-portrait" src="" alt="Student Portrait" />
+                    <div id="fc-front-avatar" class="avatar-fallback" style="display:none;"></div>
+                  </div>
+                  <div class="flip-hint">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"></path>
+                    </svg>
+                    <span>Tap anywhere or press Spacebar</span>
+                  </div>
+                </div>
+
+                <!-- Back Side: Full Name, Roster Name, Grade, Pronounce -->
+                <div class="card-face card-face-back">
+                  <div class="card-top-bar">
+                    <span class="grade-badge" id="fc-back-grade" data-grade="7">Grade 7</span>
+                    <button class="pronunciation-badge" id="fc-back-pronounce">🗣️ Pronounce</button>
+                  </div>
+                  <div class="back-details">
+                    <div class="student-full-name" id="fc-back-name">Student Name</div>
+                    <div class="student-preferred" id="fc-back-roster"></div>
+                    <div class="fc-student-id" id="fc-back-student-id"></div>
+                    <div class="card-notes" id="fc-back-notes"></div>
+                    <div class="card-tags-list" id="fc-back-tags" style="justify-content:center; margin-top:8px;"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- SRS Rating Action Bar -->
+            <div class="srs-action-bar">
+              <button class="srs-btn again" data-level="1" title="Forgot name (1)">
+                <span>Again</span>
+                <span class="shortcut">Key [1]</span>
+              </button>
+              <button class="srs-btn hard" data-level="2" title="Hard to recall (2)">
+                <span>Hard</span>
+                <span class="shortcut">Key [2]</span>
+              </button>
+              <button class="srs-btn good" data-level="3" title="Recalled with effort (3)">
+                <span>Good</span>
+                <span class="shortcut">Key [3]</span>
+              </button>
+              <button class="srs-btn easy" data-level="4" title="Instant recall (4)">
+                <span>Easy</span>
+                <span class="shortcut">Key [4]</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================================
+           TAB 2: MULTIPLE CHOICE QUIZ
+           ========================================================================= -->
+      <section id="section-multiple-choice" class="view-section">
+        <div class="mc-quiz-container">
+          <div class="quiz-hud">
+            <div class="hud-item" id="mc-hud-score">Score: 0</div>
+            <div class="hud-item streak-counter" id="mc-hud-streak">🔥 0</div>
+            <div class="hud-item" id="mc-hud-progress" style="color:var(--text-secondary)">1 / 1,245</div>
+          </div>
+
+          <div id="mc-empty-state" style="display:none; text-align:center; padding:3rem;">
+            <h3>No students in selected grade level</h3>
+          </div>
+
+          <div id="mc-render-area">
+            <div class="mc-photo-box" id="mc-photo-box">
+              <img id="mc-question-photo" class="student-portrait" src="" alt="Quiz student" />
+              <div id="mc-question-avatar" class="avatar-fallback" style="display:none;"></div>
+            </div>
+
+            <div class="mc-options-grid" id="mc-options-grid">
+              <!-- Dynamically populated 4 choices -->
+            </div>
+
+            <button class="btn-primary" id="mc-next-btn" aria-keyshortcuts="Enter Space" style="width:100%; display:none; margin-top:1rem;">
+              Next Question ➔
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================================
+           TAB 3: TYPE-IN NAME SPELLING
+           ========================================================================= -->
+      <section id="section-type-in" class="view-section">
+        <div class="type-quiz-container">
+          <div id="type-empty-state" style="display:none; padding:2rem;">
+            <h3>No students found in current grade</h3>
+          </div>
+
+          <div id="type-render-area">
+            <div class="type-photo-box" id="type-photo-box">
+              <img id="type-photo" class="student-portrait" src="" alt="Student portrait" />
+              <div id="type-avatar" class="avatar-fallback" style="display:none;"></div>
+            </div>
+
+            <div style="margin-bottom:1rem;">
+              <span class="grade-badge" id="type-grade-badge" data-grade="7">Grade 7</span>
+              <span id="type-progress-text" style="font-size:0.85rem; color:var(--text-secondary); margin-left:8px;">Student 1 of 1,245</span>
+            </div>
+
+            <div class="type-input-form">
+              <input type="text" id="type-input-box" class="name-input-field" placeholder="Type student's name here..." autocomplete="off" />
+              <div class="type-buttons-row">
+                <button class="btn-primary" id="type-submit-btn">Check Answer</button>
+                <button class="btn-secondary" id="type-hint-btn">💡 Hint</button>
+              </div>
+            </div>
+
+            <div class="hint-text-box" id="type-hint-box"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================================
+           TAB 4: SPEED MATCH GAME
+           ========================================================================= -->
+      <section id="section-speed-match" class="view-section">
+        <div class="speed-match-container">
+          <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:1rem;">
+            <div>
+              <h3 style="font-size:1.2rem; font-weight:700;">⚡ Speed Match Challenge</h3>
+              <p style="font-size:0.85rem; color:var(--text-secondary);">Tap a photo, then tap their matching name!</p>
+            </div>
+            <div style="display:flex; align-items:center; gap:12px;">
+              <div class="stat-chip" id="speed-timer-display" style="font-size:1rem; font-weight:700;">⏱️ 00:00</div>
+              <button class="btn-secondary" id="speed-restart-btn">Restart Game</button>
+            </div>
+          </div>
+
+          <div class="match-grid-layout" id="speed-match-grid">
+            <!-- Dynamically populated 12 tiles -->
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================================
+           TAB 5: STUDENT DIRECTORY & ROSTER
+           ========================================================================= -->
+      <section id="section-directory" class="view-section">
+        <div class="directory-controls">
+          <div class="search-input-wrap">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="directory-search-input" placeholder="Search by student name or roster name..." />
+          </div>
+
+          <div class="roster-actions">
+            <span id="roster-count-display" style="font-size:0.85rem; color:var(--text-secondary);">Showing 1,245 students</span>
+          </div>
+        </div>
+
+        <div class="roster-grid" id="directory-grid">
+          <!-- Dynamically populated student cards -->
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- =========================================================================
+       SETTINGS MODAL
+       ========================================================================= -->
+  <div class="modal-overlay" id="settings-modal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 class="modal-title">Settings</h3>
+        <button class="icon-btn modal-close-btn">&times;</button>
+      </div>
+
+      <form id="settings-form">
+        <div class="form-group" style="flex-direction:row; align-items:center; justify-content:space-between;">
+          <div>
+            <label class="form-label" style="font-size:0.95rem; color:var(--text-primary);">Sound Effects</label>
+            <p style="font-size:0.78rem; color:var(--text-muted);">Audio feedback for clicks, flips, and answers</p>
+          </div>
+          <input type="checkbox" id="settings-sound-toggle" style="width:20px; height:20px; accent-color:var(--accent-primary);" />
+        </div>
+
+        <div class="form-group" style="flex-direction:row; align-items:center; justify-content:space-between; margin-top:1rem;">
+          <div>
+            <label class="form-label" style="font-size:0.95rem; color:var(--text-primary);">Pronunciation Voice</label>
+            <p style="font-size:0.78rem; color:var(--text-muted);">Speech synthesis for student names</p>
+          </div>
+          <input type="checkbox" id="settings-speech-toggle" style="width:20px; height:20px; accent-color:var(--accent-primary);" />
+        </div>
+
+        <hr style="border:none; border-top:1px solid var(--border-glass); margin:1.5rem 0;" />
+
+        <div class="form-group roster-settings-group">
+          <label class="form-label" style="font-size:0.95rem; color:var(--text-primary);">Student Roster</label>
+          <p id="settings-roster-summary" class="settings-help-text">Current roster loaded.</p>
+          <div class="roster-settings-actions">
+            <button type="button" id="btn-replace-roster" class="btn-secondary">Replace Roster CSV</button>
+          </div>
+          <input type="file" id="settings-roster-file-input" accept=".csv,text/csv" hidden />
+          <div id="settings-roster-status" class="roster-import-status" role="status" aria-live="polite"></div>
+        </div>
+
+        <hr style="border:none; border-top:1px solid var(--border-glass); margin:1.5rem 0;" />
+
+        <div class="form-group">
+          <label class="form-label">Change Teacher Password</label>
+          <input type="password" id="settings-new-passcode" class="form-control" placeholder="Enter new password..." autocomplete="new-password" />
+        </div>
+        <div class="form-group" style="margin-top:0.5rem;">
+          <label class="form-label">Confirm New Password</label>
+          <input type="password" id="settings-confirm-passcode" class="form-control" placeholder="Confirm new password..." autocomplete="new-password" />
+          <p style="font-size:0.78rem; color:var(--text-muted);">Leave empty to keep your current password.</p>
+        </div>
+
+        <div style="display:flex; justify-content:flex-end; gap:8px; margin-top:1.5rem;">
+          <button type="button" class="btn-secondary modal-close-btn">Cancel</button>
+          <button type="submit" class="btn-primary">Save Settings</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
