@@ -20,7 +20,7 @@
 
   const STUDENT_CSV_URL = "studname.csv";
 
-  const DEFAULT_PIN = "teacher123";
+  const DEFAULT_PIN = "Ac6q4JpYf8mujPgRPBLik7CT";
 
   let state = {
     isAuthenticated: false,
