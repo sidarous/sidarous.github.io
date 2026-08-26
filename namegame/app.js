@@ -11,14 +11,10 @@
   // ==========================================
   const STORAGE_KEYS = {
     STUDENT_STATS: "classrecall_stats_v2",
-    AUTH_PASS: "classrecall_pin_v2",
-    AUTH_LOGGED_IN: "classrecall_session_auth_v2",
     SETTINGS: "classrecall_settings_v2",
     ROSTER_CSV: "classrecall_roster_csv_v1",
     ROSTER_META: "classrecall_roster_meta_v1"
   };
-
-  const DEFAULT_PIN = "teacher123";
 
   let state = {
     isAuthenticated: false,
@@ -251,26 +247,6 @@
   // ==========================================
   // 5. STORAGE & INITIALIZATION
   // ==========================================
-  async function hashPassword(str) {
-    if (!str) return "";
-    const msgUint8 = new TextEncoder().encode(str);
-    const hashBuffer = await crypto.subtle.digest("SHA-256", msgUint8);
-    const hashArray = Array.from(new Uint8Array(hashBuffer));
-    return hashArray.map((b) => b.toString(16).padStart(2, "0")).join("");
-  }
-
-  async function initAuthStorage() {
-    const storedPass = localStorage.getItem(STORAGE_KEYS.AUTH_PASS);
-    if (!storedPass) {
-      const defaultHash = await hashPassword(DEFAULT_PIN);
-      localStorage.setItem(STORAGE_KEYS.AUTH_PASS, defaultHash);
-    } else if (storedPass.length < 64) {
-      // Migrate legacy plain text to SHA-256 hash
-      const migratedHash = await hashPassword(storedPass);
-      localStorage.setItem(STORAGE_KEYS.AUTH_PASS, migratedHash);
-    }
-  }
-
   function parseCsv(text) {
     const rows = [];
     let row = [];
@@ -380,8 +356,6 @@
   }
 
   async function loadStateFromStorage() {
-    await initAuthStorage();
-
     // Settings
     try {
       const savedSettings = JSON.parse(localStorage.getItem(STORAGE_KEYS.SETTINGS));
@@ -412,10 +386,6 @@
 
     if (migratedLegacyStats) saveStudentStats();
 
-    // Check Session Auth
-    if (state.settings.rememberLogin && sessionStorage.getItem(STORAGE_KEYS.AUTH_LOGGED_IN) === "true") {
-      state.isAuthenticated = true;
-    }
   }
 
   function saveStudentStats() {
@@ -634,7 +604,7 @@
         let storedHash = localStorage.getItem(STORAGE_KEYS.AUTH_PASS);
 
         if (!storedHash) {
-          storedHash = await hashPassword(DEFAULT_PIN);
+          storedHash = DEFAULT_PASSWORD_VERIFIER;
           localStorage.setItem(STORAGE_KEYS.AUTH_PASS, storedHash);
         }
 
@@ -1535,26 +1505,6 @@
         state.settings.soundEnabled = document.getElementById("settings-sound-toggle").checked;
         state.settings.speechEnabled = document.getElementById("settings-speech-toggle").checked;
 
-        const newPass = document.getElementById("settings-new-passcode").value.trim();
-        const confirmPass = document.getElementById("settings-confirm-passcode").value.trim();
-
-        if (newPass || confirmPass) {
-          if (newPass !== confirmPass) {
-            showToast("New passwords do not match! Please check and try again.", "error");
-            return;
-          }
-          if (newPass.length < 4) {
-            showToast("Password must be at least 4 characters long.", "warning");
-            return;
-          }
-
-          const hashed = await hashPassword(newPass);
-          localStorage.setItem(STORAGE_KEYS.AUTH_PASS, hashed);
-          showToast("Teacher password updated successfully!", "success");
-          document.getElementById("settings-new-passcode").value = "";
-          document.getElementById("settings-confirm-passcode").value = "";
-        }
-
         saveSettingsToStorage();
         closeAllModals();
       });
@@ -1605,10 +1555,13 @@
     setupRosterImportControls();
     try {
       await loadStateFromStorage();
-      setupAuth();
+      state.isAuthenticated = true;
+      const rosterScreen = document.getElementById("lock-screen");
+      if (rosterScreen) rosterScreen.classList.add("hidden");
       setupEventListeners();
       updateHeaderStats();
       Confetti.init();
+      initActiveTab();
     } catch (error) {
       showRosterImport(error);
     }
