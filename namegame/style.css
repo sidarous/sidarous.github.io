@@ -201,87 +201,6 @@ html, body {
   margin-bottom: 1.75rem;
 }
 
-.login-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-  width: 100%;
-}
-
-.password-input-group {
-  position: relative;
-  width: 100%;
-  display: flex;
-  align-items: center;
-}
-
-.input-leading-icon {
-  position: absolute;
-  left: 14px;
-  color: var(--text-muted);
-  pointer-events: none;
-}
-
-.password-input-field {
-  width: 100%;
-  padding: 0.95rem 2.85rem 0.95rem 2.75rem;
-  border-radius: var(--radius-md);
-  border: 1.5px solid var(--border-glass-bright);
-  background: var(--bg-main);
-  color: var(--text-primary);
-  font-size: 1.05rem;
-  font-family: inherit;
-  outline: none;
-  transition: all var(--transition-fast);
-}
-
-.password-input-field:focus {
-  border-color: var(--accent-primary);
-  box-shadow: 0 0 16px var(--accent-glow);
-}
-
-.password-toggle-btn {
-  position: absolute;
-  right: 12px;
-  background: transparent;
-  border: none;
-  color: var(--text-muted);
-  cursor: pointer;
-  padding: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: var(--radius-sm);
-  transition: color var(--transition-fast);
-}
-
-.password-toggle-btn:hover {
-  color: var(--text-primary);
-}
-
-.login-error-msg {
-  color: var(--danger);
-  font-size: 0.85rem;
-  font-weight: 600;
-  background: var(--danger-bg);
-  padding: 8px 12px;
-  border-radius: var(--radius-sm);
-  text-align: center;
-}
-
-.login-submit-btn {
-  width: 100%;
-  padding: 0.95rem 1.5rem;
-  font-size: 1.05rem;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  border-radius: var(--radius-md);
-  box-shadow: 0 4px 16px var(--accent-glow);
-}
-
 .roster-import-panel {
   width: 100%;
   flex-direction: column;
@@ -335,32 +254,21 @@ html, body {
   flex: 1 1 180px;
 }
 
+.btn-danger {
+  color: var(--danger);
+  border-color: color-mix(in srgb, var(--danger) 55%, var(--border-glass-bright));
+}
+
+.btn-danger:hover {
+  color: #ffffff;
+  background: var(--danger);
+  border-color: var(--danger);
+}
+
 .settings-help-text {
   color: var(--text-muted);
   font-size: 0.78rem;
   line-height: 1.45;
-}
-
-.lock-footer {
-  margin-top: 0.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.remember-row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-  cursor: pointer;
-}
-
-.remember-row input[type="checkbox"] {
-  accent-color: var(--accent-primary);
-  cursor: pointer;
 }
 
 /* ==========================================================================
@@ -463,16 +371,6 @@ html, body {
   border-color: var(--accent-gold);
   transform: translateY(-1px);
   box-shadow: 0 0 10px rgba(253, 185, 19, 0.3);
-}
-
-#btn-lock-app {
-  display: none;
-}
-
-/* A CSV roster is the only startup requirement; this legacy form is retained
-   solely for the roster-import panel that shares its surrounding screen. */
-.login-form {
-  display: none;
 }
 
 /* Primary Navigation Tabs */
@@ -1259,6 +1157,12 @@ html, body {
   font-weight: 600;
 }
 
+.card-advisory {
+  color: var(--text-secondary);
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
 .card-pronunciation {
   font-size: 0.78rem;
   color: var(--text-muted);
@@ -1635,6 +1539,25 @@ html, body {
   align-items: center;
   justify-content: center;
   letter-spacing: 1px;
+}
+
+.avatar-fallback.photo-missing,
+.tile-avatar.photo-missing {
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.avatar-fallback.photo-missing::after,
+.tile-avatar.photo-missing::after {
+  content: "Photo missing";
+  padding: 0.2rem 0.45rem;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.34);
+  color: #ffffff;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
 }
 
 .type-photo-box .avatar-fallback {

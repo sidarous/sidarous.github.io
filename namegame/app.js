@@ -17,7 +17,6 @@
   };
 
   let state = {
-    isAuthenticated: false,
     currentTab: "flashcards",
     activeGrade: "all", // "all", "7", "8", "9", "10", "11", "12"
     searchQuery: "",
@@ -25,8 +24,7 @@
     settings: {
       theme: "dark",
       soundEnabled: true,
-      speechEnabled: true,
-      rememberLogin: true
+      speechEnabled: true
     },
     // Mode 1: Flashcards
     flashcard: {
@@ -287,13 +285,6 @@
     return rows;
   }
 
-  function extractPhotoFilename(photoLocation) {
-    const source = photoLocation || "";
-    const match = source.match(/src=['"]([^'"]+)['"]/i) || source.match(/([A-Za-z0-9_.-]+\.jpe?g)/i);
-    if (!match) return "";
-    return match[1].replace(/\\/g, "/").split("/").pop();
-  }
-
   function parseStudentsCsv(csvText) {
     const rows = parseCsv(csvText);
     if (rows.length < 2) throw new Error("The CSV file contains no student records");
@@ -301,7 +292,7 @@
     const headers = rows[0].map((header, index) =>
       (index === 0 ? header.replace(/^\uFEFF/, "") : header).trim()
     );
-    const requiredHeaders = ["ID", "Name", "Year", "PhotoLocation", "Tags"];
+    const requiredHeaders = ["ID", "Name", "Year", "PhotoFilename", "AdvTeacher", "Tags"];
     const missingHeaders = requiredHeaders.filter((header) => !headers.includes(header));
     if (missingHeaders.length) throw new Error(`Missing CSV columns: ${missingHeaders.join(", ")}`);
 
@@ -316,7 +307,12 @@
       seenIds.add(studentId);
 
       const grade = ["7", "8", "9", "10", "11", "12"].includes(record.Year) ? record.Year : "9";
-      const photoFilename = extractPhotoFilename(record.PhotoLocation);
+      const photoFilename = record.PhotoFilename;
+      const photoMissing = photoFilename.toLowerCase() === "missingphoto";
+      if (!photoFilename) throw new Error(`Missing PhotoFilename on CSV row ${csvRow}`);
+      if (!photoMissing && !/^[A-Za-z0-9_.-]+\.jpe?g$/i.test(photoFilename)) {
+        throw new Error(`Invalid PhotoFilename on CSV row ${csvRow}`);
+      }
       const rawName = record.Name;
       let displayName = rawName;
       let firstName = rawName.split(" ")[0] || "";
@@ -334,10 +330,11 @@
         rosterName: rawName,
         preferredName: firstName !== displayName ? firstName : "",
         grade,
-        photo: photoFilename ? `collection.media/${encodeURIComponent(photoFilename)}` : "",
-        hasPhoto: Boolean(photoFilename),
-        tags: [`Grade ${grade}`, ...record.Tags.split(/\s+/).filter((tag) => tag && !tag.includes("MissingPhoto") && tag !== grade)],
-        notes: `Grade ${grade}`,
+        photo: photoMissing ? "" : `collection.media/${encodeURIComponent(photoFilename)}`,
+        hasPhoto: !photoMissing,
+        photoMissing,
+        advisoryTeacher: record.AdvTeacher,
+        tags: record.Tags.split(/\s+/).filter(Boolean),
         stats: { reviews: 0, correct: 0, mastery: 1, lastReviewed: null }
       };
     });
@@ -396,17 +393,30 @@
     localStorage.setItem(STORAGE_KEYS.STUDENT_STATS, JSON.stringify(statsMap));
   }
 
+  function clearProgress() {
+    const confirmed = window.confirm(
+      "Clear all mastery and review progress for this browser roster? This cannot be undone."
+    );
+    if (!confirmed) return;
+
+    localStorage.removeItem(STORAGE_KEYS.STUDENT_STATS);
+    state.students.forEach((student) => {
+      student.stats = { reviews: 0, correct: 0, mastery: 1, lastReviewed: null };
+    });
+    updateHeaderStats();
+    initActiveTab();
+    showToast("Progress cleared for this roster.", "success");
+  }
+
   function saveSettingsToStorage() {
     localStorage.setItem(STORAGE_KEYS.SETTINGS, JSON.stringify(state.settings));
   }
 
   function showRosterImport(error) {
     if (error.code !== "ROSTER_IMPORT_REQUIRED") console.error("Roster load error:", error);
-    const loginForm = document.getElementById("login-form");
     const importPanel = document.getElementById("roster-import-panel");
     const status = document.getElementById("roster-import-status");
 
-    if (loginForm) loginForm.style.display = "none";
     if (importPanel) importPanel.style.display = "flex";
     if (status && error.code !== "ROSTER_IMPORT_REQUIRED") {
       status.className = "roster-import-status error";
@@ -500,193 +510,31 @@
   }
 
   function renderStudentPhoto(photoElem, avatarElem, student) {
+    const showAvatar = (photoMissing) => {
+      if (!avatarElem) return;
+      avatarElem.style.display = "flex";
+      avatarElem.textContent = getInitials(student.name);
+      avatarElem.classList.toggle("photo-missing", photoMissing);
+      avatarElem.setAttribute(
+        "aria-label",
+        photoMissing ? `Photo missing for ${student.name}` : `Initials for ${student.name}`
+      );
+    };
+
     if (student.hasPhoto && student.photo) {
       photoElem.src = student.photo;
       photoElem.style.display = "block";
-      if (avatarElem) avatarElem.style.display = "none";
+      if (avatarElem) {
+        avatarElem.style.display = "none";
+        avatarElem.classList.remove("photo-missing");
+      }
       photoElem.onerror = () => {
         photoElem.style.display = "none";
-        if (avatarElem) {
-          avatarElem.style.display = "flex";
-          avatarElem.textContent = getInitials(student.name);
-        }
+        showAvatar(true);
       };
     } else {
       photoElem.style.display = "none";
-      if (avatarElem) {
-        avatarElem.style.display = "flex";
-        avatarElem.textContent = getInitials(student.name);
-      }
-    }
-  }
-
-  // ==========================================
-  // 6. AUTHENTICATION & SECURE LOGIN
-  // ==========================================
-  let isLockedOut = false;
-  let failedAttempts = 0;
-  let inactivityTimer = null;
-
-  function resetInactivityTimer() {
-    if (inactivityTimer) clearTimeout(inactivityTimer);
-    if (!state.isAuthenticated) return;
-
-    // Auto-lock after 25 minutes of inactivity for privacy
-    inactivityTimer = setTimeout(() => {
-      if (state.isAuthenticated) {
-        lockApplication();
-        showToast("Portal auto-locked due to inactivity.", "info");
-      }
-    }, 25 * 60 * 1000);
-  }
-
-  function lockApplication() {
-    state.isAuthenticated = false;
-    sessionStorage.removeItem(STORAGE_KEYS.AUTH_LOGGED_IN);
-    const lockScreen = document.getElementById("lock-screen");
-    const passwordInput = document.getElementById("login-password-input");
-    const eyeShow = document.getElementById("eye-icon-show");
-    const eyeHide = document.getElementById("eye-icon-hide");
-    const errorMsg = document.getElementById("login-error-msg");
-
-    if (passwordInput) {
-      passwordInput.value = "";
-      passwordInput.type = "password";
-    }
-    if (eyeShow) eyeShow.style.display = "block";
-    if (eyeHide) eyeHide.style.display = "none";
-    if (errorMsg) errorMsg.style.display = "none";
-    if (lockScreen) lockScreen.classList.remove("hidden");
-
-    setTimeout(() => {
-      if (passwordInput) passwordInput.focus();
-    }, 150);
-  }
-
-  function setupAuth() {
-    const lockScreen = document.getElementById("lock-screen");
-    const loginForm = document.getElementById("login-form");
-    const passwordInput = document.getElementById("login-password-input");
-    const toggleBtn = document.getElementById("btn-toggle-password-visibility");
-    const eyeShow = document.getElementById("eye-icon-show");
-    const eyeHide = document.getElementById("eye-icon-hide");
-    const errorMsg = document.getElementById("login-error-msg");
-    const rememberCheckbox = document.getElementById("remember-me-checkbox");
-
-    if (rememberCheckbox) {
-      rememberCheckbox.checked = state.settings.rememberLogin;
-      rememberCheckbox.addEventListener("change", (e) => {
-        state.settings.rememberLogin = e.target.checked;
-        saveSettingsToStorage();
-      });
-    }
-
-    if (toggleBtn && passwordInput) {
-      toggleBtn.addEventListener("click", () => {
-        Sound.click();
-        const isPass = passwordInput.type === "password";
-        passwordInput.type = isPass ? "text" : "password";
-        if (eyeShow) eyeShow.style.display = isPass ? "none" : "block";
-        if (eyeHide) eyeHide.style.display = isPass ? "block" : "none";
-        passwordInput.focus();
-      });
-    }
-
-    if (loginForm) {
-      loginForm.addEventListener("submit", async (e) => {
-        e.preventDefault();
-        if (isLockedOut) return;
-
-        const entered = passwordInput ? passwordInput.value : "";
-        if (!entered) return;
-
-        const enteredHash = await hashPassword(entered);
-        let storedHash = localStorage.getItem(STORAGE_KEYS.AUTH_PASS);
-
-        if (!storedHash) {
-          storedHash = DEFAULT_PASSWORD_VERIFIER;
-          localStorage.setItem(STORAGE_KEYS.AUTH_PASS, storedHash);
-        }
-
-        if (enteredHash === storedHash) {
-          Sound.correct();
-          failedAttempts = 0;
-          state.isAuthenticated = true;
-          sessionStorage.setItem(STORAGE_KEYS.AUTH_LOGGED_IN, "true");
-          if (errorMsg) errorMsg.style.display = "none";
-          if (passwordInput) passwordInput.value = "";
-          lockScreen.classList.add("hidden");
-          showToast("Welcome to ClassRecall!", "success");
-          resetInactivityTimer();
-          initActiveTab();
-        } else {
-          Sound.wrong();
-          failedAttempts++;
-          const card = document.querySelector(".lock-card");
-          if (card) {
-            card.classList.add("shake");
-            setTimeout(() => card.classList.remove("shake"), 400);
-          }
-
-          if (failedAttempts >= 5) {
-            isLockedOut = true;
-            let countdown = 30;
-            if (errorMsg) {
-              errorMsg.style.display = "block";
-              errorMsg.textContent = `Too many attempts. Locked for ${countdown}s.`;
-            }
-            if (passwordInput) passwordInput.disabled = true;
-
-            const timer = setInterval(() => {
-              countdown--;
-              if (countdown <= 0) {
-                clearInterval(timer);
-                isLockedOut = false;
-                failedAttempts = 0;
-                if (errorMsg) errorMsg.style.display = "none";
-                if (passwordInput) {
-                  passwordInput.disabled = false;
-                  passwordInput.focus();
-                }
-              } else if (errorMsg) {
-                errorMsg.textContent = `Too many attempts. Locked for ${countdown}s.`;
-              }
-            }, 1000);
-          } else {
-            if (errorMsg) {
-              errorMsg.style.display = "block";
-              errorMsg.textContent = `Incorrect password. Please try again.`;
-            }
-            if (passwordInput) {
-              passwordInput.focus();
-              passwordInput.select();
-            }
-          }
-        }
-      });
-    }
-
-    const lockBtn = document.getElementById("btn-lock-app");
-    if (lockBtn) {
-      lockBtn.addEventListener("click", () => {
-        lockApplication();
-        showToast("Portal locked.", "info");
-      });
-    }
-
-    // Reset inactivity timer on user actions
-    ["mousemove", "keydown", "click", "touchstart"].forEach((evt) => {
-      window.addEventListener(evt, resetInactivityTimer, { passive: true });
-    });
-
-    if (state.isAuthenticated) {
-      lockScreen.classList.add("hidden");
-      resetInactivityTimer();
-      initActiveTab();
-    } else {
-      setTimeout(() => {
-        if (passwordInput) passwordInput.focus();
-      }, 150);
+      showAvatar(student.photoMissing);
     }
   }
 
@@ -780,7 +628,10 @@
         speakName(student.name);
       };
     }
-    if (backNotes) backNotes.textContent = student.notes || `Grade ${student.grade} Student`;
+    if (backNotes) {
+      backNotes.textContent = student.advisoryTeacher ? `Advisory: ${student.advisoryTeacher}` : "";
+      backNotes.style.display = student.advisoryTeacher ? "block" : "none";
+    }
     if (backGrade) {
       backGrade.textContent = `Grade ${student.grade}`;
       backGrade.setAttribute("data-grade", student.grade);
@@ -1143,6 +994,7 @@
       type: "photo",
       content: s.photo,
       hasPhoto: s.hasPhoto,
+      photoMissing: s.photoMissing,
       grade: s.grade,
       name: s.name
     }));
@@ -1195,9 +1047,9 @@
             <div class="match-tile" data-idx="${idx}" data-id="${tile.id}" data-type="photo">
               ${
                 tile.hasPhoto && tile.content
-                  ? `<img src="${tile.content}" class="tile-photo" alt="Student photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+                  ? `<img src="${tile.content}" class="tile-photo" alt="Student photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'; this.nextElementSibling.classList.add('photo-missing');" />
                      <div class="tile-avatar" style="display:none;">${getInitials(tile.name)}</div>`
-                  : `<div class="tile-avatar">${getInitials(tile.name)}</div>`
+                  : `<div class="tile-avatar${tile.photoMissing ? " photo-missing" : ""}">${getInitials(tile.name)}</div>`
               }
               <span class="grade-badge" data-grade="${tile.grade}">Gr ${tile.grade}</span>
             </div>
@@ -1297,18 +1149,19 @@
             <div class="card-photo-wrapper">
               ${
                 s.hasPhoto && s.photo
-                  ? `<img src="${s.photo}" alt="${s.name}" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+                  ? `<img src="${s.photo}" alt="${s.name}" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'; this.nextElementSibling.classList.add('photo-missing');" />
                      <div class="avatar-fallback" style="display:none;">${getInitials(s.name)}</div>`
-                  : `<div class="avatar-fallback">${getInitials(s.name)}</div>`
+                  : `<div class="avatar-fallback${s.photoMissing ? " photo-missing" : ""}">${getInitials(s.name)}</div>`
               }
               <div class="card-grade-badge grade-badge" data-grade="${s.grade}">Grade ${s.grade}</div>
             </div>
-            <div class="student-card-body">
-              <div class="card-student-name">${s.name}</div>
-              ${s.rosterName && s.rosterName !== s.name ? `<div class="card-student-nick">${s.rosterName}</div>` : ""}
-              ${s.studentId ? `<div class="card-student-id">ID ${s.studentId}</div>` : ""}
-              
-              <div class="card-tags-list">
+              <div class="student-card-body">
+                <div class="card-student-name">${s.name}</div>
+                ${s.rosterName && s.rosterName !== s.name ? `<div class="card-student-nick">${s.rosterName}</div>` : ""}
+                ${s.advisoryTeacher ? `<div class="card-advisory">Advisory: ${s.advisoryTeacher}</div>` : ""}
+                ${s.studentId ? `<div class="card-student-id">ID ${s.studentId}</div>` : ""}
+                
+                <div class="card-tags-list" aria-label="Tags">
                 ${(s.tags || []).map((t) => `<span class="tag-pill">${t}</span>`).join("")}
               </div>
 
@@ -1486,6 +1339,9 @@
       });
     }
 
+    const clearProgressBtn = document.getElementById("btn-clear-progress");
+    if (clearProgressBtn) clearProgressBtn.addEventListener("click", clearProgress);
+
     // Theme Toggle
     const themeToggleBtn = document.getElementById("btn-toggle-theme");
     if (themeToggleBtn) {
@@ -1512,7 +1368,6 @@
 
     // Keyboard Shortcuts
     window.addEventListener("keydown", (e) => {
-      if (!state.isAuthenticated) return;
       if (document.querySelector(".modal-overlay.open")) {
         if (e.key === "Escape") closeAllModals();
         return;
@@ -1555,7 +1410,6 @@
     setupRosterImportControls();
     try {
       await loadStateFromStorage();
-      state.isAuthenticated = true;
       const rosterScreen = document.getElementById("lock-screen");
       if (rosterScreen) rosterScreen.classList.add("hidden");
       setupEventListeners();
