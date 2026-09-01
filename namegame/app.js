@@ -30,7 +30,8 @@
     flashcard: {
       queue: [],
       currentIndex: 0,
-      isFlipped: false
+      isFlipped: false,
+      isAdvancing: false
     },
     // Mode 2: Multiple Choice
     mcQuiz: {
@@ -651,6 +652,7 @@
   }
 
   function flipFlashcard() {
+    if (state.flashcard.isAdvancing) return;
     Sound.flip();
     state.flashcard.isFlipped = !state.flashcard.isFlipped;
     const cardInner = document.getElementById("main-flashcard-inner");
@@ -660,6 +662,7 @@
   }
 
   function recordSRSScore(scoreLevel) {
+    if (state.flashcard.isAdvancing) return;
     Sound.click();
     const activeDeck = state.flashcard.queue;
     if (!activeDeck || activeDeck.length === 0) return;
@@ -679,19 +682,54 @@
       updateHeaderStats();
     }
 
-    if (state.flashcard.currentIndex < activeDeck.length - 1) {
-      state.flashcard.currentIndex++;
+    advanceFlashcard();
+  }
+
+  function advanceFlashcard() {
+    const activeDeck = state.flashcard.queue;
+    if (!activeDeck || activeDeck.length === 0) return;
+
+    const cardInner = document.getElementById("main-flashcard-inner");
+    const advanceStartedAt = Date.now();
+    const advanceDuration = 80;
+    const finishAdvance = () => {
+      if (!state.flashcard.isAdvancing) return;
+      const remaining = advanceDuration - (Date.now() - advanceStartedAt);
+      if (remaining > 0) {
+        window.setTimeout(finishAdvance, remaining);
+        return;
+      }
+      state.flashcard.isAdvancing = false;
+      if (cardInner) cardInner.classList.remove("advancing");
+
+      if (state.flashcard.currentIndex < activeDeck.length - 1) {
+        state.flashcard.currentIndex++;
+      } else {
+        Confetti.fire(60);
+        Sound.fanfare();
+        showToast("Deck complete! Great job mastering these student names!", "success");
+        state.flashcard.currentIndex = 0;
+        state.flashcard.queue = shuffleArray(getFilteredStudents());
+      }
+
       state.flashcard.isFlipped = false;
       renderFlashcard();
-    } else {
-      Confetti.fire(60);
-      Sound.fanfare();
-      showToast("Deck complete! Great job mastering these student names!", "success");
-      state.flashcard.currentIndex = 0;
-      state.flashcard.isFlipped = false;
-      state.flashcard.queue = shuffleArray(getFilteredStudents());
-      renderFlashcard();
+    };
+
+    state.flashcard.isAdvancing = true;
+    state.flashcard.isFlipped = false;
+
+    // Keep the current student's back-face content in place until the card has
+    // returned to its photo side, so the next student's name is never exposed.
+    if (!cardInner || !cardInner.classList.contains("flipped")) {
+      finishAdvance();
+      return;
     }
+
+    cardInner.classList.add("advancing");
+    cardInner.addEventListener("transitionend", finishAdvance, { once: true });
+    cardInner.classList.remove("flipped");
+    window.setTimeout(finishAdvance, 140);
   }
 
   // ==========================================
