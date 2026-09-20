@@ -1,0 +1,14 @@
+
+input[type=text], input[type=email], textarea{
+	font-family: 'Poppins', sans-serif;
+	font-size: 1em;
+	background-color: #f7f7f7;
+	border: none;
+	padding: 10px;
+}
+
+#googleMap{
+	width: 100%;
+	height: 400px;
+	background-color: grey;
+}

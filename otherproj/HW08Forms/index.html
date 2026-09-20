@@ -1,0 +1,113 @@
+<html>
+	<head>
+		<title>Sidarous Forms Assignment - Job Application</title>
+		<link rel="stylesheet" href="styles.css">
+		<link rel="shortcut icon" href="Images/favicon.ico">
+		<meta name="description" content="Job Application">
+		<meta name="keywords" content="html, css, job, forms">
+	</head>
+	<body>
+		<!-- <img src="Images/tilebg.jpg" id="bgim"> -->
+	
+	<header>
+		<h1>Apply for the Assistant Professsor of Astronomy Position </h1>
+		<img src="Images/NEIUlogo.png">
+
+	</header>
+	
+	
+	<article class="sidebyside">
+			The Department of Physics and Astronomy at Northeastern Illinois University invites applications for a faculty position in astrophysics at the tenure-track Assistant Professor or higher level to begin June 30th, 2018.
+			<p>The successful candidate will be expected to establish a vigorous externally funded research program and teach physics and astronomy at both the undergraduate and graduate level.</p>
+	</article>
+
+	<aside class="sidebyside">
+		<img src="Images/yerkes_ver_1.jpg" alt="observatory" id="obs">
+		The Dr. Venus Observatory on campus	
+
+		
+	</aside>
+
+	<section>
+		<form id="jobform" method="post" action="">
+			<div class="lefty">
+				<label for="firstname">First Name: </label>
+				<input type="text" name="firstname" id="firstname" placeholder="firstname" ><br>
+			</div>
+
+			<div class="righty">
+				<label for="lastname">Last Name: </label>
+				<input type="text" name="lastname" id="lastname" placeholder="lastname"><br>
+			</div>
+
+			<div class="lefty">
+				<label for="email">Email Address: </label>
+				<input type="email" name="email" id="email" placeholder="email"><br>
+			</div>
+	
+			<div class="righty">
+					<label for="phone">Phone Number:</label>
+					<input type="text" name="phone" id="phone" placeholder="phone number"><br>
+			</div>
+
+			<div class="lefty">
+				<label for="portfolio">Portfolio Website: </label>
+				<input type="url" name="portfolio" id="portfolio" placeholder="portfolio url"><br>
+			</div>
+			
+			<div class="righty">
+				<label for="relocate">Are you willing to relocate? </label>
+				<select name="relocate" id="relocate">
+					<option value="yes">Yes</option>
+					<option value="no">No</option>
+					<option value="notsure">Not Sure</option>
+				</select>
+			</div>
+
+			<div class="lefty">
+				<label for="experience">Which previous experience do you have?<br></label>
+				<input type="checkbox" name="experience" id="experience" value="gazing">Stargazing<br>
+				<input type="checkbox" name="experience" id="experience" value="internship">Internship<br> 
+				<input type="checkbox" name="experience" id="experience" value="postdoc">Postdoctoral Position<br> 
+				<input type="checkbox" name="experience" id="experience" value="intern">Astronomy Internship<br> 
+			</div>
+
+			<div class="righty">
+				<label for="pluto">What is your opinion on the Pluto controversy?<br>	</label>
+				<input type="radio" name="pluto" id="pluto" value="planet">Pluto should be reinstated as a planet<br>
+				<input type="radio" name="pluto" id="pluto" value="dwarf">Pluto should remain a dwarf planet<br>
+				<input type="radio" name="pluto" id="pluto" value="allplanet">All the dwarf planets should become full planets<br>
+				<input type="radio" name="pluto" id="pluto" value="study">Further study is needed<br>
+			</div>
+
+			
+			<div class="lefty">
+				<label for="startdate">When can you start?</label>
+				<input type="datetime-local" id="startdate" name="startdate">
+			</div>
+			
+			<div class="righty">
+				<label for="resumefile">Please upload your resume.</label>
+				<input type="file" id="resumefile" name="resumefile">
+			</div>
+
+			<div class="widey">
+				<label for="comments">Do you have any comments or questions about this position or this process? <br></label>
+				<textarea name="comments" id="comments" form="jobform" placeholder="Write comments here"></textarea>
+			</div>
+
+			<div class="widey">
+				<input type="submit" name="submity">
+			</div>
+			
+
+		</form>
+
+	</section>
+
+
+	</body>
+
+	
+
+</html>	

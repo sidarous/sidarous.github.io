@@ -1,0 +1,82 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    padding: 0px;
+	margin: 0px;
+	font-family: "HelveticaNeue","Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size: 4vmin;
+    border-collapse: collapse;
+}
+
+header{
+    height: 5%;
+    text-align: center;
+    font-size: 2.5vw;
+}
+
+#score{
+    float: left;
+    width: 20%;
+    height: 95%;
+    background-color: green;
+}
+
+#overlay {
+    
+    display: none;
+	position: fixed; 
+    font-size: 33vmin;
+    text-align: center;
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(37, 37, 37, 0.9); 
+    color: antiquewhite;
+	z-index: 1000; 
+	cursor: pointer;
+}
+
+
+#turn{
+    text-align: center;
+    font-size: 5vw;
+}
+
+#game{
+    margin: 0%;
+    float: left;
+    width: 80%;
+    height: 95%;
+    background-color: red;
+    
+}
+
+.x, .o{
+    display: none;
+}
+
+.box{
+    float: left;
+    width: 33.3%;
+    height: 33.3%;
+    border-style: solid;
+    border-width: 3px;
+    font-size: 15vw;
+    text-align: center;
+}
+
+/* top right bottom left*/
+
+#b1{border-color: white black black white;}
+#b2{border-color: white black black black;} 
+#b3{border-color: white white black black;}
+#b4{border-color: black black black white;}
+#b5{border-color: black black black black;}
+#b6{border-color: black white black black;}
+#b7{border-color: black black white white;}
+#b8{border-color: black black white black;}
+#b9{border-color: black white white black;}
+
+
+

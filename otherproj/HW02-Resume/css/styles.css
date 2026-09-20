@@ -1,0 +1,75 @@
+@font-face{
+	font-family: fancyscript;
+	src: url('../fonts/MonsieurLaDoulaise-Regular.ttf');
+}
+
+header{
+	text-align:center;
+	font-size: 10px;
+	font-weight: 100;
+	color: slategray; 
+
+}
+
+#resumetitle{
+	font-family: fancyscript;
+	font-size: 80px;
+	text-align: center;
+	font-weight: 500;
+	
+}
+
+
+body{
+	font-family: Arial, Helvetica, sans-serif;
+	background-color: blanchedalmond;
+
+}
+
+
+
+aside{
+	text-align: right;
+	font-size: 12px;
+	font-style: italic;
+}
+
+
+
+p{
+	font-weight: normal;
+	color: #6d6d6d;
+	font-size: 16PX;
+} 
+
+
+h2{
+	font-size: 25px;
+	font-weight: 900;
+	text-transform: uppercase;
+}
+
+h3{
+	font-size: 18px;
+	font-weight: 900;
+	text-transform: uppercase;
+}
+
+.job{
+	color:darkgoldenrod;
+	text-decoration: underline;
+	text-indent: 2%;
+}
+
+
+ul{
+	font-size: 14PX;
+	color: #6d6d6d;
+}
+
+footer{
+	text-align: center;
+	font-size: 10px;
+	font-weight: 100;
+	color: slategray;
+}

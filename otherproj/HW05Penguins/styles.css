@@ -1,0 +1,170 @@
+article{
+    padding-left: 400px;
+    text-align: left;
+    color: black;
+    font-size: 10px;
+    list-style: decimal-leading-zero;
+}
+
+body{
+	background-color: #3366cc;
+	width: 100%;
+	font-family: sans-serif, fantasy;
+}
+
+header{
+    text-align: center;
+    color: #00d0ff;
+	border-bottom: 2px solid black;
+	background: black;
+}
+
+#allspots{
+    text-align: center;
+    padding-left: 20%;
+    padding-right: 20%;
+}
+
+.boxes{
+    float: left;
+    width: 30%;
+    height: 195px;
+}
+
+img{
+	width: 45%;
+}
+
+#box1{
+    background-image: url('pix/mound_1.png');
+}
+
+#box1:hover{
+    background-color: #336de0;
+    background-image: url('pix/mound_1_hover.png');
+}
+
+#box1:active{
+    background-color: #387aff;
+    background-image: url('pix/penguin_1.png')
+}
+
+
+#box2{
+    background-image: url('pix/mound_2.png');
+}
+
+#box2:hover{
+    background-color: #336de0;
+    background-image: url('pix/mound_2_hover.png');
+}
+
+#box2:active{
+    background-color: #387aff;
+    background-image: url('pix/yeti.png')
+
+}
+
+#box3{
+    background-image: url('pix/mound_3.png');
+}
+
+#box3:hover{
+    background-color: #336de0;
+    background-image: url('pix/mound_3_hover.png');
+}
+
+#box3:active{
+    background-color: #387aff;
+    background-image: url('pix/penguin_3.png')
+}
+
+
+#box4{
+    background-image: url('pix/mound_4.png');
+}
+
+#box4:hover{
+    background-color: #336de0;
+    background-image: url('pix/mound_4_hover.png');
+}
+
+#box4:active{
+    background-color: #387aff;
+    background-image: url('pix/penguin_4.png')
+}
+
+
+#box5{
+    background-image: url('pix/mound_5.png');
+}
+
+#box5:hover{
+    background-color: #336de0;
+    background-image: url('pix/mound_5_hover.png');
+}
+
+#box5:active{
+    background-color: #387aff;
+    background-image: url('pix/penguin_5.png')
+}
+
+
+#box6{
+    background-image: url('pix/mound_6.png');
+}
+
+#box6:hover{
+    background-color: #336de0;
+    background-image: url('pix/mound_6_hover.png');
+}
+
+#box6:active{
+    background-color: #387aff;
+    background-image: url('pix/penguin_6.png')
+}
+
+
+#box7{
+    background-image: url('pix/mound_7.png');
+}
+
+#box7:hover{
+    background-color: #336de0;
+    background-image: url('pix/mound_7_hover.png');
+}
+
+#box7:active{
+    background-color: #387aff;
+    background-image: url('pix/penguin_7.png')
+}
+
+
+#box8{
+    background-image: url('pix/mound_8.png');
+}
+
+#box8:hover{
+    background-color: #336de0;
+    background-image: url('pix/mound_8_hover.png');
+}
+
+#box8:active{
+    background-color: #387aff;
+    background-image: url('pix/penguin_8.png')
+}
+
+
+#box9{
+    background-image: url('pix/mound_9.png');
+}
+
+#box9:hover{
+    background-color: #336de0;
+    background-image: url('pix/mound_9_hover.png');
+}
+
+#box9:active{
+    background-color: #387aff;
+    background-image: url('pix/penguin_2.png')
+}

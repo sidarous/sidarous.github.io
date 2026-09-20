@@ -1,0 +1,55 @@
+
+.oneserv{
+	background-color: whitesmoke;
+	padding: 15px;
+	border-radius: 10px;
+	border: 2px solid #008f96;
+	min-height: 500px;
+	height: auto;
+
+}
+
+.oneserv:hover, .content:hover{
+	box-shadow: 4px 4px #a2a2a2;
+}
+
+.oneserv img{
+	display:block;
+	margin-left:auto;
+	margin-right:auto;
+	width: 40%;
+}
+
+@media screen and (max-width: 749px){
+
+	.timeline::after {
+		left: 31px;
+	}
+
+	.container {
+		width: 100%;
+		padding-left: 70px;
+		padding-right: 25px;
+	}
+
+
+	.container::before {
+		left: 60px;
+		border: medium solid #363636;
+		border-width: 10px 10px 10px 0;
+		border-color: transparent #363636 transparent transparent;
+	}
+
+
+	.left::after, .right::after {
+		left: 15px;
+	}
+
+
+	.right {
+		left: 0%;
+	}
+
+
+}
+

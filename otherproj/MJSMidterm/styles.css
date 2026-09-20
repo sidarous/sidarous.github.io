@@ -1,0 +1,315 @@
+body{
+	padding: 0;
+	margin: 0;
+	font-family: "Open Sans", "Helvetica";
+	
+}
+
+a:link{
+	text-decoration: none;
+	color: white;
+}
+
+a:visited{
+
+	text-decoration: none;
+	color: white;	
+}
+
+header{
+	height:38px;
+	color: #FFFFFF; 
+	background: #000000;
+	width: 100%;
+}
+
+.headleft{
+	float: left;
+	font-size: 20px;
+	font-weight: 500;
+	letter-spacing: 2px;
+	margin: 5px 40px ;
+}
+
+.headright{
+	float: right;
+	font-size: 12px;
+	letter-spacing: 2px;
+	margin: 10px 15px ;
+}
+
+#header2{
+	height: 55px;
+	font-size: 14px; 
+	color: #FFFFFF; 
+	background: #dad9da; 
+	width: 100%;
+}
+.headleft2{
+	float:left;
+	color: #128a5e;
+	font-size: 28px;
+	font-weight: 400;
+	margin: 5px 40px ;
+}
+
+.headright2{
+	color: #454545;
+	font-weight: 700;
+	float: right;
+	font-size: 12px;
+	margin: 20px 15px ;
+}
+
+#dudebox{
+	height: 540px;
+	width: 112%;
+	padding: 0px;
+	margin: 0px;
+	background-image: url("Images/hero-tall-002.jpg");
+	background-position: right ;
+	background-size: 105%;
+	background-repeat: no-repeat;
+	background-color: #000000;
+}
+
+#lensflare{
+	position: absolute;
+	left: 40px;
+	top: 70px;
+}
+
+#resultsbox{
+	position: absolute;
+	height: 260;
+	top: 240px;
+	left: 40px;
+	color: white;
+	width: 47%;
+	hyphens: auto;
+	
+}
+
+#resultsbox h2{
+	font-size: 26.8;	
+	font-weight: 400;
+}
+
+
+#graphbox{
+	float: left;
+	padding-right: 9px;
+}
+
+#resultssubbox{
+	font-size: 14.5px;
+	float: left;
+	width: 85%;
+	border-left: 2px solid white;
+	padding-left: 9px;
+	/* background-color: purple;
+	 */
+}
+
+#greentext{
+	font-weight: 700;
+	color: #7fb55d;
+}
+
+#greenboxcontainer{
+	float: left;
+	width: 100%;
+	height: 100%;
+	/* background-color: orange; */
+	line-height: 25px;
+}
+
+#greenbox1{
+	padding: 0%;
+	margin-top: 50px;
+	margin-right: 30px;
+	float: left;
+	width: 32%;
+	height: 150;
+	background-color: #155433;
+	border-radius: 4px;
+}
+
+#greenbox2{
+	margin-top: 50px;
+	float: left;
+	width: 32%;
+	height: 150;
+	background-color: #348a67;
+	border-radius: 4px;
+}
+
+.greenboxlist{
+	list-style: none;
+	color: white;
+	padding: 0px 10px;
+	font-size: 14.5px;
+}
+
+.bigwhite{
+	color: white;
+	font-size: 16px;
+	font-weight: 500;
+}
+
+.mint{
+	color: #9ac4b3;
+}
+
+#loginbox{
+	height: 540px;
+	position: absolute;
+	right: 35px;
+	top: 93px;
+	padding: 0px 10px 0px 10px;
+	margin: 0%;
+	width: 240px;
+	background-color: rgba(0, 0, 0, .5);
+	font-size: 14.5px;
+	color:white;
+}
+
+.formfields{
+	width: 100%;
+	padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+	box-sizing: border-box;
+	resize: none;
+}
+
+::placeholder{
+	color:#a9a9a9;
+	font-weight: 500;
+}
+
+
+.button{
+	background-color: #17a061; 
+	border: none;
+	width: 175px;
+	height: 28px;
+	margin: 10px 0px;
+	font-weight: 700;
+	border-radius: 3px;
+	color: white;
+	padding: 5px 32px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 14.5px;
+}
+
+#SIGNIN{
+	width: 100%;
+	height: 39px;
+	background-image: url(Images/Screen\ Shot\ 2016-02-15\ at\ 6.56.14\ PM.png);
+	background-size: 20px;
+	background-repeat: no-repeat;
+	background-position: 33%;
+}
+
+article{
+	background-color: white;
+	width: 100%;
+	height: 420px;
+}
+
+.articlecol{
+	font-size: 14.5px;
+	color: #555555;
+	width: 46%;
+	height: 100%;
+	background-color: white;
+}
+
+
+.articlecol h2{
+	font-weight: 700;
+	
+	font-size: 30px;
+}
+
+
+#articlecol2 a{
+	color: #0c6ea2;	
+}
+
+#articlecol1{
+	float: left;
+	margin: 0px 0px 0px 40px;
+}
+
+#articlecol2{
+	font-size: 11px;
+	float: right;
+	padding-right: 35px;
+}
+
+.blue{
+	color: #0f6ea2;
+	
+}
+footer{
+	font-size: 14px; 
+	color: #dddddd; 
+	background: #313131; 
+	display: block; 
+	padding: 40px 0; 
+	min-height: 330px; 
+}
+
+.footlist{
+	list-style: none;
+}
+
+.foottitle{
+	color: #999999;
+	font-size: 16px;
+	font-weight: 700;
+
+}
+
+.footlist li{
+	padding:3px 0;
+	/* ???? */
+
+}
+
+.footcol{
+	width: 19.5%;
+	float: left;
+}
+
+.footfoot{
+	padding: 10px;
+	float: left;
+	width: 95%;
+}
+
+#topbutton{
+	position: fixed;
+	bottom: 20px;
+	right: 40px;
+	z-index: 10000;
+	font-size: 15px;
+	border: none;
+	outline: none;
+	background-color: #44a760;
+	color: #FFFFFF;
+	padding: 18px;
+	width: 23px;
+	height: 23px;
+	text-align: center;
+	border-radius: 50%;
+}
+
+.graytext{
+	color: #999999;
+}

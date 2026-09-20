@@ -1,0 +1,240 @@
+<html>
+<head>
+	<title>Sidarous Store Assignment - Project 1</title>
+	<link rel="stylesheet" href="styles.css">
+	<link rel="shortcut icon" href="Images/favicon.ico">
+	<meta name="description" content="Keyboard Store">
+	<meta name="keywords" content="html, css, mechanical, keyboard, store, switch">
+</head>
+<body>
+	
+	<header> <!-- Search bar, cart and checkout button -->
+
+		<div id="toppageblackbar"></div>
+		<div id="toppageiconbar">
+			
+			<div >
+				<img src="Images/searchicon.png" height="20px">
+				<form id="search" method="post" action="">
+						<input type="text" name="search" id="searchform" placeholder="Search">
+				</form>
+			</div>
+
+			<div id="cartandcheckout">
+				<a href="cart.html">
+					<img src="Images/carticon.png" height="18px">
+					Cart (
+						<span id="cartcount">0</span> 
+						) 
+					&nbsp; &nbsp; &nbsp; &nbsp;
+				</a>
+				<a href=""> Check Out</a>
+			</div>
+		</div>
+
+		<div id="logobar">
+				
+		</div>
+
+	</header>
+	
+	<aside>
+		<div id="shopnav">
+			<ul class="categorylist">
+				<li class="categorylistitem">
+					<a href="index.html" class="current">Home</a>
+				</li>
+				<li class="categorylistitem">
+					<a href="index.html">Keyboards</a>
+				</li>
+				<li class="categorylistitem">
+					<a href="index.html">Keycaps</a>
+				</li>
+				<li class="categorylistitem">
+					<a href="index.html">Accessories</a>
+				</li>
+				<li class="categorylistitem">
+					<a href="index.html">Parts</a>
+				</li>
+				<li class="categorylistitem">
+					<a href="index.html">Kits</a>
+				</li>
+				<li class="categorylistitem">
+					<a href="index.html">Sale Items</a>
+				</li>
+			</ul>
+			
+			<div id="socialsection">
+				<a href="http://facebook.com" target="_blank"><img src="Images/social-facebook.png" height="20px" alt="facebook" title="facebook"></a> &nbsp;
+				<a href="http://twitter.com" target="_blank"><img src="Images/social-twitter.png" height="20px" alt="twitter" title="twitter"></a> &nbsp;
+				<a href="http://pinterest.com" target="_blank"><img src="Images/social-pinterest.png" height="20px" alt="pinterest" title="pinterest"></a> &nbsp;
+				<a href="http://instagram.com" target="_blank"><img src="Images/social-instagram.png" height="20px" alt="instagram" title="instagram"></a> &nbsp;
+				<a href="http://snapchat.com" target="_blank"><img src="Images/social-snapchat.png" height="20px" alt="snapchat" title="snapchat"></a> 
+			</div>
+
+		</div>
+	</aside>
+	
+	<article >
+
+		<div id="overlay" onclick="overlayDisappear()">
+			<div id="overlaytext">
+				Welcome, Professor!<br>Use coupon code <br><strong>GUTSTEIN2018</strong><br> for 50% off! 
+			</div>
+		</div>
+		<div id="addedWindow" onclick="hideAddedMessage()">
+			<div id="addedWindowText">
+				Added to cart! <br>
+				(Click to hide this message)
+			</div>
+		</div>
+
+
+
+		<div>
+			<ul id="itemlist">
+				
+				<li>
+					<a href="product.html">
+						<img src="Images/Items/1.jpg" class="prodimages">
+						<div class="itemname">Ducky Pocket RGB LED</div>
+						<div class="itemswitches">Switches: Brown, Blue, Red, or Silver</div>
+						<div class="itemprice">69.99</div>
+					</a>
+					<input id="1add" type="button" value="ADD TO CART" onclick="incrementCart(1)">
+				</li>
+				<li>
+					<a href="product.html">
+						<img src="Images/Items/2.jpg" class="prodimages">
+						<div class="itemname">Kinesis Advantage 2 </div>
+						<div class="itemswitches">Switches: Cherry MX Brown or Red</div>
+						<div class="itemprice">349.99</div>
+					</a>
+					<input id="2add" type="button" value="ADD TO CART" onclick="incrementCart(1)">
+				</li>
+				<li>
+					<a href="product.html">
+						<img src="Images/Items/3.jpg" class="prodimages">
+						<div class="itemname">Unicomp	Classic 104 Black</div>
+						<div class="itemswitches">Switches: IBM Buckling Spring Style</div>
+						<div class="itemprice">84.99</div>
+					</a>
+					<input id="3add" type="button" value="ADD TO CART" onclick="incrementCart(1)">
+				</li>
+				<li>
+					<a href="product.html">
+						<img src="Images/Items/4.jpg" class="prodimages">
+						<div class="itemname">Vortex Poker II Black</div>
+						<div class="itemswitches">Switches: Brown, Blue, Black, or Red</div>
+						<div class="itemprice">108.99</div>
+					</a>
+					<input id="4add" type="button" value="ADD TO CART" onclick="incrementCart(1)">
+				</li>
+				<li>
+					<a href="product.html">
+						<img src="Images/Items/5.jpg" class="prodimages">
+						<div class="itemname">Max Keyboard Sampler Kit</div>
+						<div class="itemswitches">Switches: All MX Types</div>
+						<div class="itemprice">24.99</div>
+					</a>
+					<input id="5add" type="button" value="ADD TO CART" onclick="incrementCart(1)">
+				</li>
+				<li>
+					<a href="product.html">
+						<img src="Images/Items/6.jpg" class="prodimages">
+						<div class="itemname">JellyKey Artisan Keycap - The Forbidden Realm - Purple Valley</div>
+						<div class="itemswitches"></div>
+						<div class="itemprice">62.99</div>
+					</a>
+					<input id="6add" type="button" value="ADD TO CART" onclick="incrementCart(1)">
+				</li>
+			</ul>
+		</div>
+		<div id="articledivider">
+			.
+		</div>
+		<section>
+			
+			<div id="video">
+				
+				<h3>Which mechanical keyboard switch is right for you?</h3>	
+				<p>
+					Each type of switch has advantages and disadvantages. Watch this video to learn a bit more about types of mechanical keyboard switches.
+				</p>
+				<div id="yt">
+					<iframe width="560"  height="315" src="https://www.youtube.com/embed/CbPCqVsX-wQ" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen id="vidframe"></iframe>
+				</div>
+
+			</div>
+		</section>
+
+	</article>
+
+	
+		
+		
+
+
+	<footer>
+		<div id="topfooter">
+
+			<div id="footerlinks">
+				<h4>Links</h4>
+				<ul>
+					<li><a href="">Search</a></li>
+					<li><a href="">News</a></li>
+					<li><a href="contact.html">Our Story</a></li>
+					<li><a href="">FAQ</a></li>
+					<li><a href="">Return Policy</a></li>
+					<li><a href="contact.html">Contact Us</a></li>
+					
+				</ul>
+			</div>
+
+			<div id="emailsignup">
+				<h4>Be in the know</h4>
+				Sign up for the latest in mechanical keyboard news!
+				<form id="signupfield" method="post" action="">
+						
+						<input type="text" name="mailfield" id="mailfield" placeholder="Your email">
+						<input type="submit" value="SUBSCRIBE" placeholder="SUBSCRIBE">
+				</form>
+				<br>
+				<br>
+				<br>
+				<br>
+				<input id="go" type="button" value="PRINT THIS PAGE " onclick="window.print();">
+			</div>
+
+
+		</div>
+		
+
+		<div id="copyright">
+				<div id="textpart">
+					<br><br>
+					Copyright &copy; 2018, Mark Sidarous and MKShop.
+					
+				</div>
+
+				
+				<div id="payment">
+					<br>
+					<img src="Images/paymentoptions.png" alt="Payment Options" title="Payment Options" height="20px">
+				</div>
+		</div>
+
+		
+	
+
+	</footer>
+
+	<script src="scripts.js"></script>
+	<script>
+		 overlayAppear();
+	</script>
+</body>
+
+	
+
+</html>	

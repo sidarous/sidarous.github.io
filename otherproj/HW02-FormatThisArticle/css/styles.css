@@ -1,0 +1,66 @@
+@font-face{
+	font-family: bbfont;
+	src: url('../fonts/TeamSpiritNF.ttf');
+}
+
+body{
+	background-color:azure
+}
+
+
+footer{
+	font-size: 10px;
+	font-weight: 100;
+}
+
+aside{
+	text-align: right;
+	font-size: 12px;
+	font-style: italic;
+}
+
+
+
+p{
+	text-indent: 1%;
+	font-weight: normal;
+}
+
+#baseballtitle{
+	font-family: bbfont;
+	text-decoration: underline;
+	font-size: 120px;
+	text-align: center;
+	font-weight: 300;
+	
+}
+
+h2{
+	font-family: bbfont;
+	font-size: 60px;
+	font-weight: 100;
+}
+
+h3{
+	font-family: bbfont;
+	font-size: 40px;
+	font-weight: 100;
+}
+
+.firstword{
+	color: blue;
+	text-decoration: underline;
+	text-transform: uppercase;
+}
+
+.quote{
+	font-family: monospace;
+	font-style: italic;
+	margin-left: 1em;
+
+}
+
+
+ul{
+	background-color: blanchedalmond;
+}

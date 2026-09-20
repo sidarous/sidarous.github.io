@@ -1,0 +1,231 @@
+<html>
+<head>
+	<title>Sidarous Store Assignment - Project 1</title>
+	<link rel="stylesheet" href="styles.css">
+	<link rel="shortcut icon" href="Images/favicon.ico">
+	<meta name="description" content="Keyboard Store">
+	<meta name="keywords" content="html, css, mechanical, keyboard, store, switch">
+</head>
+<body>
+	
+		<header> <!-- Search bar, cart and checkout button -->
+
+			<div id="toppageblackbar"></div>
+			<div id="toppageiconbar">
+				
+				<div >
+					<img src="Images/searchicon.png" height="20px">
+					<form id="search" method="post" action="">
+							<input type="text" name="search" id="searchform" placeholder="Search">
+					</form>
+				</div>
+	
+				<div id="cartandcheckout" >
+					<a href="cart.html" class="current">
+						<img src="Images/carticon.png" height="18px">
+						Cart (
+							<span id="cartcount">011</span> 
+							) 
+						&nbsp; &nbsp; &nbsp; &nbsp;
+					</a>
+					<a href=""> Check Out</a>
+				</div>
+			</div>
+	
+			<div id="logobar">
+					
+			</div>
+	
+		</header>
+		
+	<aside>
+		<div id="shopnav">
+			<ul class="categorylist">
+				<li class="categorylistitem">
+					<a href="index.html">Home</a>
+				</li>
+				<li class="categorylistitem">
+					<a href="">Keyboards</a>
+				</li>
+				<li class="categorylistitem">
+					<a href="">Keycaps</a>
+				</li>
+				<li class="categorylistitem">
+					<a href="">Accessories</a>
+				</li>
+				<li class="categorylistitem">
+					<a href="">Parts</a>
+				</li>
+				<li class="categorylistitem">
+					<a href="">Kits</a>
+				</li>
+				<li class="categorylistitem">
+					<a href="">Sale Items</a>
+				</li>
+			</ul>
+			
+			<div id="socialsection">
+				<a href="http://facebook.com" target="_blank"><img src="Images/social-facebook.png" height="20px" alt="facebook" title="facebook"></a> &nbsp;
+				<a href="http://twitter.com" target="_blank"><img src="Images/social-twitter.png" height="20px" alt="twitter" title="twitter"></a> &nbsp;
+				<a href="http://pinterest.com" target="_blank"><img src="Images/social-pinterest.png" height="20px" alt="pinterest" title="pinterest"></a> &nbsp;
+				<a href="http://instagram.com" target="_blank"><img src="Images/social-instagram.png" height="20px" alt="instagram" title="instagram"></a> &nbsp;
+				<a href="http://snapchat.com" target="_blank"><img src="Images/social-snapchat.png" height="20px" alt="snapchat" title="snapchat"></a> 
+			</div>
+
+		</div>
+	</aside>
+	
+	<article >
+
+		<div id="addedWindow" onclick="hideAddedMessage()">
+			<div id="addedWindowText">
+				Cart Updated! <br>
+				(Click to hide this message)
+			</div>
+		</div>
+		
+
+		<nav id="breadcrumb">
+			<span id="home">
+				<a href="index.html">Home</a>
+			</span>
+			>
+			<span id="cart">
+				<a href="cart.html">Your Cart</a>
+			</span>
+			
+		</nav>
+
+
+
+		<div id="cartitems" class = "col-lg-12 col-md-12 col-sm-12" >
+			
+			<div class="prodcol fleft col-lg-6 col-md-12 col-sm-12">	
+				<h3>Product</h3>
+				<div class="fleft prodimg col-lg-6 col-md-6 col-sm-6">
+					<img src="Images/Items/pokerii.jpg" class="prodimages">
+				</div>
+				<div class="fleft options col-lg-6 col-md-6 col-sm-6">
+					Vortex Poker II Black <br>
+					Cherry MX Brown Switches <br><br>
+					<div class="removeitem" onclick="removeItem()">Remove</div>
+				</div>
+			</div>
+			
+			<div class="pricecol fleft col-lg-2 col-md-4 col-sm-12">	
+				<h3>Price</h3>
+				<br><br>
+				$108.99
+			</div>
+
+			<div class="quantitycol fleft col-lg-2 col-md-4 col-sm-12">	
+				<h3>Quantity</h3>
+				<br>
+				<form id="quantitychanger" method="post" action="">
+					<input type="number" id="quantity" name="quantity" value="1" min="1" max="10">
+					<input type="submit" id="hiddenbutton" onclick="refreshTotal( getNewQuantity() )">
+				</form>
+			</div>
+
+			<div class="totalcol fleft col-lg-2 col-md-4 col-sm-12">	
+				<h3>Total</h3>
+				<br><br>
+				<span id="cartpagetotal">$108.99</span>
+			</div>
+		</div>
+
+
+		<div class="fright" id="total">
+			<p>
+				Subtotal <span id="cartpagetotal2">$108.99</span>
+				<br>	
+				<em>Shipping &amp; taxes calculated at checkout</em>
+
+			</p>
+
+			<form id="checkout" method="post" action="">
+				<input type="submit" value="REFRESH TOTAL" placeholder="REFRESH TOTAL" onclick="refreshTotal( getNewQuantity() )">
+				<input type="submit" value="CHECKOUT" placeholder="CHECKOUT">
+			</form>
+
+		</div>
+
+
+	</article>
+
+	
+		
+		
+	</aside>
+
+
+	<footer>
+		<div id="topfooter">
+
+			<div id="footerlinks">
+				<h4>Links</h4>
+				<ul>
+					<li><a href="">Search</a></li>
+					<li><a href="">News</a></li>
+					<li><a href="contact.html">Our Story</a></li>
+					<li><a href="">FAQ</a></li>
+					<li><a href="">Return Policy</a></li>
+					<li><a href="contact.html">Contact Us</a></li>
+					
+				</ul>
+			</div>
+
+			<div id="emailsignup">
+				<h4>Be in the know</h4>
+				Sign up for the latest in mechanical keyboard news!
+				<form id="signupfield" method="post" action="">
+						
+						<input type="text" name="mailfield" id="mailfield" placeholder="Your email">
+						<input type="submit" value="SUBSCRIBE" placeholder="SUBSCRIBE">
+				</form>
+				<br>
+				<br>
+				<br>
+				<br>
+				<input id="go" type="button" value="PRINT THIS PAGE " onclick="window.print();">
+			</div>
+
+
+		</div>
+		
+
+		<div id="copyright">
+				<div id="textpart">
+					<br><br>
+					Copyright &copy; 2018, Mark Sidarous and MKShop.
+					
+				</div>
+
+				
+				<div id="payment">
+					<br>
+					<img src="Images/paymentoptions.png" alt="Payment Options" title="Payment Options" height="20px">
+				</div>
+		</div>
+
+		
+	</footer>
+
+	<script src="scripts.js">
+		cartTotalOne();
+	</script>
+
+	<!-- <script src="cto.js">
+		cartTotalOne();
+   	</script> -->
+
+	<script >
+		cartTotalOne();
+	</script>
+
+
+</body>
+
+	
+
+</html>	

@@ -1,0 +1,226 @@
+<html>
+<head>
+	<title>Sidarous Store Assignment - Project 1</title>
+	<link rel="stylesheet" href="styles.css">
+	<link rel="shortcut icon" href="Images/favicon.ico">
+	<meta name="description" content="Keyboard Store">
+	<meta name="keywords" content="html, css, mechanical, keyboard, store, switch">
+</head>
+<body>
+	
+		<header> <!-- Search bar, cart and checkout button -->
+
+			<div id="toppageblackbar"></div>
+			<div id="toppageiconbar">
+				
+				<div >
+					<img src="Images/searchicon.png" height="20px">
+					<form id="search" method="post" action="">
+							<input type="text" name="search" id="searchform" placeholder="Search">
+					</form>
+				</div>
+	
+				<div id="cartandcheckout">
+					<a href="cart.html">
+						<img src="Images/carticon.png" height="18px">
+						Cart (
+							<span id="cartcount">0</span> 
+							) 
+						&nbsp; &nbsp; &nbsp; &nbsp;
+					</a>
+					<a href=""> Check Out</a>
+				</div>
+			</div>
+	
+			<div id="logobar">
+					
+				</div>
+	
+		</header>
+		
+		<aside>
+			<div id="shopnav">
+				<ul class="categorylist">
+					<li class="categorylistitem">
+						<a href="index.html" >Home</a>
+					</li>
+					<li class="categorylistitem">
+						<a href="index.html" class="current">Keyboards</a>
+					</li>
+					<li class="categorylistitem">
+						<a href="index.html">Keycaps</a>
+					</li>
+					<li class="categorylistitem">
+						<a href="index.html">Accessories</a>
+					</li>
+					<li class="categorylistitem">
+						<a href="index.html">Parts</a>
+					</li>
+					<li class="categorylistitem">
+						<a href="index.html">Kits</a>
+					</li>
+					<li class="categorylistitem">
+						<a href="index.html">Sale Items</a>
+					</li>
+				</ul>
+				
+				<div id="socialsection">
+					<a href="http://facebook.com" target="_blank"><img src="Images/social-facebook.png" height="20px" alt="facebook" title="facebook"></a> &nbsp;
+					<a href="http://twitter.com" target="_blank"><img src="Images/social-twitter.png" height="20px" alt="twitter" title="twitter"></a> &nbsp;
+					<a href="http://pinterest.com" target="_blank"><img src="Images/social-pinterest.png" height="20px" alt="pinterest" title="pinterest"></a> &nbsp;
+					<a href="http://instagram.com" target="_blank"><img src="Images/social-instagram.png" height="20px" alt="instagram" title="instagram"></a> &nbsp;
+					<a href="http://snapchat.com" target="_blank"><img src="Images/social-snapchat.png" height="20px" alt="snapchat" title="snapchat"></a> 
+				</div>
+	
+			</div>
+		</aside>
+
+
+	<div id="addedWindow" onclick="hideAddedMessage()">
+		<div id="addedWindowText">
+			Added to cart! <br>
+			(Click to hide this message)
+		</div>
+	</div>
+
+		
+	<article >
+
+		<nav id="breadcrumb">
+			<span id="home">
+				<a href="index.html">Home</a>
+			</span>
+			>
+			<span id="keyboard">
+				<a href="index.html">Keyboards</a>
+			</span>
+			>
+			<span id="product">
+				<a href="product.html">Vortex Poker II Black</a>
+			</span>
+
+		</nav>
+
+		<div id="containprod">
+			
+			<img src="Images/Items/pokerii.jpg" id="selprodimg">
+
+			
+			<div id="buypanel">
+				<h2>Vortex Poker II Black</h2>
+				<br>
+				<div class="itemprice">
+						$108.99
+				</div>		
+				<br><br>
+				
+				<form id="optionchooser" method="post" action="" >
+					Choose your switch	
+					<select name="switch" id="switch">
+								<option value="brown">Cherry MX Brown</option>
+								<option value="blue">Cherry MX Blue</option>
+								<option value="black">Cherry MX Black</option>
+								<option value="Red">Cherry MX Red</option>
+					</select>
+					<br><br>
+					Choose your quantity
+					<select name="quantity" id="quantity">
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+							<option value="10">10</option>
+					</select>
+					<br><br>
+					<input type="submit" value="ADD TO CART" placeholder="ADD TO CART" onclick="incrementCart( getQuantity() )">
+				</form>
+
+			</div>
+
+		</div>
+
+		<div id="prodinfo">
+			<p>
+				You want the functionality of a full keyboard, but you’re only willing to commit to 60% of the space. Seems like a tall order, right? The Vortex Poker II proves you dead wrong. A true 60% layout mechanical keyboard with real-time macro programming, the Poker II is a compact, aesthetically pleasing, and highly functional keyboard that frees your desk and computing power.
+			</p>
+			<p>
+				Includes keycap puller, along with alternate green Shift keys, red Ctrl keys, and blue Alt keys.
+			</p>
+
+		</div>
+
+	</article>
+
+	
+		
+		
+
+
+<footer>
+		<div id="topfooter">
+
+			<div id="footerlinks">
+				<h4>Links</h4>
+				<ul>
+					<li><a href="">Search</a></li>
+					<li><a href="">News</a></li>
+					<li><a href="contact.html">Our Story</a></li>
+					<li><a href="">FAQ</a></li>
+					<li><a href="">Return Policy</a></li>
+					<li><a href="contact.html">Contact Us</a></li>
+					
+				</ul>
+			</div>
+
+			<div id="emailsignup">
+				<h4>Be in the know</h4>
+				Sign up for the latest in mechanical keyboard news!
+				<form id="signupfield" method="post" action="">
+						
+						<input type="text" name="mailfield" id="mailfield" placeholder="Your email">
+						<input type="submit" value="SUBSCRIBE" placeholder="SUBSCRIBE">
+				</form>
+				<br>
+				<br>
+				<br>
+				<br>
+				<input id="go" type="button" value="PRINT THIS PAGE " onclick="window.print();">
+			</div>
+
+
+		</div>
+		
+
+		<div id="copyright">
+				<div id="textpart">
+					<br><br>
+					Copyright &copy; 2018, Mark Sidarous and MKShop.
+					
+				</div>
+
+				
+				<div id="payment">
+					<br>
+					<img src="Images/paymentoptions.png" alt="Payment Options" title="Payment Options" height="20px">
+				</div>
+		</div>
+
+		
+	
+
+	</footer>
+
+	<script src="scripts.js"></script>
+	<script>
+		 overlayAppear();
+	</script>
+</body>
+
+	
+
+</html>	

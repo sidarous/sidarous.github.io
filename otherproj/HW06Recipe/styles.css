@@ -1,0 +1,76 @@
+body{
+    background-image: url('images/bambooBG.jpg');
+    border: 0px;
+    margin: 0px;
+}
+
+header{
+    margin-left: 10%;
+    margin-right: 10%;
+    height: 375px;
+    background-image: url('images/soupgradient.jpg');
+    background-repeat: no-repeat;
+    background-color: #e5b83b;
+    text-align: right;
+    font-family:  Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: white;
+    line-height: 360px;
+    font-size: 35px;
+    font-weight: 100;
+    border-radius: 15px;
+}
+
+h1{
+    height:  50%;
+}
+
+.boxen{
+    background-color: rgb(251, 251, 237, .8);
+    
+    border-radius: 15px;
+    margin-top: 10px;
+}
+
+.heads{
+    margin: 10px 5px 5px 5px;    
+
+}
+
+.listthings{
+    margin: 10px 5px 5px 5px;
+}
+
+aside{
+    margin-left: 10%;
+    width: 30%;
+    float: left;
+    height: 650;
+
+}
+
+article{
+    margin-right: 10%;
+    width: 48%;
+    float: right;
+    height: 650;
+
+}
+
+footer{
+    position: fixed;
+    margin: 5px 5px 5px 5px;
+    bottom: 0;
+    margin-left: 40%;
+    float: left;
+}
+
+#bottompart{
+    float: left;
+    width: 80%;
+    background-color: rgb(251, 251, 237, .8);
+    border-radius: 15px;
+    margin-top: 10px;
+    margin-left: 10%;
+    margin-right: 10%;
+
+}
