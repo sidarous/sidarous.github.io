@@ -82,6 +82,16 @@ section.section h1 { font-size: 56px; }
   align-items: start;
 }
 
+section.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 36px;
+  align-items: start;
+}
+
+section.two-col > div {
+  width: 100%;
+}
 .callout {
   border-left: 8px solid var(--mint);
   padding: 14px 20px;
